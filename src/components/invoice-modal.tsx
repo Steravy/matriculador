@@ -1,0 +1,77 @@
+"use client"
+
+import React from "react"
+import { FileText } from "lucide-react"
+
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+} from "@/components/ui/drawer"
+import { InvoiceForm } from "@/components/forms/invoice-form"
+import { useMediaQuery } from "@/hooks/use-media-query"
+import { SerializedReceipt } from "@/app/actions/types"
+
+interface InvoiceModalProps {
+  open: boolean
+  onOpenChange: (open: boolean) => void
+  onSuccess?: (receipt: SerializedReceipt) => void
+}
+
+export function InvoiceModal({ open, onOpenChange, onSuccess }: InvoiceModalProps) {
+  const isDesktop = useMediaQuery("(min-width: 768px)")
+
+  const handleSuccess = (receipt: SerializedReceipt) => {
+    onSuccess?.(receipt)
+    onOpenChange(false)
+  }
+
+  const handleCancel = () => {
+    onOpenChange(false)
+  }
+
+  if (isDesktop) {
+    return (
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <FileText className="w-5 h-5" />
+              Nova Fatura
+            </DialogTitle>
+          </DialogHeader>
+          <div className="px-1">
+            <InvoiceForm onSuccess={handleSuccess} onCancel={handleCancel} />
+          </div>
+        </DialogContent>
+      </Dialog>
+    )
+  }
+
+  return (
+    <Drawer open={open} onOpenChange={onOpenChange}>
+      <DrawerContent className="max-h-[96vh] flex flex-col">
+        <div className="flex-shrink-0">
+          <DrawerHeader>
+            <DrawerTitle className="flex items-center justify-center gap-2">
+              <FileText className="w-5 h-5" />
+              Nova Fatura
+            </DrawerTitle>
+          </DrawerHeader>
+        </div>
+        <div className="flex-1 overflow-y-auto px-4 pb-safe">
+          <div className="mx-auto w-full max-w-lg pb-8">
+            <InvoiceForm onSuccess={handleSuccess} onCancel={handleCancel} />
+          </div>
+        </div>
+      </DrawerContent>
+    </Drawer>
+  )
+}
