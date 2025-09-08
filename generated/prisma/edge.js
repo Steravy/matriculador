@@ -229,7 +229,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/stefan-vitoria/Projects/alkiware/taxifatura/generated/prisma",
+      "value": "/home/stefan-vitoria/Projects/alkiware/matriculador/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -247,7 +247,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/stefan-vitoria/Projects/alkiware/taxifatura/prisma/schema.prisma",
+    "sourceFilePath": "/home/stefan-vitoria/Projects/alkiware/matriculador/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -261,7 +261,6 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
