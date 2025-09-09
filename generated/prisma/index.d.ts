@@ -53,6 +53,31 @@ export type Receipt = $Result.DefaultSelection<Prisma.$ReceiptPayload>
  * 
  */
 export type ReceiptRecipient = $Result.DefaultSelection<Prisma.$ReceiptRecipientPayload>
+/**
+ * Model DrivingSchool
+ * 
+ */
+export type DrivingSchool = $Result.DefaultSelection<Prisma.$DrivingSchoolPayload>
+/**
+ * Model Plan
+ * 
+ */
+export type Plan = $Result.DefaultSelection<Prisma.$PlanPayload>
+/**
+ * Model Student
+ * 
+ */
+export type Student = $Result.DefaultSelection<Prisma.$StudentPayload>
+/**
+ * Model Registration
+ * 
+ */
+export type Registration = $Result.DefaultSelection<Prisma.$RegistrationPayload>
+/**
+ * Model Payment
+ * 
+ */
+export type Payment = $Result.DefaultSelection<Prisma.$PaymentPayload>
 
 /**
  * Enums
@@ -66,11 +91,96 @@ export namespace $Enums {
 
 export type ReceiptStatus = (typeof ReceiptStatus)[keyof typeof ReceiptStatus]
 
+
+export const IdType: {
+  BILHETE_IDENTIDADE: 'BILHETE_IDENTIDADE',
+  PASSAPORTE: 'PASSAPORTE',
+  CARTAO_RESIDENCIA: 'CARTAO_RESIDENCIA',
+  DIRE: 'DIRE'
+};
+
+export type IdType = (typeof IdType)[keyof typeof IdType]
+
+
+export const RegistrationStatus: {
+  PENDING: 'PENDING',
+  ACTIVE: 'ACTIVE',
+  THEORY_COMPLETE: 'THEORY_COMPLETE',
+  SUSPENDED: 'SUSPENDED',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED',
+  FAILED: 'FAILED'
+};
+
+export type RegistrationStatus = (typeof RegistrationStatus)[keyof typeof RegistrationStatus]
+
+
+export const PaymentMethod: {
+  CASH: 'CASH',
+  BANK_TRANSFER: 'BANK_TRANSFER',
+  VINTI4: 'VINTI4'
+};
+
+export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]
+
+
+export const PaymentType: {
+  FULL: 'FULL',
+  INSTALLMENTS: 'INSTALLMENTS'
+};
+
+export type PaymentType = (typeof PaymentType)[keyof typeof PaymentType]
+
+
+export const PaymentStatus: {
+  PENDING: 'PENDING',
+  PAID: 'PAID',
+  CANCELLED: 'CANCELLED',
+  REFUNDED: 'REFUNDED'
+};
+
+export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]
+
+
+export const RegistrationSource: {
+  QR_CODE: 'QR_CODE',
+  WALK_IN: 'WALK_IN',
+  WEBSITE: 'WEBSITE',
+  REFERRAL: 'REFERRAL',
+  SOCIAL_MEDIA: 'SOCIAL_MEDIA'
+};
+
+export type RegistrationSource = (typeof RegistrationSource)[keyof typeof RegistrationSource]
+
 }
 
 export type ReceiptStatus = $Enums.ReceiptStatus
 
 export const ReceiptStatus: typeof $Enums.ReceiptStatus
+
+export type IdType = $Enums.IdType
+
+export const IdType: typeof $Enums.IdType
+
+export type RegistrationStatus = $Enums.RegistrationStatus
+
+export const RegistrationStatus: typeof $Enums.RegistrationStatus
+
+export type PaymentMethod = $Enums.PaymentMethod
+
+export const PaymentMethod: typeof $Enums.PaymentMethod
+
+export type PaymentType = $Enums.PaymentType
+
+export const PaymentType: typeof $Enums.PaymentType
+
+export type PaymentStatus = $Enums.PaymentStatus
+
+export const PaymentStatus: typeof $Enums.PaymentStatus
+
+export type RegistrationSource = $Enums.RegistrationSource
+
+export const RegistrationSource: typeof $Enums.RegistrationSource
 
 /**
  * ##  Prisma Client ʲˢ
@@ -276,6 +386,56 @@ export class PrismaClient<
     * ```
     */
   get receiptRecipient(): Prisma.ReceiptRecipientDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.drivingSchool`: Exposes CRUD operations for the **DrivingSchool** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DrivingSchools
+    * const drivingSchools = await prisma.drivingSchool.findMany()
+    * ```
+    */
+  get drivingSchool(): Prisma.DrivingSchoolDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.plan`: Exposes CRUD operations for the **Plan** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Plans
+    * const plans = await prisma.plan.findMany()
+    * ```
+    */
+  get plan(): Prisma.PlanDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.student`: Exposes CRUD operations for the **Student** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Students
+    * const students = await prisma.student.findMany()
+    * ```
+    */
+  get student(): Prisma.StudentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.registration`: Exposes CRUD operations for the **Registration** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Registrations
+    * const registrations = await prisma.registration.findMany()
+    * ```
+    */
+  get registration(): Prisma.RegistrationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.payment`: Exposes CRUD operations for the **Payment** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Payments
+    * const payments = await prisma.payment.findMany()
+    * ```
+    */
+  get payment(): Prisma.PaymentDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -723,7 +883,12 @@ export namespace Prisma {
     WaitingList: 'WaitingList',
     Vehicle: 'Vehicle',
     Receipt: 'Receipt',
-    ReceiptRecipient: 'ReceiptRecipient'
+    ReceiptRecipient: 'ReceiptRecipient',
+    DrivingSchool: 'DrivingSchool',
+    Plan: 'Plan',
+    Student: 'Student',
+    Registration: 'Registration',
+    Payment: 'Payment'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -742,7 +907,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification" | "waitingList" | "vehicle" | "receipt" | "receiptRecipient"
+      modelProps: "user" | "session" | "account" | "verification" | "waitingList" | "vehicle" | "receipt" | "receiptRecipient" | "drivingSchool" | "plan" | "student" | "registration" | "payment"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1338,6 +1503,376 @@ export namespace Prisma {
           }
         }
       }
+      DrivingSchool: {
+        payload: Prisma.$DrivingSchoolPayload<ExtArgs>
+        fields: Prisma.DrivingSchoolFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DrivingSchoolFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrivingSchoolPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DrivingSchoolFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrivingSchoolPayload>
+          }
+          findFirst: {
+            args: Prisma.DrivingSchoolFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrivingSchoolPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DrivingSchoolFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrivingSchoolPayload>
+          }
+          findMany: {
+            args: Prisma.DrivingSchoolFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrivingSchoolPayload>[]
+          }
+          create: {
+            args: Prisma.DrivingSchoolCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrivingSchoolPayload>
+          }
+          createMany: {
+            args: Prisma.DrivingSchoolCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DrivingSchoolCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrivingSchoolPayload>[]
+          }
+          delete: {
+            args: Prisma.DrivingSchoolDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrivingSchoolPayload>
+          }
+          update: {
+            args: Prisma.DrivingSchoolUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrivingSchoolPayload>
+          }
+          deleteMany: {
+            args: Prisma.DrivingSchoolDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DrivingSchoolUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DrivingSchoolUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrivingSchoolPayload>[]
+          }
+          upsert: {
+            args: Prisma.DrivingSchoolUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DrivingSchoolPayload>
+          }
+          aggregate: {
+            args: Prisma.DrivingSchoolAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDrivingSchool>
+          }
+          groupBy: {
+            args: Prisma.DrivingSchoolGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DrivingSchoolGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DrivingSchoolCountArgs<ExtArgs>
+            result: $Utils.Optional<DrivingSchoolCountAggregateOutputType> | number
+          }
+        }
+      }
+      Plan: {
+        payload: Prisma.$PlanPayload<ExtArgs>
+        fields: Prisma.PlanFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PlanFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PlanFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload>
+          }
+          findFirst: {
+            args: Prisma.PlanFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PlanFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload>
+          }
+          findMany: {
+            args: Prisma.PlanFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload>[]
+          }
+          create: {
+            args: Prisma.PlanCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload>
+          }
+          createMany: {
+            args: Prisma.PlanCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PlanCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload>[]
+          }
+          delete: {
+            args: Prisma.PlanDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload>
+          }
+          update: {
+            args: Prisma.PlanUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload>
+          }
+          deleteMany: {
+            args: Prisma.PlanDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PlanUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PlanUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload>[]
+          }
+          upsert: {
+            args: Prisma.PlanUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload>
+          }
+          aggregate: {
+            args: Prisma.PlanAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePlan>
+          }
+          groupBy: {
+            args: Prisma.PlanGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PlanGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PlanCountArgs<ExtArgs>
+            result: $Utils.Optional<PlanCountAggregateOutputType> | number
+          }
+        }
+      }
+      Student: {
+        payload: Prisma.$StudentPayload<ExtArgs>
+        fields: Prisma.StudentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StudentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StudentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StudentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StudentPayload>
+          }
+          findFirst: {
+            args: Prisma.StudentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StudentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StudentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StudentPayload>
+          }
+          findMany: {
+            args: Prisma.StudentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StudentPayload>[]
+          }
+          create: {
+            args: Prisma.StudentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StudentPayload>
+          }
+          createMany: {
+            args: Prisma.StudentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.StudentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StudentPayload>[]
+          }
+          delete: {
+            args: Prisma.StudentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StudentPayload>
+          }
+          update: {
+            args: Prisma.StudentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StudentPayload>
+          }
+          deleteMany: {
+            args: Prisma.StudentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StudentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.StudentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StudentPayload>[]
+          }
+          upsert: {
+            args: Prisma.StudentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StudentPayload>
+          }
+          aggregate: {
+            args: Prisma.StudentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateStudent>
+          }
+          groupBy: {
+            args: Prisma.StudentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<StudentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StudentCountArgs<ExtArgs>
+            result: $Utils.Optional<StudentCountAggregateOutputType> | number
+          }
+        }
+      }
+      Registration: {
+        payload: Prisma.$RegistrationPayload<ExtArgs>
+        fields: Prisma.RegistrationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RegistrationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RegistrationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RegistrationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RegistrationPayload>
+          }
+          findFirst: {
+            args: Prisma.RegistrationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RegistrationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RegistrationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RegistrationPayload>
+          }
+          findMany: {
+            args: Prisma.RegistrationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RegistrationPayload>[]
+          }
+          create: {
+            args: Prisma.RegistrationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RegistrationPayload>
+          }
+          createMany: {
+            args: Prisma.RegistrationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.RegistrationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RegistrationPayload>[]
+          }
+          delete: {
+            args: Prisma.RegistrationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RegistrationPayload>
+          }
+          update: {
+            args: Prisma.RegistrationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RegistrationPayload>
+          }
+          deleteMany: {
+            args: Prisma.RegistrationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RegistrationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.RegistrationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RegistrationPayload>[]
+          }
+          upsert: {
+            args: Prisma.RegistrationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RegistrationPayload>
+          }
+          aggregate: {
+            args: Prisma.RegistrationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRegistration>
+          }
+          groupBy: {
+            args: Prisma.RegistrationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RegistrationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RegistrationCountArgs<ExtArgs>
+            result: $Utils.Optional<RegistrationCountAggregateOutputType> | number
+          }
+        }
+      }
+      Payment: {
+        payload: Prisma.$PaymentPayload<ExtArgs>
+        fields: Prisma.PaymentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PaymentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PaymentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload>
+          }
+          findFirst: {
+            args: Prisma.PaymentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PaymentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload>
+          }
+          findMany: {
+            args: Prisma.PaymentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload>[]
+          }
+          create: {
+            args: Prisma.PaymentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload>
+          }
+          createMany: {
+            args: Prisma.PaymentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PaymentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload>[]
+          }
+          delete: {
+            args: Prisma.PaymentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload>
+          }
+          update: {
+            args: Prisma.PaymentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload>
+          }
+          deleteMany: {
+            args: Prisma.PaymentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PaymentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PaymentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload>[]
+          }
+          upsert: {
+            args: Prisma.PaymentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload>
+          }
+          aggregate: {
+            args: Prisma.PaymentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePayment>
+          }
+          groupBy: {
+            args: Prisma.PaymentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PaymentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PaymentCountArgs<ExtArgs>
+            result: $Utils.Optional<PaymentCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1430,6 +1965,11 @@ export namespace Prisma {
     vehicle?: VehicleOmit
     receipt?: ReceiptOmit
     receiptRecipient?: ReceiptRecipientOmit
+    drivingSchool?: DrivingSchoolOmit
+    plan?: PlanOmit
+    student?: StudentOmit
+    registration?: RegistrationOmit
+    payment?: PaymentOmit
   }
 
   /* Types for Logging */
@@ -1528,6 +2068,7 @@ export namespace Prisma {
     accounts: number
     receipts: number
     vehicles: number
+    drivingSchools: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1535,6 +2076,7 @@ export namespace Prisma {
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     receipts?: boolean | UserCountOutputTypeCountReceiptsArgs
     vehicles?: boolean | UserCountOutputTypeCountVehiclesArgs
+    drivingSchools?: boolean | UserCountOutputTypeCountDrivingSchoolsArgs
   }
 
   // Custom InputTypes
@@ -1574,6 +2116,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountVehiclesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: VehicleWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountDrivingSchoolsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DrivingSchoolWhereInput
   }
 
 
@@ -1636,6 +2185,139 @@ export namespace Prisma {
    */
   export type ReceiptCountOutputTypeCountRecipientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ReceiptRecipientWhereInput
+  }
+
+
+  /**
+   * Count Type DrivingSchoolCountOutputType
+   */
+
+  export type DrivingSchoolCountOutputType = {
+    plans: number
+    students: number
+  }
+
+  export type DrivingSchoolCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    plans?: boolean | DrivingSchoolCountOutputTypeCountPlansArgs
+    students?: boolean | DrivingSchoolCountOutputTypeCountStudentsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DrivingSchoolCountOutputType without action
+   */
+  export type DrivingSchoolCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrivingSchoolCountOutputType
+     */
+    select?: DrivingSchoolCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DrivingSchoolCountOutputType without action
+   */
+  export type DrivingSchoolCountOutputTypeCountPlansArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PlanWhereInput
+  }
+
+  /**
+   * DrivingSchoolCountOutputType without action
+   */
+  export type DrivingSchoolCountOutputTypeCountStudentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StudentWhereInput
+  }
+
+
+  /**
+   * Count Type PlanCountOutputType
+   */
+
+  export type PlanCountOutputType = {
+    registrations: number
+  }
+
+  export type PlanCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    registrations?: boolean | PlanCountOutputTypeCountRegistrationsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PlanCountOutputType without action
+   */
+  export type PlanCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PlanCountOutputType
+     */
+    select?: PlanCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PlanCountOutputType without action
+   */
+  export type PlanCountOutputTypeCountRegistrationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RegistrationWhereInput
+  }
+
+
+  /**
+   * Count Type StudentCountOutputType
+   */
+
+  export type StudentCountOutputType = {
+    registrations: number
+  }
+
+  export type StudentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    registrations?: boolean | StudentCountOutputTypeCountRegistrationsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * StudentCountOutputType without action
+   */
+  export type StudentCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StudentCountOutputType
+     */
+    select?: StudentCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * StudentCountOutputType without action
+   */
+  export type StudentCountOutputTypeCountRegistrationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RegistrationWhereInput
+  }
+
+
+  /**
+   * Count Type RegistrationCountOutputType
+   */
+
+  export type RegistrationCountOutputType = {
+    payments: number
+  }
+
+  export type RegistrationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    payments?: boolean | RegistrationCountOutputTypeCountPaymentsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * RegistrationCountOutputType without action
+   */
+  export type RegistrationCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RegistrationCountOutputType
+     */
+    select?: RegistrationCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * RegistrationCountOutputType without action
+   */
+  export type RegistrationCountOutputTypeCountPaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PaymentWhereInput
   }
 
 
@@ -1827,6 +2509,7 @@ export namespace Prisma {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     receipts?: boolean | User$receiptsArgs<ExtArgs>
     vehicles?: boolean | User$vehiclesArgs<ExtArgs>
+    drivingSchools?: boolean | User$drivingSchoolsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1866,6 +2549,7 @@ export namespace Prisma {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     receipts?: boolean | User$receiptsArgs<ExtArgs>
     vehicles?: boolean | User$vehiclesArgs<ExtArgs>
+    drivingSchools?: boolean | User$drivingSchoolsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1878,6 +2562,7 @@ export namespace Prisma {
       accounts: Prisma.$AccountPayload<ExtArgs>[]
       receipts: Prisma.$ReceiptPayload<ExtArgs>[]
       vehicles: Prisma.$VehiclePayload<ExtArgs>[]
+      drivingSchools: Prisma.$DrivingSchoolPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2285,6 +2970,7 @@ export namespace Prisma {
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     receipts<T extends User$receiptsArgs<ExtArgs> = {}>(args?: Subset<T, User$receiptsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReceiptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     vehicles<T extends User$vehiclesArgs<ExtArgs> = {}>(args?: Subset<T, User$vehiclesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    drivingSchools<T extends User$drivingSchoolsArgs<ExtArgs> = {}>(args?: Subset<T, User$drivingSchoolsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DrivingSchoolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2802,6 +3488,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: VehicleScalarFieldEnum | VehicleScalarFieldEnum[]
+  }
+
+  /**
+   * User.drivingSchools
+   */
+  export type User$drivingSchoolsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrivingSchool
+     */
+    select?: DrivingSchoolSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrivingSchool
+     */
+    omit?: DrivingSchoolOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrivingSchoolInclude<ExtArgs> | null
+    where?: DrivingSchoolWhereInput
+    orderBy?: DrivingSchoolOrderByWithRelationInput | DrivingSchoolOrderByWithRelationInput[]
+    cursor?: DrivingSchoolWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DrivingSchoolScalarFieldEnum | DrivingSchoolScalarFieldEnum[]
   }
 
   /**
@@ -10600,6 +11310,6065 @@ export namespace Prisma {
 
 
   /**
+   * Model DrivingSchool
+   */
+
+  export type AggregateDrivingSchool = {
+    _count: DrivingSchoolCountAggregateOutputType | null
+    _min: DrivingSchoolMinAggregateOutputType | null
+    _max: DrivingSchoolMaxAggregateOutputType | null
+  }
+
+  export type DrivingSchoolMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+    address: string | null
+    phone: string | null
+    email: string | null
+    logo: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+    userId: string | null
+  }
+
+  export type DrivingSchoolMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+    address: string | null
+    phone: string | null
+    email: string | null
+    logo: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+    userId: string | null
+  }
+
+  export type DrivingSchoolCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    address: number
+    phone: number
+    email: number
+    logo: number
+    createdAt: number
+    updatedAt: number
+    deletedAt: number
+    userId: number
+    _all: number
+  }
+
+
+  export type DrivingSchoolMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    address?: true
+    phone?: true
+    email?: true
+    logo?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+    userId?: true
+  }
+
+  export type DrivingSchoolMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    address?: true
+    phone?: true
+    email?: true
+    logo?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+    userId?: true
+  }
+
+  export type DrivingSchoolCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    address?: true
+    phone?: true
+    email?: true
+    logo?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+    userId?: true
+    _all?: true
+  }
+
+  export type DrivingSchoolAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DrivingSchool to aggregate.
+     */
+    where?: DrivingSchoolWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DrivingSchools to fetch.
+     */
+    orderBy?: DrivingSchoolOrderByWithRelationInput | DrivingSchoolOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DrivingSchoolWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DrivingSchools from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DrivingSchools.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DrivingSchools
+    **/
+    _count?: true | DrivingSchoolCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DrivingSchoolMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DrivingSchoolMaxAggregateInputType
+  }
+
+  export type GetDrivingSchoolAggregateType<T extends DrivingSchoolAggregateArgs> = {
+        [P in keyof T & keyof AggregateDrivingSchool]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDrivingSchool[P]>
+      : GetScalarType<T[P], AggregateDrivingSchool[P]>
+  }
+
+
+
+
+  export type DrivingSchoolGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DrivingSchoolWhereInput
+    orderBy?: DrivingSchoolOrderByWithAggregationInput | DrivingSchoolOrderByWithAggregationInput[]
+    by: DrivingSchoolScalarFieldEnum[] | DrivingSchoolScalarFieldEnum
+    having?: DrivingSchoolScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DrivingSchoolCountAggregateInputType | true
+    _min?: DrivingSchoolMinAggregateInputType
+    _max?: DrivingSchoolMaxAggregateInputType
+  }
+
+  export type DrivingSchoolGroupByOutputType = {
+    id: string
+    name: string
+    slug: string
+    address: string | null
+    phone: string | null
+    email: string | null
+    logo: string | null
+    createdAt: Date
+    updatedAt: Date
+    deletedAt: Date | null
+    userId: string
+    _count: DrivingSchoolCountAggregateOutputType | null
+    _min: DrivingSchoolMinAggregateOutputType | null
+    _max: DrivingSchoolMaxAggregateOutputType | null
+  }
+
+  type GetDrivingSchoolGroupByPayload<T extends DrivingSchoolGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DrivingSchoolGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DrivingSchoolGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DrivingSchoolGroupByOutputType[P]>
+            : GetScalarType<T[P], DrivingSchoolGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DrivingSchoolSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    address?: boolean
+    phone?: boolean
+    email?: boolean
+    logo?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    plans?: boolean | DrivingSchool$plansArgs<ExtArgs>
+    students?: boolean | DrivingSchool$studentsArgs<ExtArgs>
+    _count?: boolean | DrivingSchoolCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["drivingSchool"]>
+
+  export type DrivingSchoolSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    address?: boolean
+    phone?: boolean
+    email?: boolean
+    logo?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["drivingSchool"]>
+
+  export type DrivingSchoolSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    address?: boolean
+    phone?: boolean
+    email?: boolean
+    logo?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["drivingSchool"]>
+
+  export type DrivingSchoolSelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    address?: boolean
+    phone?: boolean
+    email?: boolean
+    logo?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    userId?: boolean
+  }
+
+  export type DrivingSchoolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "address" | "phone" | "email" | "logo" | "createdAt" | "updatedAt" | "deletedAt" | "userId", ExtArgs["result"]["drivingSchool"]>
+  export type DrivingSchoolInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    plans?: boolean | DrivingSchool$plansArgs<ExtArgs>
+    students?: boolean | DrivingSchool$studentsArgs<ExtArgs>
+    _count?: boolean | DrivingSchoolCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type DrivingSchoolIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type DrivingSchoolIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $DrivingSchoolPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DrivingSchool"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      plans: Prisma.$PlanPayload<ExtArgs>[]
+      students: Prisma.$StudentPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      slug: string
+      address: string | null
+      phone: string | null
+      email: string | null
+      logo: string | null
+      createdAt: Date
+      updatedAt: Date
+      deletedAt: Date | null
+      userId: string
+    }, ExtArgs["result"]["drivingSchool"]>
+    composites: {}
+  }
+
+  type DrivingSchoolGetPayload<S extends boolean | null | undefined | DrivingSchoolDefaultArgs> = $Result.GetResult<Prisma.$DrivingSchoolPayload, S>
+
+  type DrivingSchoolCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DrivingSchoolFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DrivingSchoolCountAggregateInputType | true
+    }
+
+  export interface DrivingSchoolDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DrivingSchool'], meta: { name: 'DrivingSchool' } }
+    /**
+     * Find zero or one DrivingSchool that matches the filter.
+     * @param {DrivingSchoolFindUniqueArgs} args - Arguments to find a DrivingSchool
+     * @example
+     * // Get one DrivingSchool
+     * const drivingSchool = await prisma.drivingSchool.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DrivingSchoolFindUniqueArgs>(args: SelectSubset<T, DrivingSchoolFindUniqueArgs<ExtArgs>>): Prisma__DrivingSchoolClient<$Result.GetResult<Prisma.$DrivingSchoolPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DrivingSchool that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DrivingSchoolFindUniqueOrThrowArgs} args - Arguments to find a DrivingSchool
+     * @example
+     * // Get one DrivingSchool
+     * const drivingSchool = await prisma.drivingSchool.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DrivingSchoolFindUniqueOrThrowArgs>(args: SelectSubset<T, DrivingSchoolFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DrivingSchoolClient<$Result.GetResult<Prisma.$DrivingSchoolPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DrivingSchool that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DrivingSchoolFindFirstArgs} args - Arguments to find a DrivingSchool
+     * @example
+     * // Get one DrivingSchool
+     * const drivingSchool = await prisma.drivingSchool.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DrivingSchoolFindFirstArgs>(args?: SelectSubset<T, DrivingSchoolFindFirstArgs<ExtArgs>>): Prisma__DrivingSchoolClient<$Result.GetResult<Prisma.$DrivingSchoolPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DrivingSchool that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DrivingSchoolFindFirstOrThrowArgs} args - Arguments to find a DrivingSchool
+     * @example
+     * // Get one DrivingSchool
+     * const drivingSchool = await prisma.drivingSchool.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DrivingSchoolFindFirstOrThrowArgs>(args?: SelectSubset<T, DrivingSchoolFindFirstOrThrowArgs<ExtArgs>>): Prisma__DrivingSchoolClient<$Result.GetResult<Prisma.$DrivingSchoolPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DrivingSchools that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DrivingSchoolFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DrivingSchools
+     * const drivingSchools = await prisma.drivingSchool.findMany()
+     * 
+     * // Get first 10 DrivingSchools
+     * const drivingSchools = await prisma.drivingSchool.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const drivingSchoolWithIdOnly = await prisma.drivingSchool.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DrivingSchoolFindManyArgs>(args?: SelectSubset<T, DrivingSchoolFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DrivingSchoolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DrivingSchool.
+     * @param {DrivingSchoolCreateArgs} args - Arguments to create a DrivingSchool.
+     * @example
+     * // Create one DrivingSchool
+     * const DrivingSchool = await prisma.drivingSchool.create({
+     *   data: {
+     *     // ... data to create a DrivingSchool
+     *   }
+     * })
+     * 
+     */
+    create<T extends DrivingSchoolCreateArgs>(args: SelectSubset<T, DrivingSchoolCreateArgs<ExtArgs>>): Prisma__DrivingSchoolClient<$Result.GetResult<Prisma.$DrivingSchoolPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DrivingSchools.
+     * @param {DrivingSchoolCreateManyArgs} args - Arguments to create many DrivingSchools.
+     * @example
+     * // Create many DrivingSchools
+     * const drivingSchool = await prisma.drivingSchool.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DrivingSchoolCreateManyArgs>(args?: SelectSubset<T, DrivingSchoolCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DrivingSchools and returns the data saved in the database.
+     * @param {DrivingSchoolCreateManyAndReturnArgs} args - Arguments to create many DrivingSchools.
+     * @example
+     * // Create many DrivingSchools
+     * const drivingSchool = await prisma.drivingSchool.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DrivingSchools and only return the `id`
+     * const drivingSchoolWithIdOnly = await prisma.drivingSchool.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DrivingSchoolCreateManyAndReturnArgs>(args?: SelectSubset<T, DrivingSchoolCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DrivingSchoolPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DrivingSchool.
+     * @param {DrivingSchoolDeleteArgs} args - Arguments to delete one DrivingSchool.
+     * @example
+     * // Delete one DrivingSchool
+     * const DrivingSchool = await prisma.drivingSchool.delete({
+     *   where: {
+     *     // ... filter to delete one DrivingSchool
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DrivingSchoolDeleteArgs>(args: SelectSubset<T, DrivingSchoolDeleteArgs<ExtArgs>>): Prisma__DrivingSchoolClient<$Result.GetResult<Prisma.$DrivingSchoolPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DrivingSchool.
+     * @param {DrivingSchoolUpdateArgs} args - Arguments to update one DrivingSchool.
+     * @example
+     * // Update one DrivingSchool
+     * const drivingSchool = await prisma.drivingSchool.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DrivingSchoolUpdateArgs>(args: SelectSubset<T, DrivingSchoolUpdateArgs<ExtArgs>>): Prisma__DrivingSchoolClient<$Result.GetResult<Prisma.$DrivingSchoolPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DrivingSchools.
+     * @param {DrivingSchoolDeleteManyArgs} args - Arguments to filter DrivingSchools to delete.
+     * @example
+     * // Delete a few DrivingSchools
+     * const { count } = await prisma.drivingSchool.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DrivingSchoolDeleteManyArgs>(args?: SelectSubset<T, DrivingSchoolDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DrivingSchools.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DrivingSchoolUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DrivingSchools
+     * const drivingSchool = await prisma.drivingSchool.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DrivingSchoolUpdateManyArgs>(args: SelectSubset<T, DrivingSchoolUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DrivingSchools and returns the data updated in the database.
+     * @param {DrivingSchoolUpdateManyAndReturnArgs} args - Arguments to update many DrivingSchools.
+     * @example
+     * // Update many DrivingSchools
+     * const drivingSchool = await prisma.drivingSchool.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DrivingSchools and only return the `id`
+     * const drivingSchoolWithIdOnly = await prisma.drivingSchool.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DrivingSchoolUpdateManyAndReturnArgs>(args: SelectSubset<T, DrivingSchoolUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DrivingSchoolPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DrivingSchool.
+     * @param {DrivingSchoolUpsertArgs} args - Arguments to update or create a DrivingSchool.
+     * @example
+     * // Update or create a DrivingSchool
+     * const drivingSchool = await prisma.drivingSchool.upsert({
+     *   create: {
+     *     // ... data to create a DrivingSchool
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DrivingSchool we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DrivingSchoolUpsertArgs>(args: SelectSubset<T, DrivingSchoolUpsertArgs<ExtArgs>>): Prisma__DrivingSchoolClient<$Result.GetResult<Prisma.$DrivingSchoolPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DrivingSchools.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DrivingSchoolCountArgs} args - Arguments to filter DrivingSchools to count.
+     * @example
+     * // Count the number of DrivingSchools
+     * const count = await prisma.drivingSchool.count({
+     *   where: {
+     *     // ... the filter for the DrivingSchools we want to count
+     *   }
+     * })
+    **/
+    count<T extends DrivingSchoolCountArgs>(
+      args?: Subset<T, DrivingSchoolCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DrivingSchoolCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DrivingSchool.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DrivingSchoolAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DrivingSchoolAggregateArgs>(args: Subset<T, DrivingSchoolAggregateArgs>): Prisma.PrismaPromise<GetDrivingSchoolAggregateType<T>>
+
+    /**
+     * Group by DrivingSchool.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DrivingSchoolGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DrivingSchoolGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DrivingSchoolGroupByArgs['orderBy'] }
+        : { orderBy?: DrivingSchoolGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DrivingSchoolGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDrivingSchoolGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DrivingSchool model
+   */
+  readonly fields: DrivingSchoolFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DrivingSchool.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DrivingSchoolClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    plans<T extends DrivingSchool$plansArgs<ExtArgs> = {}>(args?: Subset<T, DrivingSchool$plansArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    students<T extends DrivingSchool$studentsArgs<ExtArgs> = {}>(args?: Subset<T, DrivingSchool$studentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DrivingSchool model
+   */
+  interface DrivingSchoolFieldRefs {
+    readonly id: FieldRef<"DrivingSchool", 'String'>
+    readonly name: FieldRef<"DrivingSchool", 'String'>
+    readonly slug: FieldRef<"DrivingSchool", 'String'>
+    readonly address: FieldRef<"DrivingSchool", 'String'>
+    readonly phone: FieldRef<"DrivingSchool", 'String'>
+    readonly email: FieldRef<"DrivingSchool", 'String'>
+    readonly logo: FieldRef<"DrivingSchool", 'String'>
+    readonly createdAt: FieldRef<"DrivingSchool", 'DateTime'>
+    readonly updatedAt: FieldRef<"DrivingSchool", 'DateTime'>
+    readonly deletedAt: FieldRef<"DrivingSchool", 'DateTime'>
+    readonly userId: FieldRef<"DrivingSchool", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DrivingSchool findUnique
+   */
+  export type DrivingSchoolFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrivingSchool
+     */
+    select?: DrivingSchoolSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrivingSchool
+     */
+    omit?: DrivingSchoolOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrivingSchoolInclude<ExtArgs> | null
+    /**
+     * Filter, which DrivingSchool to fetch.
+     */
+    where: DrivingSchoolWhereUniqueInput
+  }
+
+  /**
+   * DrivingSchool findUniqueOrThrow
+   */
+  export type DrivingSchoolFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrivingSchool
+     */
+    select?: DrivingSchoolSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrivingSchool
+     */
+    omit?: DrivingSchoolOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrivingSchoolInclude<ExtArgs> | null
+    /**
+     * Filter, which DrivingSchool to fetch.
+     */
+    where: DrivingSchoolWhereUniqueInput
+  }
+
+  /**
+   * DrivingSchool findFirst
+   */
+  export type DrivingSchoolFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrivingSchool
+     */
+    select?: DrivingSchoolSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrivingSchool
+     */
+    omit?: DrivingSchoolOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrivingSchoolInclude<ExtArgs> | null
+    /**
+     * Filter, which DrivingSchool to fetch.
+     */
+    where?: DrivingSchoolWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DrivingSchools to fetch.
+     */
+    orderBy?: DrivingSchoolOrderByWithRelationInput | DrivingSchoolOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DrivingSchools.
+     */
+    cursor?: DrivingSchoolWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DrivingSchools from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DrivingSchools.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DrivingSchools.
+     */
+    distinct?: DrivingSchoolScalarFieldEnum | DrivingSchoolScalarFieldEnum[]
+  }
+
+  /**
+   * DrivingSchool findFirstOrThrow
+   */
+  export type DrivingSchoolFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrivingSchool
+     */
+    select?: DrivingSchoolSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrivingSchool
+     */
+    omit?: DrivingSchoolOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrivingSchoolInclude<ExtArgs> | null
+    /**
+     * Filter, which DrivingSchool to fetch.
+     */
+    where?: DrivingSchoolWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DrivingSchools to fetch.
+     */
+    orderBy?: DrivingSchoolOrderByWithRelationInput | DrivingSchoolOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DrivingSchools.
+     */
+    cursor?: DrivingSchoolWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DrivingSchools from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DrivingSchools.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DrivingSchools.
+     */
+    distinct?: DrivingSchoolScalarFieldEnum | DrivingSchoolScalarFieldEnum[]
+  }
+
+  /**
+   * DrivingSchool findMany
+   */
+  export type DrivingSchoolFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrivingSchool
+     */
+    select?: DrivingSchoolSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrivingSchool
+     */
+    omit?: DrivingSchoolOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrivingSchoolInclude<ExtArgs> | null
+    /**
+     * Filter, which DrivingSchools to fetch.
+     */
+    where?: DrivingSchoolWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DrivingSchools to fetch.
+     */
+    orderBy?: DrivingSchoolOrderByWithRelationInput | DrivingSchoolOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DrivingSchools.
+     */
+    cursor?: DrivingSchoolWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DrivingSchools from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DrivingSchools.
+     */
+    skip?: number
+    distinct?: DrivingSchoolScalarFieldEnum | DrivingSchoolScalarFieldEnum[]
+  }
+
+  /**
+   * DrivingSchool create
+   */
+  export type DrivingSchoolCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrivingSchool
+     */
+    select?: DrivingSchoolSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrivingSchool
+     */
+    omit?: DrivingSchoolOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrivingSchoolInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DrivingSchool.
+     */
+    data: XOR<DrivingSchoolCreateInput, DrivingSchoolUncheckedCreateInput>
+  }
+
+  /**
+   * DrivingSchool createMany
+   */
+  export type DrivingSchoolCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DrivingSchools.
+     */
+    data: DrivingSchoolCreateManyInput | DrivingSchoolCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DrivingSchool createManyAndReturn
+   */
+  export type DrivingSchoolCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrivingSchool
+     */
+    select?: DrivingSchoolSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrivingSchool
+     */
+    omit?: DrivingSchoolOmit<ExtArgs> | null
+    /**
+     * The data used to create many DrivingSchools.
+     */
+    data: DrivingSchoolCreateManyInput | DrivingSchoolCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrivingSchoolIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DrivingSchool update
+   */
+  export type DrivingSchoolUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrivingSchool
+     */
+    select?: DrivingSchoolSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrivingSchool
+     */
+    omit?: DrivingSchoolOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrivingSchoolInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DrivingSchool.
+     */
+    data: XOR<DrivingSchoolUpdateInput, DrivingSchoolUncheckedUpdateInput>
+    /**
+     * Choose, which DrivingSchool to update.
+     */
+    where: DrivingSchoolWhereUniqueInput
+  }
+
+  /**
+   * DrivingSchool updateMany
+   */
+  export type DrivingSchoolUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DrivingSchools.
+     */
+    data: XOR<DrivingSchoolUpdateManyMutationInput, DrivingSchoolUncheckedUpdateManyInput>
+    /**
+     * Filter which DrivingSchools to update
+     */
+    where?: DrivingSchoolWhereInput
+    /**
+     * Limit how many DrivingSchools to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DrivingSchool updateManyAndReturn
+   */
+  export type DrivingSchoolUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrivingSchool
+     */
+    select?: DrivingSchoolSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrivingSchool
+     */
+    omit?: DrivingSchoolOmit<ExtArgs> | null
+    /**
+     * The data used to update DrivingSchools.
+     */
+    data: XOR<DrivingSchoolUpdateManyMutationInput, DrivingSchoolUncheckedUpdateManyInput>
+    /**
+     * Filter which DrivingSchools to update
+     */
+    where?: DrivingSchoolWhereInput
+    /**
+     * Limit how many DrivingSchools to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrivingSchoolIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DrivingSchool upsert
+   */
+  export type DrivingSchoolUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrivingSchool
+     */
+    select?: DrivingSchoolSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrivingSchool
+     */
+    omit?: DrivingSchoolOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrivingSchoolInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DrivingSchool to update in case it exists.
+     */
+    where: DrivingSchoolWhereUniqueInput
+    /**
+     * In case the DrivingSchool found by the `where` argument doesn't exist, create a new DrivingSchool with this data.
+     */
+    create: XOR<DrivingSchoolCreateInput, DrivingSchoolUncheckedCreateInput>
+    /**
+     * In case the DrivingSchool was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DrivingSchoolUpdateInput, DrivingSchoolUncheckedUpdateInput>
+  }
+
+  /**
+   * DrivingSchool delete
+   */
+  export type DrivingSchoolDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrivingSchool
+     */
+    select?: DrivingSchoolSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrivingSchool
+     */
+    omit?: DrivingSchoolOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrivingSchoolInclude<ExtArgs> | null
+    /**
+     * Filter which DrivingSchool to delete.
+     */
+    where: DrivingSchoolWhereUniqueInput
+  }
+
+  /**
+   * DrivingSchool deleteMany
+   */
+  export type DrivingSchoolDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DrivingSchools to delete
+     */
+    where?: DrivingSchoolWhereInput
+    /**
+     * Limit how many DrivingSchools to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DrivingSchool.plans
+   */
+  export type DrivingSchool$plansArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Plan
+     */
+    omit?: PlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlanInclude<ExtArgs> | null
+    where?: PlanWhereInput
+    orderBy?: PlanOrderByWithRelationInput | PlanOrderByWithRelationInput[]
+    cursor?: PlanWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PlanScalarFieldEnum | PlanScalarFieldEnum[]
+  }
+
+  /**
+   * DrivingSchool.students
+   */
+  export type DrivingSchool$studentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Student
+     */
+    select?: StudentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Student
+     */
+    omit?: StudentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentInclude<ExtArgs> | null
+    where?: StudentWhereInput
+    orderBy?: StudentOrderByWithRelationInput | StudentOrderByWithRelationInput[]
+    cursor?: StudentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StudentScalarFieldEnum | StudentScalarFieldEnum[]
+  }
+
+  /**
+   * DrivingSchool without action
+   */
+  export type DrivingSchoolDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DrivingSchool
+     */
+    select?: DrivingSchoolSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DrivingSchool
+     */
+    omit?: DrivingSchoolOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DrivingSchoolInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Plan
+   */
+
+  export type AggregatePlan = {
+    _count: PlanCountAggregateOutputType | null
+    _avg: PlanAvgAggregateOutputType | null
+    _sum: PlanSumAggregateOutputType | null
+    _min: PlanMinAggregateOutputType | null
+    _max: PlanMaxAggregateOutputType | null
+  }
+
+  export type PlanAvgAggregateOutputType = {
+    price: Decimal | null
+    duration: number | null
+    maxStudents: number | null
+  }
+
+  export type PlanSumAggregateOutputType = {
+    price: Decimal | null
+    duration: number | null
+    maxStudents: number | null
+  }
+
+  export type PlanMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    code: string | null
+    price: Decimal | null
+    duration: number | null
+    maxStudents: number | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    schoolId: string | null
+  }
+
+  export type PlanMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    code: string | null
+    price: Decimal | null
+    duration: number | null
+    maxStudents: number | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    schoolId: string | null
+  }
+
+  export type PlanCountAggregateOutputType = {
+    id: number
+    name: number
+    code: number
+    price: number
+    duration: number
+    features: number
+    maxStudents: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    schoolId: number
+    _all: number
+  }
+
+
+  export type PlanAvgAggregateInputType = {
+    price?: true
+    duration?: true
+    maxStudents?: true
+  }
+
+  export type PlanSumAggregateInputType = {
+    price?: true
+    duration?: true
+    maxStudents?: true
+  }
+
+  export type PlanMinAggregateInputType = {
+    id?: true
+    name?: true
+    code?: true
+    price?: true
+    duration?: true
+    maxStudents?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    schoolId?: true
+  }
+
+  export type PlanMaxAggregateInputType = {
+    id?: true
+    name?: true
+    code?: true
+    price?: true
+    duration?: true
+    maxStudents?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    schoolId?: true
+  }
+
+  export type PlanCountAggregateInputType = {
+    id?: true
+    name?: true
+    code?: true
+    price?: true
+    duration?: true
+    features?: true
+    maxStudents?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    schoolId?: true
+    _all?: true
+  }
+
+  export type PlanAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Plan to aggregate.
+     */
+    where?: PlanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Plans to fetch.
+     */
+    orderBy?: PlanOrderByWithRelationInput | PlanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PlanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Plans
+    **/
+    _count?: true | PlanCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PlanAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PlanSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PlanMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PlanMaxAggregateInputType
+  }
+
+  export type GetPlanAggregateType<T extends PlanAggregateArgs> = {
+        [P in keyof T & keyof AggregatePlan]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePlan[P]>
+      : GetScalarType<T[P], AggregatePlan[P]>
+  }
+
+
+
+
+  export type PlanGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PlanWhereInput
+    orderBy?: PlanOrderByWithAggregationInput | PlanOrderByWithAggregationInput[]
+    by: PlanScalarFieldEnum[] | PlanScalarFieldEnum
+    having?: PlanScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PlanCountAggregateInputType | true
+    _avg?: PlanAvgAggregateInputType
+    _sum?: PlanSumAggregateInputType
+    _min?: PlanMinAggregateInputType
+    _max?: PlanMaxAggregateInputType
+  }
+
+  export type PlanGroupByOutputType = {
+    id: string
+    name: string
+    code: string
+    price: Decimal
+    duration: number
+    features: string[]
+    maxStudents: number | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    schoolId: string
+    _count: PlanCountAggregateOutputType | null
+    _avg: PlanAvgAggregateOutputType | null
+    _sum: PlanSumAggregateOutputType | null
+    _min: PlanMinAggregateOutputType | null
+    _max: PlanMaxAggregateOutputType | null
+  }
+
+  type GetPlanGroupByPayload<T extends PlanGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PlanGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PlanGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PlanGroupByOutputType[P]>
+            : GetScalarType<T[P], PlanGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PlanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    code?: boolean
+    price?: boolean
+    duration?: boolean
+    features?: boolean
+    maxStudents?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    schoolId?: boolean
+    school?: boolean | DrivingSchoolDefaultArgs<ExtArgs>
+    registrations?: boolean | Plan$registrationsArgs<ExtArgs>
+    _count?: boolean | PlanCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["plan"]>
+
+  export type PlanSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    code?: boolean
+    price?: boolean
+    duration?: boolean
+    features?: boolean
+    maxStudents?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    schoolId?: boolean
+    school?: boolean | DrivingSchoolDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["plan"]>
+
+  export type PlanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    code?: boolean
+    price?: boolean
+    duration?: boolean
+    features?: boolean
+    maxStudents?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    schoolId?: boolean
+    school?: boolean | DrivingSchoolDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["plan"]>
+
+  export type PlanSelectScalar = {
+    id?: boolean
+    name?: boolean
+    code?: boolean
+    price?: boolean
+    duration?: boolean
+    features?: boolean
+    maxStudents?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    schoolId?: boolean
+  }
+
+  export type PlanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "code" | "price" | "duration" | "features" | "maxStudents" | "isActive" | "createdAt" | "updatedAt" | "schoolId", ExtArgs["result"]["plan"]>
+  export type PlanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    school?: boolean | DrivingSchoolDefaultArgs<ExtArgs>
+    registrations?: boolean | Plan$registrationsArgs<ExtArgs>
+    _count?: boolean | PlanCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PlanIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    school?: boolean | DrivingSchoolDefaultArgs<ExtArgs>
+  }
+  export type PlanIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    school?: boolean | DrivingSchoolDefaultArgs<ExtArgs>
+  }
+
+  export type $PlanPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Plan"
+    objects: {
+      school: Prisma.$DrivingSchoolPayload<ExtArgs>
+      registrations: Prisma.$RegistrationPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      code: string
+      price: Prisma.Decimal
+      duration: number
+      features: string[]
+      maxStudents: number | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+      schoolId: string
+    }, ExtArgs["result"]["plan"]>
+    composites: {}
+  }
+
+  type PlanGetPayload<S extends boolean | null | undefined | PlanDefaultArgs> = $Result.GetResult<Prisma.$PlanPayload, S>
+
+  type PlanCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PlanFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PlanCountAggregateInputType | true
+    }
+
+  export interface PlanDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Plan'], meta: { name: 'Plan' } }
+    /**
+     * Find zero or one Plan that matches the filter.
+     * @param {PlanFindUniqueArgs} args - Arguments to find a Plan
+     * @example
+     * // Get one Plan
+     * const plan = await prisma.plan.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PlanFindUniqueArgs>(args: SelectSubset<T, PlanFindUniqueArgs<ExtArgs>>): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Plan that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PlanFindUniqueOrThrowArgs} args - Arguments to find a Plan
+     * @example
+     * // Get one Plan
+     * const plan = await prisma.plan.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PlanFindUniqueOrThrowArgs>(args: SelectSubset<T, PlanFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Plan that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlanFindFirstArgs} args - Arguments to find a Plan
+     * @example
+     * // Get one Plan
+     * const plan = await prisma.plan.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PlanFindFirstArgs>(args?: SelectSubset<T, PlanFindFirstArgs<ExtArgs>>): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Plan that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlanFindFirstOrThrowArgs} args - Arguments to find a Plan
+     * @example
+     * // Get one Plan
+     * const plan = await prisma.plan.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PlanFindFirstOrThrowArgs>(args?: SelectSubset<T, PlanFindFirstOrThrowArgs<ExtArgs>>): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Plans that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlanFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Plans
+     * const plans = await prisma.plan.findMany()
+     * 
+     * // Get first 10 Plans
+     * const plans = await prisma.plan.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const planWithIdOnly = await prisma.plan.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PlanFindManyArgs>(args?: SelectSubset<T, PlanFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Plan.
+     * @param {PlanCreateArgs} args - Arguments to create a Plan.
+     * @example
+     * // Create one Plan
+     * const Plan = await prisma.plan.create({
+     *   data: {
+     *     // ... data to create a Plan
+     *   }
+     * })
+     * 
+     */
+    create<T extends PlanCreateArgs>(args: SelectSubset<T, PlanCreateArgs<ExtArgs>>): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Plans.
+     * @param {PlanCreateManyArgs} args - Arguments to create many Plans.
+     * @example
+     * // Create many Plans
+     * const plan = await prisma.plan.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PlanCreateManyArgs>(args?: SelectSubset<T, PlanCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Plans and returns the data saved in the database.
+     * @param {PlanCreateManyAndReturnArgs} args - Arguments to create many Plans.
+     * @example
+     * // Create many Plans
+     * const plan = await prisma.plan.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Plans and only return the `id`
+     * const planWithIdOnly = await prisma.plan.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PlanCreateManyAndReturnArgs>(args?: SelectSubset<T, PlanCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Plan.
+     * @param {PlanDeleteArgs} args - Arguments to delete one Plan.
+     * @example
+     * // Delete one Plan
+     * const Plan = await prisma.plan.delete({
+     *   where: {
+     *     // ... filter to delete one Plan
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PlanDeleteArgs>(args: SelectSubset<T, PlanDeleteArgs<ExtArgs>>): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Plan.
+     * @param {PlanUpdateArgs} args - Arguments to update one Plan.
+     * @example
+     * // Update one Plan
+     * const plan = await prisma.plan.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PlanUpdateArgs>(args: SelectSubset<T, PlanUpdateArgs<ExtArgs>>): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Plans.
+     * @param {PlanDeleteManyArgs} args - Arguments to filter Plans to delete.
+     * @example
+     * // Delete a few Plans
+     * const { count } = await prisma.plan.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PlanDeleteManyArgs>(args?: SelectSubset<T, PlanDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Plans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlanUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Plans
+     * const plan = await prisma.plan.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PlanUpdateManyArgs>(args: SelectSubset<T, PlanUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Plans and returns the data updated in the database.
+     * @param {PlanUpdateManyAndReturnArgs} args - Arguments to update many Plans.
+     * @example
+     * // Update many Plans
+     * const plan = await prisma.plan.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Plans and only return the `id`
+     * const planWithIdOnly = await prisma.plan.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PlanUpdateManyAndReturnArgs>(args: SelectSubset<T, PlanUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Plan.
+     * @param {PlanUpsertArgs} args - Arguments to update or create a Plan.
+     * @example
+     * // Update or create a Plan
+     * const plan = await prisma.plan.upsert({
+     *   create: {
+     *     // ... data to create a Plan
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Plan we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PlanUpsertArgs>(args: SelectSubset<T, PlanUpsertArgs<ExtArgs>>): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Plans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlanCountArgs} args - Arguments to filter Plans to count.
+     * @example
+     * // Count the number of Plans
+     * const count = await prisma.plan.count({
+     *   where: {
+     *     // ... the filter for the Plans we want to count
+     *   }
+     * })
+    **/
+    count<T extends PlanCountArgs>(
+      args?: Subset<T, PlanCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PlanCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Plan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlanAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PlanAggregateArgs>(args: Subset<T, PlanAggregateArgs>): Prisma.PrismaPromise<GetPlanAggregateType<T>>
+
+    /**
+     * Group by Plan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlanGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PlanGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PlanGroupByArgs['orderBy'] }
+        : { orderBy?: PlanGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PlanGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPlanGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Plan model
+   */
+  readonly fields: PlanFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Plan.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PlanClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    school<T extends DrivingSchoolDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DrivingSchoolDefaultArgs<ExtArgs>>): Prisma__DrivingSchoolClient<$Result.GetResult<Prisma.$DrivingSchoolPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    registrations<T extends Plan$registrationsArgs<ExtArgs> = {}>(args?: Subset<T, Plan$registrationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RegistrationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Plan model
+   */
+  interface PlanFieldRefs {
+    readonly id: FieldRef<"Plan", 'String'>
+    readonly name: FieldRef<"Plan", 'String'>
+    readonly code: FieldRef<"Plan", 'String'>
+    readonly price: FieldRef<"Plan", 'Decimal'>
+    readonly duration: FieldRef<"Plan", 'Int'>
+    readonly features: FieldRef<"Plan", 'String[]'>
+    readonly maxStudents: FieldRef<"Plan", 'Int'>
+    readonly isActive: FieldRef<"Plan", 'Boolean'>
+    readonly createdAt: FieldRef<"Plan", 'DateTime'>
+    readonly updatedAt: FieldRef<"Plan", 'DateTime'>
+    readonly schoolId: FieldRef<"Plan", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Plan findUnique
+   */
+  export type PlanFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Plan
+     */
+    omit?: PlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * Filter, which Plan to fetch.
+     */
+    where: PlanWhereUniqueInput
+  }
+
+  /**
+   * Plan findUniqueOrThrow
+   */
+  export type PlanFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Plan
+     */
+    omit?: PlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * Filter, which Plan to fetch.
+     */
+    where: PlanWhereUniqueInput
+  }
+
+  /**
+   * Plan findFirst
+   */
+  export type PlanFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Plan
+     */
+    omit?: PlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * Filter, which Plan to fetch.
+     */
+    where?: PlanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Plans to fetch.
+     */
+    orderBy?: PlanOrderByWithRelationInput | PlanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Plans.
+     */
+    cursor?: PlanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Plans.
+     */
+    distinct?: PlanScalarFieldEnum | PlanScalarFieldEnum[]
+  }
+
+  /**
+   * Plan findFirstOrThrow
+   */
+  export type PlanFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Plan
+     */
+    omit?: PlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * Filter, which Plan to fetch.
+     */
+    where?: PlanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Plans to fetch.
+     */
+    orderBy?: PlanOrderByWithRelationInput | PlanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Plans.
+     */
+    cursor?: PlanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Plans.
+     */
+    distinct?: PlanScalarFieldEnum | PlanScalarFieldEnum[]
+  }
+
+  /**
+   * Plan findMany
+   */
+  export type PlanFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Plan
+     */
+    omit?: PlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * Filter, which Plans to fetch.
+     */
+    where?: PlanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Plans to fetch.
+     */
+    orderBy?: PlanOrderByWithRelationInput | PlanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Plans.
+     */
+    cursor?: PlanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Plans.
+     */
+    skip?: number
+    distinct?: PlanScalarFieldEnum | PlanScalarFieldEnum[]
+  }
+
+  /**
+   * Plan create
+   */
+  export type PlanCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Plan
+     */
+    omit?: PlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Plan.
+     */
+    data: XOR<PlanCreateInput, PlanUncheckedCreateInput>
+  }
+
+  /**
+   * Plan createMany
+   */
+  export type PlanCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Plans.
+     */
+    data: PlanCreateManyInput | PlanCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Plan createManyAndReturn
+   */
+  export type PlanCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Plan
+     */
+    omit?: PlanOmit<ExtArgs> | null
+    /**
+     * The data used to create many Plans.
+     */
+    data: PlanCreateManyInput | PlanCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlanIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Plan update
+   */
+  export type PlanUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Plan
+     */
+    omit?: PlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Plan.
+     */
+    data: XOR<PlanUpdateInput, PlanUncheckedUpdateInput>
+    /**
+     * Choose, which Plan to update.
+     */
+    where: PlanWhereUniqueInput
+  }
+
+  /**
+   * Plan updateMany
+   */
+  export type PlanUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Plans.
+     */
+    data: XOR<PlanUpdateManyMutationInput, PlanUncheckedUpdateManyInput>
+    /**
+     * Filter which Plans to update
+     */
+    where?: PlanWhereInput
+    /**
+     * Limit how many Plans to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Plan updateManyAndReturn
+   */
+  export type PlanUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Plan
+     */
+    omit?: PlanOmit<ExtArgs> | null
+    /**
+     * The data used to update Plans.
+     */
+    data: XOR<PlanUpdateManyMutationInput, PlanUncheckedUpdateManyInput>
+    /**
+     * Filter which Plans to update
+     */
+    where?: PlanWhereInput
+    /**
+     * Limit how many Plans to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlanIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Plan upsert
+   */
+  export type PlanUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Plan
+     */
+    omit?: PlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Plan to update in case it exists.
+     */
+    where: PlanWhereUniqueInput
+    /**
+     * In case the Plan found by the `where` argument doesn't exist, create a new Plan with this data.
+     */
+    create: XOR<PlanCreateInput, PlanUncheckedCreateInput>
+    /**
+     * In case the Plan was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PlanUpdateInput, PlanUncheckedUpdateInput>
+  }
+
+  /**
+   * Plan delete
+   */
+  export type PlanDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Plan
+     */
+    omit?: PlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * Filter which Plan to delete.
+     */
+    where: PlanWhereUniqueInput
+  }
+
+  /**
+   * Plan deleteMany
+   */
+  export type PlanDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Plans to delete
+     */
+    where?: PlanWhereInput
+    /**
+     * Limit how many Plans to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Plan.registrations
+   */
+  export type Plan$registrationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Registration
+     */
+    select?: RegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Registration
+     */
+    omit?: RegistrationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RegistrationInclude<ExtArgs> | null
+    where?: RegistrationWhereInput
+    orderBy?: RegistrationOrderByWithRelationInput | RegistrationOrderByWithRelationInput[]
+    cursor?: RegistrationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RegistrationScalarFieldEnum | RegistrationScalarFieldEnum[]
+  }
+
+  /**
+   * Plan without action
+   */
+  export type PlanDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Plan
+     */
+    omit?: PlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlanInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Student
+   */
+
+  export type AggregateStudent = {
+    _count: StudentCountAggregateOutputType | null
+    _min: StudentMinAggregateOutputType | null
+    _max: StudentMaxAggregateOutputType | null
+  }
+
+  export type StudentMinAggregateOutputType = {
+    id: string | null
+    fullName: string | null
+    email: string | null
+    phone: string | null
+    birthDate: Date | null
+    idType: $Enums.IdType | null
+    idNumber: string | null
+    idExpiryDate: Date | null
+    address: string | null
+    city: string | null
+    island: string | null
+    photo: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+    schoolId: string | null
+  }
+
+  export type StudentMaxAggregateOutputType = {
+    id: string | null
+    fullName: string | null
+    email: string | null
+    phone: string | null
+    birthDate: Date | null
+    idType: $Enums.IdType | null
+    idNumber: string | null
+    idExpiryDate: Date | null
+    address: string | null
+    city: string | null
+    island: string | null
+    photo: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+    schoolId: string | null
+  }
+
+  export type StudentCountAggregateOutputType = {
+    id: number
+    fullName: number
+    email: number
+    phone: number
+    birthDate: number
+    idType: number
+    idNumber: number
+    idExpiryDate: number
+    address: number
+    city: number
+    island: number
+    photo: number
+    createdAt: number
+    updatedAt: number
+    deletedAt: number
+    schoolId: number
+    _all: number
+  }
+
+
+  export type StudentMinAggregateInputType = {
+    id?: true
+    fullName?: true
+    email?: true
+    phone?: true
+    birthDate?: true
+    idType?: true
+    idNumber?: true
+    idExpiryDate?: true
+    address?: true
+    city?: true
+    island?: true
+    photo?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+    schoolId?: true
+  }
+
+  export type StudentMaxAggregateInputType = {
+    id?: true
+    fullName?: true
+    email?: true
+    phone?: true
+    birthDate?: true
+    idType?: true
+    idNumber?: true
+    idExpiryDate?: true
+    address?: true
+    city?: true
+    island?: true
+    photo?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+    schoolId?: true
+  }
+
+  export type StudentCountAggregateInputType = {
+    id?: true
+    fullName?: true
+    email?: true
+    phone?: true
+    birthDate?: true
+    idType?: true
+    idNumber?: true
+    idExpiryDate?: true
+    address?: true
+    city?: true
+    island?: true
+    photo?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+    schoolId?: true
+    _all?: true
+  }
+
+  export type StudentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Student to aggregate.
+     */
+    where?: StudentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Students to fetch.
+     */
+    orderBy?: StudentOrderByWithRelationInput | StudentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StudentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Students from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Students.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Students
+    **/
+    _count?: true | StudentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StudentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StudentMaxAggregateInputType
+  }
+
+  export type GetStudentAggregateType<T extends StudentAggregateArgs> = {
+        [P in keyof T & keyof AggregateStudent]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStudent[P]>
+      : GetScalarType<T[P], AggregateStudent[P]>
+  }
+
+
+
+
+  export type StudentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StudentWhereInput
+    orderBy?: StudentOrderByWithAggregationInput | StudentOrderByWithAggregationInput[]
+    by: StudentScalarFieldEnum[] | StudentScalarFieldEnum
+    having?: StudentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StudentCountAggregateInputType | true
+    _min?: StudentMinAggregateInputType
+    _max?: StudentMaxAggregateInputType
+  }
+
+  export type StudentGroupByOutputType = {
+    id: string
+    fullName: string
+    email: string
+    phone: string
+    birthDate: Date
+    idType: $Enums.IdType
+    idNumber: string
+    idExpiryDate: Date | null
+    address: string
+    city: string
+    island: string
+    photo: string | null
+    createdAt: Date
+    updatedAt: Date
+    deletedAt: Date | null
+    schoolId: string
+    _count: StudentCountAggregateOutputType | null
+    _min: StudentMinAggregateOutputType | null
+    _max: StudentMaxAggregateOutputType | null
+  }
+
+  type GetStudentGroupByPayload<T extends StudentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StudentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StudentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StudentGroupByOutputType[P]>
+            : GetScalarType<T[P], StudentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StudentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    fullName?: boolean
+    email?: boolean
+    phone?: boolean
+    birthDate?: boolean
+    idType?: boolean
+    idNumber?: boolean
+    idExpiryDate?: boolean
+    address?: boolean
+    city?: boolean
+    island?: boolean
+    photo?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    schoolId?: boolean
+    school?: boolean | DrivingSchoolDefaultArgs<ExtArgs>
+    registrations?: boolean | Student$registrationsArgs<ExtArgs>
+    _count?: boolean | StudentCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["student"]>
+
+  export type StudentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    fullName?: boolean
+    email?: boolean
+    phone?: boolean
+    birthDate?: boolean
+    idType?: boolean
+    idNumber?: boolean
+    idExpiryDate?: boolean
+    address?: boolean
+    city?: boolean
+    island?: boolean
+    photo?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    schoolId?: boolean
+    school?: boolean | DrivingSchoolDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["student"]>
+
+  export type StudentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    fullName?: boolean
+    email?: boolean
+    phone?: boolean
+    birthDate?: boolean
+    idType?: boolean
+    idNumber?: boolean
+    idExpiryDate?: boolean
+    address?: boolean
+    city?: boolean
+    island?: boolean
+    photo?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    schoolId?: boolean
+    school?: boolean | DrivingSchoolDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["student"]>
+
+  export type StudentSelectScalar = {
+    id?: boolean
+    fullName?: boolean
+    email?: boolean
+    phone?: boolean
+    birthDate?: boolean
+    idType?: boolean
+    idNumber?: boolean
+    idExpiryDate?: boolean
+    address?: boolean
+    city?: boolean
+    island?: boolean
+    photo?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    schoolId?: boolean
+  }
+
+  export type StudentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "email" | "phone" | "birthDate" | "idType" | "idNumber" | "idExpiryDate" | "address" | "city" | "island" | "photo" | "createdAt" | "updatedAt" | "deletedAt" | "schoolId", ExtArgs["result"]["student"]>
+  export type StudentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    school?: boolean | DrivingSchoolDefaultArgs<ExtArgs>
+    registrations?: boolean | Student$registrationsArgs<ExtArgs>
+    _count?: boolean | StudentCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type StudentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    school?: boolean | DrivingSchoolDefaultArgs<ExtArgs>
+  }
+  export type StudentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    school?: boolean | DrivingSchoolDefaultArgs<ExtArgs>
+  }
+
+  export type $StudentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Student"
+    objects: {
+      school: Prisma.$DrivingSchoolPayload<ExtArgs>
+      registrations: Prisma.$RegistrationPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      fullName: string
+      email: string
+      phone: string
+      birthDate: Date
+      idType: $Enums.IdType
+      idNumber: string
+      idExpiryDate: Date | null
+      address: string
+      city: string
+      island: string
+      photo: string | null
+      createdAt: Date
+      updatedAt: Date
+      deletedAt: Date | null
+      schoolId: string
+    }, ExtArgs["result"]["student"]>
+    composites: {}
+  }
+
+  type StudentGetPayload<S extends boolean | null | undefined | StudentDefaultArgs> = $Result.GetResult<Prisma.$StudentPayload, S>
+
+  type StudentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<StudentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: StudentCountAggregateInputType | true
+    }
+
+  export interface StudentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Student'], meta: { name: 'Student' } }
+    /**
+     * Find zero or one Student that matches the filter.
+     * @param {StudentFindUniqueArgs} args - Arguments to find a Student
+     * @example
+     * // Get one Student
+     * const student = await prisma.student.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends StudentFindUniqueArgs>(args: SelectSubset<T, StudentFindUniqueArgs<ExtArgs>>): Prisma__StudentClient<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Student that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {StudentFindUniqueOrThrowArgs} args - Arguments to find a Student
+     * @example
+     * // Get one Student
+     * const student = await prisma.student.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends StudentFindUniqueOrThrowArgs>(args: SelectSubset<T, StudentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__StudentClient<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Student that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StudentFindFirstArgs} args - Arguments to find a Student
+     * @example
+     * // Get one Student
+     * const student = await prisma.student.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends StudentFindFirstArgs>(args?: SelectSubset<T, StudentFindFirstArgs<ExtArgs>>): Prisma__StudentClient<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Student that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StudentFindFirstOrThrowArgs} args - Arguments to find a Student
+     * @example
+     * // Get one Student
+     * const student = await prisma.student.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends StudentFindFirstOrThrowArgs>(args?: SelectSubset<T, StudentFindFirstOrThrowArgs<ExtArgs>>): Prisma__StudentClient<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Students that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StudentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Students
+     * const students = await prisma.student.findMany()
+     * 
+     * // Get first 10 Students
+     * const students = await prisma.student.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const studentWithIdOnly = await prisma.student.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends StudentFindManyArgs>(args?: SelectSubset<T, StudentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Student.
+     * @param {StudentCreateArgs} args - Arguments to create a Student.
+     * @example
+     * // Create one Student
+     * const Student = await prisma.student.create({
+     *   data: {
+     *     // ... data to create a Student
+     *   }
+     * })
+     * 
+     */
+    create<T extends StudentCreateArgs>(args: SelectSubset<T, StudentCreateArgs<ExtArgs>>): Prisma__StudentClient<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Students.
+     * @param {StudentCreateManyArgs} args - Arguments to create many Students.
+     * @example
+     * // Create many Students
+     * const student = await prisma.student.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends StudentCreateManyArgs>(args?: SelectSubset<T, StudentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Students and returns the data saved in the database.
+     * @param {StudentCreateManyAndReturnArgs} args - Arguments to create many Students.
+     * @example
+     * // Create many Students
+     * const student = await prisma.student.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Students and only return the `id`
+     * const studentWithIdOnly = await prisma.student.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends StudentCreateManyAndReturnArgs>(args?: SelectSubset<T, StudentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Student.
+     * @param {StudentDeleteArgs} args - Arguments to delete one Student.
+     * @example
+     * // Delete one Student
+     * const Student = await prisma.student.delete({
+     *   where: {
+     *     // ... filter to delete one Student
+     *   }
+     * })
+     * 
+     */
+    delete<T extends StudentDeleteArgs>(args: SelectSubset<T, StudentDeleteArgs<ExtArgs>>): Prisma__StudentClient<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Student.
+     * @param {StudentUpdateArgs} args - Arguments to update one Student.
+     * @example
+     * // Update one Student
+     * const student = await prisma.student.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends StudentUpdateArgs>(args: SelectSubset<T, StudentUpdateArgs<ExtArgs>>): Prisma__StudentClient<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Students.
+     * @param {StudentDeleteManyArgs} args - Arguments to filter Students to delete.
+     * @example
+     * // Delete a few Students
+     * const { count } = await prisma.student.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends StudentDeleteManyArgs>(args?: SelectSubset<T, StudentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Students.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StudentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Students
+     * const student = await prisma.student.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends StudentUpdateManyArgs>(args: SelectSubset<T, StudentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Students and returns the data updated in the database.
+     * @param {StudentUpdateManyAndReturnArgs} args - Arguments to update many Students.
+     * @example
+     * // Update many Students
+     * const student = await prisma.student.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Students and only return the `id`
+     * const studentWithIdOnly = await prisma.student.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends StudentUpdateManyAndReturnArgs>(args: SelectSubset<T, StudentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Student.
+     * @param {StudentUpsertArgs} args - Arguments to update or create a Student.
+     * @example
+     * // Update or create a Student
+     * const student = await prisma.student.upsert({
+     *   create: {
+     *     // ... data to create a Student
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Student we want to update
+     *   }
+     * })
+     */
+    upsert<T extends StudentUpsertArgs>(args: SelectSubset<T, StudentUpsertArgs<ExtArgs>>): Prisma__StudentClient<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Students.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StudentCountArgs} args - Arguments to filter Students to count.
+     * @example
+     * // Count the number of Students
+     * const count = await prisma.student.count({
+     *   where: {
+     *     // ... the filter for the Students we want to count
+     *   }
+     * })
+    **/
+    count<T extends StudentCountArgs>(
+      args?: Subset<T, StudentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StudentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Student.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StudentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StudentAggregateArgs>(args: Subset<T, StudentAggregateArgs>): Prisma.PrismaPromise<GetStudentAggregateType<T>>
+
+    /**
+     * Group by Student.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StudentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StudentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StudentGroupByArgs['orderBy'] }
+        : { orderBy?: StudentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StudentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStudentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Student model
+   */
+  readonly fields: StudentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Student.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StudentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    school<T extends DrivingSchoolDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DrivingSchoolDefaultArgs<ExtArgs>>): Prisma__DrivingSchoolClient<$Result.GetResult<Prisma.$DrivingSchoolPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    registrations<T extends Student$registrationsArgs<ExtArgs> = {}>(args?: Subset<T, Student$registrationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RegistrationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Student model
+   */
+  interface StudentFieldRefs {
+    readonly id: FieldRef<"Student", 'String'>
+    readonly fullName: FieldRef<"Student", 'String'>
+    readonly email: FieldRef<"Student", 'String'>
+    readonly phone: FieldRef<"Student", 'String'>
+    readonly birthDate: FieldRef<"Student", 'DateTime'>
+    readonly idType: FieldRef<"Student", 'IdType'>
+    readonly idNumber: FieldRef<"Student", 'String'>
+    readonly idExpiryDate: FieldRef<"Student", 'DateTime'>
+    readonly address: FieldRef<"Student", 'String'>
+    readonly city: FieldRef<"Student", 'String'>
+    readonly island: FieldRef<"Student", 'String'>
+    readonly photo: FieldRef<"Student", 'String'>
+    readonly createdAt: FieldRef<"Student", 'DateTime'>
+    readonly updatedAt: FieldRef<"Student", 'DateTime'>
+    readonly deletedAt: FieldRef<"Student", 'DateTime'>
+    readonly schoolId: FieldRef<"Student", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Student findUnique
+   */
+  export type StudentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Student
+     */
+    select?: StudentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Student
+     */
+    omit?: StudentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentInclude<ExtArgs> | null
+    /**
+     * Filter, which Student to fetch.
+     */
+    where: StudentWhereUniqueInput
+  }
+
+  /**
+   * Student findUniqueOrThrow
+   */
+  export type StudentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Student
+     */
+    select?: StudentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Student
+     */
+    omit?: StudentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentInclude<ExtArgs> | null
+    /**
+     * Filter, which Student to fetch.
+     */
+    where: StudentWhereUniqueInput
+  }
+
+  /**
+   * Student findFirst
+   */
+  export type StudentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Student
+     */
+    select?: StudentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Student
+     */
+    omit?: StudentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentInclude<ExtArgs> | null
+    /**
+     * Filter, which Student to fetch.
+     */
+    where?: StudentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Students to fetch.
+     */
+    orderBy?: StudentOrderByWithRelationInput | StudentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Students.
+     */
+    cursor?: StudentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Students from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Students.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Students.
+     */
+    distinct?: StudentScalarFieldEnum | StudentScalarFieldEnum[]
+  }
+
+  /**
+   * Student findFirstOrThrow
+   */
+  export type StudentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Student
+     */
+    select?: StudentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Student
+     */
+    omit?: StudentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentInclude<ExtArgs> | null
+    /**
+     * Filter, which Student to fetch.
+     */
+    where?: StudentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Students to fetch.
+     */
+    orderBy?: StudentOrderByWithRelationInput | StudentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Students.
+     */
+    cursor?: StudentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Students from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Students.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Students.
+     */
+    distinct?: StudentScalarFieldEnum | StudentScalarFieldEnum[]
+  }
+
+  /**
+   * Student findMany
+   */
+  export type StudentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Student
+     */
+    select?: StudentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Student
+     */
+    omit?: StudentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentInclude<ExtArgs> | null
+    /**
+     * Filter, which Students to fetch.
+     */
+    where?: StudentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Students to fetch.
+     */
+    orderBy?: StudentOrderByWithRelationInput | StudentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Students.
+     */
+    cursor?: StudentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Students from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Students.
+     */
+    skip?: number
+    distinct?: StudentScalarFieldEnum | StudentScalarFieldEnum[]
+  }
+
+  /**
+   * Student create
+   */
+  export type StudentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Student
+     */
+    select?: StudentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Student
+     */
+    omit?: StudentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Student.
+     */
+    data: XOR<StudentCreateInput, StudentUncheckedCreateInput>
+  }
+
+  /**
+   * Student createMany
+   */
+  export type StudentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Students.
+     */
+    data: StudentCreateManyInput | StudentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Student createManyAndReturn
+   */
+  export type StudentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Student
+     */
+    select?: StudentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Student
+     */
+    omit?: StudentOmit<ExtArgs> | null
+    /**
+     * The data used to create many Students.
+     */
+    data: StudentCreateManyInput | StudentCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Student update
+   */
+  export type StudentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Student
+     */
+    select?: StudentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Student
+     */
+    omit?: StudentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Student.
+     */
+    data: XOR<StudentUpdateInput, StudentUncheckedUpdateInput>
+    /**
+     * Choose, which Student to update.
+     */
+    where: StudentWhereUniqueInput
+  }
+
+  /**
+   * Student updateMany
+   */
+  export type StudentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Students.
+     */
+    data: XOR<StudentUpdateManyMutationInput, StudentUncheckedUpdateManyInput>
+    /**
+     * Filter which Students to update
+     */
+    where?: StudentWhereInput
+    /**
+     * Limit how many Students to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Student updateManyAndReturn
+   */
+  export type StudentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Student
+     */
+    select?: StudentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Student
+     */
+    omit?: StudentOmit<ExtArgs> | null
+    /**
+     * The data used to update Students.
+     */
+    data: XOR<StudentUpdateManyMutationInput, StudentUncheckedUpdateManyInput>
+    /**
+     * Filter which Students to update
+     */
+    where?: StudentWhereInput
+    /**
+     * Limit how many Students to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Student upsert
+   */
+  export type StudentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Student
+     */
+    select?: StudentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Student
+     */
+    omit?: StudentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Student to update in case it exists.
+     */
+    where: StudentWhereUniqueInput
+    /**
+     * In case the Student found by the `where` argument doesn't exist, create a new Student with this data.
+     */
+    create: XOR<StudentCreateInput, StudentUncheckedCreateInput>
+    /**
+     * In case the Student was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StudentUpdateInput, StudentUncheckedUpdateInput>
+  }
+
+  /**
+   * Student delete
+   */
+  export type StudentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Student
+     */
+    select?: StudentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Student
+     */
+    omit?: StudentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentInclude<ExtArgs> | null
+    /**
+     * Filter which Student to delete.
+     */
+    where: StudentWhereUniqueInput
+  }
+
+  /**
+   * Student deleteMany
+   */
+  export type StudentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Students to delete
+     */
+    where?: StudentWhereInput
+    /**
+     * Limit how many Students to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Student.registrations
+   */
+  export type Student$registrationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Registration
+     */
+    select?: RegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Registration
+     */
+    omit?: RegistrationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RegistrationInclude<ExtArgs> | null
+    where?: RegistrationWhereInput
+    orderBy?: RegistrationOrderByWithRelationInput | RegistrationOrderByWithRelationInput[]
+    cursor?: RegistrationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RegistrationScalarFieldEnum | RegistrationScalarFieldEnum[]
+  }
+
+  /**
+   * Student without action
+   */
+  export type StudentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Student
+     */
+    select?: StudentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Student
+     */
+    omit?: StudentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Registration
+   */
+
+  export type AggregateRegistration = {
+    _count: RegistrationCountAggregateOutputType | null
+    _avg: RegistrationAvgAggregateOutputType | null
+    _sum: RegistrationSumAggregateOutputType | null
+    _min: RegistrationMinAggregateOutputType | null
+    _max: RegistrationMaxAggregateOutputType | null
+  }
+
+  export type RegistrationAvgAggregateOutputType = {
+    totalAmount: Decimal | null
+  }
+
+  export type RegistrationSumAggregateOutputType = {
+    totalAmount: Decimal | null
+  }
+
+  export type RegistrationMinAggregateOutputType = {
+    id: string | null
+    status: $Enums.RegistrationStatus | null
+    expectedEndDate: Date | null
+    theoryExamDate: Date | null
+    practicalExamDate: Date | null
+    totalAmount: Decimal | null
+    paymentType: $Enums.PaymentType | null
+    internalNotes: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    completedAt: Date | null
+    cancelledAt: Date | null
+    studentId: string | null
+    planId: string | null
+  }
+
+  export type RegistrationMaxAggregateOutputType = {
+    id: string | null
+    status: $Enums.RegistrationStatus | null
+    expectedEndDate: Date | null
+    theoryExamDate: Date | null
+    practicalExamDate: Date | null
+    totalAmount: Decimal | null
+    paymentType: $Enums.PaymentType | null
+    internalNotes: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    completedAt: Date | null
+    cancelledAt: Date | null
+    studentId: string | null
+    planId: string | null
+  }
+
+  export type RegistrationCountAggregateOutputType = {
+    id: number
+    status: number
+    expectedEndDate: number
+    theoryExamDate: number
+    practicalExamDate: number
+    totalAmount: number
+    paymentType: number
+    internalNotes: number
+    createdAt: number
+    updatedAt: number
+    completedAt: number
+    cancelledAt: number
+    studentId: number
+    planId: number
+    _all: number
+  }
+
+
+  export type RegistrationAvgAggregateInputType = {
+    totalAmount?: true
+  }
+
+  export type RegistrationSumAggregateInputType = {
+    totalAmount?: true
+  }
+
+  export type RegistrationMinAggregateInputType = {
+    id?: true
+    status?: true
+    expectedEndDate?: true
+    theoryExamDate?: true
+    practicalExamDate?: true
+    totalAmount?: true
+    paymentType?: true
+    internalNotes?: true
+    createdAt?: true
+    updatedAt?: true
+    completedAt?: true
+    cancelledAt?: true
+    studentId?: true
+    planId?: true
+  }
+
+  export type RegistrationMaxAggregateInputType = {
+    id?: true
+    status?: true
+    expectedEndDate?: true
+    theoryExamDate?: true
+    practicalExamDate?: true
+    totalAmount?: true
+    paymentType?: true
+    internalNotes?: true
+    createdAt?: true
+    updatedAt?: true
+    completedAt?: true
+    cancelledAt?: true
+    studentId?: true
+    planId?: true
+  }
+
+  export type RegistrationCountAggregateInputType = {
+    id?: true
+    status?: true
+    expectedEndDate?: true
+    theoryExamDate?: true
+    practicalExamDate?: true
+    totalAmount?: true
+    paymentType?: true
+    internalNotes?: true
+    createdAt?: true
+    updatedAt?: true
+    completedAt?: true
+    cancelledAt?: true
+    studentId?: true
+    planId?: true
+    _all?: true
+  }
+
+  export type RegistrationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Registration to aggregate.
+     */
+    where?: RegistrationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Registrations to fetch.
+     */
+    orderBy?: RegistrationOrderByWithRelationInput | RegistrationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RegistrationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Registrations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Registrations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Registrations
+    **/
+    _count?: true | RegistrationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RegistrationAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RegistrationSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RegistrationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RegistrationMaxAggregateInputType
+  }
+
+  export type GetRegistrationAggregateType<T extends RegistrationAggregateArgs> = {
+        [P in keyof T & keyof AggregateRegistration]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRegistration[P]>
+      : GetScalarType<T[P], AggregateRegistration[P]>
+  }
+
+
+
+
+  export type RegistrationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RegistrationWhereInput
+    orderBy?: RegistrationOrderByWithAggregationInput | RegistrationOrderByWithAggregationInput[]
+    by: RegistrationScalarFieldEnum[] | RegistrationScalarFieldEnum
+    having?: RegistrationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RegistrationCountAggregateInputType | true
+    _avg?: RegistrationAvgAggregateInputType
+    _sum?: RegistrationSumAggregateInputType
+    _min?: RegistrationMinAggregateInputType
+    _max?: RegistrationMaxAggregateInputType
+  }
+
+  export type RegistrationGroupByOutputType = {
+    id: string
+    status: $Enums.RegistrationStatus
+    expectedEndDate: Date
+    theoryExamDate: Date | null
+    practicalExamDate: Date | null
+    totalAmount: Decimal
+    paymentType: $Enums.PaymentType
+    internalNotes: string | null
+    createdAt: Date
+    updatedAt: Date
+    completedAt: Date | null
+    cancelledAt: Date | null
+    studentId: string
+    planId: string
+    _count: RegistrationCountAggregateOutputType | null
+    _avg: RegistrationAvgAggregateOutputType | null
+    _sum: RegistrationSumAggregateOutputType | null
+    _min: RegistrationMinAggregateOutputType | null
+    _max: RegistrationMaxAggregateOutputType | null
+  }
+
+  type GetRegistrationGroupByPayload<T extends RegistrationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RegistrationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RegistrationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RegistrationGroupByOutputType[P]>
+            : GetScalarType<T[P], RegistrationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RegistrationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    status?: boolean
+    expectedEndDate?: boolean
+    theoryExamDate?: boolean
+    practicalExamDate?: boolean
+    totalAmount?: boolean
+    paymentType?: boolean
+    internalNotes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    completedAt?: boolean
+    cancelledAt?: boolean
+    studentId?: boolean
+    planId?: boolean
+    student?: boolean | StudentDefaultArgs<ExtArgs>
+    plan?: boolean | PlanDefaultArgs<ExtArgs>
+    payments?: boolean | Registration$paymentsArgs<ExtArgs>
+    _count?: boolean | RegistrationCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["registration"]>
+
+  export type RegistrationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    status?: boolean
+    expectedEndDate?: boolean
+    theoryExamDate?: boolean
+    practicalExamDate?: boolean
+    totalAmount?: boolean
+    paymentType?: boolean
+    internalNotes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    completedAt?: boolean
+    cancelledAt?: boolean
+    studentId?: boolean
+    planId?: boolean
+    student?: boolean | StudentDefaultArgs<ExtArgs>
+    plan?: boolean | PlanDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["registration"]>
+
+  export type RegistrationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    status?: boolean
+    expectedEndDate?: boolean
+    theoryExamDate?: boolean
+    practicalExamDate?: boolean
+    totalAmount?: boolean
+    paymentType?: boolean
+    internalNotes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    completedAt?: boolean
+    cancelledAt?: boolean
+    studentId?: boolean
+    planId?: boolean
+    student?: boolean | StudentDefaultArgs<ExtArgs>
+    plan?: boolean | PlanDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["registration"]>
+
+  export type RegistrationSelectScalar = {
+    id?: boolean
+    status?: boolean
+    expectedEndDate?: boolean
+    theoryExamDate?: boolean
+    practicalExamDate?: boolean
+    totalAmount?: boolean
+    paymentType?: boolean
+    internalNotes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    completedAt?: boolean
+    cancelledAt?: boolean
+    studentId?: boolean
+    planId?: boolean
+  }
+
+  export type RegistrationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "status" | "expectedEndDate" | "theoryExamDate" | "practicalExamDate" | "totalAmount" | "paymentType" | "internalNotes" | "createdAt" | "updatedAt" | "completedAt" | "cancelledAt" | "studentId" | "planId", ExtArgs["result"]["registration"]>
+  export type RegistrationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    student?: boolean | StudentDefaultArgs<ExtArgs>
+    plan?: boolean | PlanDefaultArgs<ExtArgs>
+    payments?: boolean | Registration$paymentsArgs<ExtArgs>
+    _count?: boolean | RegistrationCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type RegistrationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    student?: boolean | StudentDefaultArgs<ExtArgs>
+    plan?: boolean | PlanDefaultArgs<ExtArgs>
+  }
+  export type RegistrationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    student?: boolean | StudentDefaultArgs<ExtArgs>
+    plan?: boolean | PlanDefaultArgs<ExtArgs>
+  }
+
+  export type $RegistrationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Registration"
+    objects: {
+      student: Prisma.$StudentPayload<ExtArgs>
+      plan: Prisma.$PlanPayload<ExtArgs>
+      payments: Prisma.$PaymentPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      status: $Enums.RegistrationStatus
+      expectedEndDate: Date
+      theoryExamDate: Date | null
+      practicalExamDate: Date | null
+      totalAmount: Prisma.Decimal
+      paymentType: $Enums.PaymentType
+      internalNotes: string | null
+      createdAt: Date
+      updatedAt: Date
+      completedAt: Date | null
+      cancelledAt: Date | null
+      studentId: string
+      planId: string
+    }, ExtArgs["result"]["registration"]>
+    composites: {}
+  }
+
+  type RegistrationGetPayload<S extends boolean | null | undefined | RegistrationDefaultArgs> = $Result.GetResult<Prisma.$RegistrationPayload, S>
+
+  type RegistrationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RegistrationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RegistrationCountAggregateInputType | true
+    }
+
+  export interface RegistrationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Registration'], meta: { name: 'Registration' } }
+    /**
+     * Find zero or one Registration that matches the filter.
+     * @param {RegistrationFindUniqueArgs} args - Arguments to find a Registration
+     * @example
+     * // Get one Registration
+     * const registration = await prisma.registration.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RegistrationFindUniqueArgs>(args: SelectSubset<T, RegistrationFindUniqueArgs<ExtArgs>>): Prisma__RegistrationClient<$Result.GetResult<Prisma.$RegistrationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Registration that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RegistrationFindUniqueOrThrowArgs} args - Arguments to find a Registration
+     * @example
+     * // Get one Registration
+     * const registration = await prisma.registration.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RegistrationFindUniqueOrThrowArgs>(args: SelectSubset<T, RegistrationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RegistrationClient<$Result.GetResult<Prisma.$RegistrationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Registration that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RegistrationFindFirstArgs} args - Arguments to find a Registration
+     * @example
+     * // Get one Registration
+     * const registration = await prisma.registration.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RegistrationFindFirstArgs>(args?: SelectSubset<T, RegistrationFindFirstArgs<ExtArgs>>): Prisma__RegistrationClient<$Result.GetResult<Prisma.$RegistrationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Registration that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RegistrationFindFirstOrThrowArgs} args - Arguments to find a Registration
+     * @example
+     * // Get one Registration
+     * const registration = await prisma.registration.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RegistrationFindFirstOrThrowArgs>(args?: SelectSubset<T, RegistrationFindFirstOrThrowArgs<ExtArgs>>): Prisma__RegistrationClient<$Result.GetResult<Prisma.$RegistrationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Registrations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RegistrationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Registrations
+     * const registrations = await prisma.registration.findMany()
+     * 
+     * // Get first 10 Registrations
+     * const registrations = await prisma.registration.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const registrationWithIdOnly = await prisma.registration.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RegistrationFindManyArgs>(args?: SelectSubset<T, RegistrationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RegistrationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Registration.
+     * @param {RegistrationCreateArgs} args - Arguments to create a Registration.
+     * @example
+     * // Create one Registration
+     * const Registration = await prisma.registration.create({
+     *   data: {
+     *     // ... data to create a Registration
+     *   }
+     * })
+     * 
+     */
+    create<T extends RegistrationCreateArgs>(args: SelectSubset<T, RegistrationCreateArgs<ExtArgs>>): Prisma__RegistrationClient<$Result.GetResult<Prisma.$RegistrationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Registrations.
+     * @param {RegistrationCreateManyArgs} args - Arguments to create many Registrations.
+     * @example
+     * // Create many Registrations
+     * const registration = await prisma.registration.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RegistrationCreateManyArgs>(args?: SelectSubset<T, RegistrationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Registrations and returns the data saved in the database.
+     * @param {RegistrationCreateManyAndReturnArgs} args - Arguments to create many Registrations.
+     * @example
+     * // Create many Registrations
+     * const registration = await prisma.registration.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Registrations and only return the `id`
+     * const registrationWithIdOnly = await prisma.registration.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends RegistrationCreateManyAndReturnArgs>(args?: SelectSubset<T, RegistrationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RegistrationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Registration.
+     * @param {RegistrationDeleteArgs} args - Arguments to delete one Registration.
+     * @example
+     * // Delete one Registration
+     * const Registration = await prisma.registration.delete({
+     *   where: {
+     *     // ... filter to delete one Registration
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RegistrationDeleteArgs>(args: SelectSubset<T, RegistrationDeleteArgs<ExtArgs>>): Prisma__RegistrationClient<$Result.GetResult<Prisma.$RegistrationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Registration.
+     * @param {RegistrationUpdateArgs} args - Arguments to update one Registration.
+     * @example
+     * // Update one Registration
+     * const registration = await prisma.registration.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RegistrationUpdateArgs>(args: SelectSubset<T, RegistrationUpdateArgs<ExtArgs>>): Prisma__RegistrationClient<$Result.GetResult<Prisma.$RegistrationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Registrations.
+     * @param {RegistrationDeleteManyArgs} args - Arguments to filter Registrations to delete.
+     * @example
+     * // Delete a few Registrations
+     * const { count } = await prisma.registration.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RegistrationDeleteManyArgs>(args?: SelectSubset<T, RegistrationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Registrations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RegistrationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Registrations
+     * const registration = await prisma.registration.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RegistrationUpdateManyArgs>(args: SelectSubset<T, RegistrationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Registrations and returns the data updated in the database.
+     * @param {RegistrationUpdateManyAndReturnArgs} args - Arguments to update many Registrations.
+     * @example
+     * // Update many Registrations
+     * const registration = await prisma.registration.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Registrations and only return the `id`
+     * const registrationWithIdOnly = await prisma.registration.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends RegistrationUpdateManyAndReturnArgs>(args: SelectSubset<T, RegistrationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RegistrationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Registration.
+     * @param {RegistrationUpsertArgs} args - Arguments to update or create a Registration.
+     * @example
+     * // Update or create a Registration
+     * const registration = await prisma.registration.upsert({
+     *   create: {
+     *     // ... data to create a Registration
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Registration we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RegistrationUpsertArgs>(args: SelectSubset<T, RegistrationUpsertArgs<ExtArgs>>): Prisma__RegistrationClient<$Result.GetResult<Prisma.$RegistrationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Registrations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RegistrationCountArgs} args - Arguments to filter Registrations to count.
+     * @example
+     * // Count the number of Registrations
+     * const count = await prisma.registration.count({
+     *   where: {
+     *     // ... the filter for the Registrations we want to count
+     *   }
+     * })
+    **/
+    count<T extends RegistrationCountArgs>(
+      args?: Subset<T, RegistrationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RegistrationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Registration.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RegistrationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RegistrationAggregateArgs>(args: Subset<T, RegistrationAggregateArgs>): Prisma.PrismaPromise<GetRegistrationAggregateType<T>>
+
+    /**
+     * Group by Registration.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RegistrationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RegistrationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RegistrationGroupByArgs['orderBy'] }
+        : { orderBy?: RegistrationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RegistrationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRegistrationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Registration model
+   */
+  readonly fields: RegistrationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Registration.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RegistrationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    student<T extends StudentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StudentDefaultArgs<ExtArgs>>): Prisma__StudentClient<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    plan<T extends PlanDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PlanDefaultArgs<ExtArgs>>): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    payments<T extends Registration$paymentsArgs<ExtArgs> = {}>(args?: Subset<T, Registration$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Registration model
+   */
+  interface RegistrationFieldRefs {
+    readonly id: FieldRef<"Registration", 'String'>
+    readonly status: FieldRef<"Registration", 'RegistrationStatus'>
+    readonly expectedEndDate: FieldRef<"Registration", 'DateTime'>
+    readonly theoryExamDate: FieldRef<"Registration", 'DateTime'>
+    readonly practicalExamDate: FieldRef<"Registration", 'DateTime'>
+    readonly totalAmount: FieldRef<"Registration", 'Decimal'>
+    readonly paymentType: FieldRef<"Registration", 'PaymentType'>
+    readonly internalNotes: FieldRef<"Registration", 'String'>
+    readonly createdAt: FieldRef<"Registration", 'DateTime'>
+    readonly updatedAt: FieldRef<"Registration", 'DateTime'>
+    readonly completedAt: FieldRef<"Registration", 'DateTime'>
+    readonly cancelledAt: FieldRef<"Registration", 'DateTime'>
+    readonly studentId: FieldRef<"Registration", 'String'>
+    readonly planId: FieldRef<"Registration", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Registration findUnique
+   */
+  export type RegistrationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Registration
+     */
+    select?: RegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Registration
+     */
+    omit?: RegistrationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RegistrationInclude<ExtArgs> | null
+    /**
+     * Filter, which Registration to fetch.
+     */
+    where: RegistrationWhereUniqueInput
+  }
+
+  /**
+   * Registration findUniqueOrThrow
+   */
+  export type RegistrationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Registration
+     */
+    select?: RegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Registration
+     */
+    omit?: RegistrationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RegistrationInclude<ExtArgs> | null
+    /**
+     * Filter, which Registration to fetch.
+     */
+    where: RegistrationWhereUniqueInput
+  }
+
+  /**
+   * Registration findFirst
+   */
+  export type RegistrationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Registration
+     */
+    select?: RegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Registration
+     */
+    omit?: RegistrationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RegistrationInclude<ExtArgs> | null
+    /**
+     * Filter, which Registration to fetch.
+     */
+    where?: RegistrationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Registrations to fetch.
+     */
+    orderBy?: RegistrationOrderByWithRelationInput | RegistrationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Registrations.
+     */
+    cursor?: RegistrationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Registrations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Registrations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Registrations.
+     */
+    distinct?: RegistrationScalarFieldEnum | RegistrationScalarFieldEnum[]
+  }
+
+  /**
+   * Registration findFirstOrThrow
+   */
+  export type RegistrationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Registration
+     */
+    select?: RegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Registration
+     */
+    omit?: RegistrationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RegistrationInclude<ExtArgs> | null
+    /**
+     * Filter, which Registration to fetch.
+     */
+    where?: RegistrationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Registrations to fetch.
+     */
+    orderBy?: RegistrationOrderByWithRelationInput | RegistrationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Registrations.
+     */
+    cursor?: RegistrationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Registrations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Registrations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Registrations.
+     */
+    distinct?: RegistrationScalarFieldEnum | RegistrationScalarFieldEnum[]
+  }
+
+  /**
+   * Registration findMany
+   */
+  export type RegistrationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Registration
+     */
+    select?: RegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Registration
+     */
+    omit?: RegistrationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RegistrationInclude<ExtArgs> | null
+    /**
+     * Filter, which Registrations to fetch.
+     */
+    where?: RegistrationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Registrations to fetch.
+     */
+    orderBy?: RegistrationOrderByWithRelationInput | RegistrationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Registrations.
+     */
+    cursor?: RegistrationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Registrations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Registrations.
+     */
+    skip?: number
+    distinct?: RegistrationScalarFieldEnum | RegistrationScalarFieldEnum[]
+  }
+
+  /**
+   * Registration create
+   */
+  export type RegistrationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Registration
+     */
+    select?: RegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Registration
+     */
+    omit?: RegistrationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RegistrationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Registration.
+     */
+    data: XOR<RegistrationCreateInput, RegistrationUncheckedCreateInput>
+  }
+
+  /**
+   * Registration createMany
+   */
+  export type RegistrationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Registrations.
+     */
+    data: RegistrationCreateManyInput | RegistrationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Registration createManyAndReturn
+   */
+  export type RegistrationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Registration
+     */
+    select?: RegistrationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Registration
+     */
+    omit?: RegistrationOmit<ExtArgs> | null
+    /**
+     * The data used to create many Registrations.
+     */
+    data: RegistrationCreateManyInput | RegistrationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RegistrationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Registration update
+   */
+  export type RegistrationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Registration
+     */
+    select?: RegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Registration
+     */
+    omit?: RegistrationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RegistrationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Registration.
+     */
+    data: XOR<RegistrationUpdateInput, RegistrationUncheckedUpdateInput>
+    /**
+     * Choose, which Registration to update.
+     */
+    where: RegistrationWhereUniqueInput
+  }
+
+  /**
+   * Registration updateMany
+   */
+  export type RegistrationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Registrations.
+     */
+    data: XOR<RegistrationUpdateManyMutationInput, RegistrationUncheckedUpdateManyInput>
+    /**
+     * Filter which Registrations to update
+     */
+    where?: RegistrationWhereInput
+    /**
+     * Limit how many Registrations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Registration updateManyAndReturn
+   */
+  export type RegistrationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Registration
+     */
+    select?: RegistrationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Registration
+     */
+    omit?: RegistrationOmit<ExtArgs> | null
+    /**
+     * The data used to update Registrations.
+     */
+    data: XOR<RegistrationUpdateManyMutationInput, RegistrationUncheckedUpdateManyInput>
+    /**
+     * Filter which Registrations to update
+     */
+    where?: RegistrationWhereInput
+    /**
+     * Limit how many Registrations to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RegistrationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Registration upsert
+   */
+  export type RegistrationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Registration
+     */
+    select?: RegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Registration
+     */
+    omit?: RegistrationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RegistrationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Registration to update in case it exists.
+     */
+    where: RegistrationWhereUniqueInput
+    /**
+     * In case the Registration found by the `where` argument doesn't exist, create a new Registration with this data.
+     */
+    create: XOR<RegistrationCreateInput, RegistrationUncheckedCreateInput>
+    /**
+     * In case the Registration was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RegistrationUpdateInput, RegistrationUncheckedUpdateInput>
+  }
+
+  /**
+   * Registration delete
+   */
+  export type RegistrationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Registration
+     */
+    select?: RegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Registration
+     */
+    omit?: RegistrationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RegistrationInclude<ExtArgs> | null
+    /**
+     * Filter which Registration to delete.
+     */
+    where: RegistrationWhereUniqueInput
+  }
+
+  /**
+   * Registration deleteMany
+   */
+  export type RegistrationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Registrations to delete
+     */
+    where?: RegistrationWhereInput
+    /**
+     * Limit how many Registrations to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Registration.payments
+   */
+  export type Registration$paymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    where?: PaymentWhereInput
+    orderBy?: PaymentOrderByWithRelationInput | PaymentOrderByWithRelationInput[]
+    cursor?: PaymentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PaymentScalarFieldEnum | PaymentScalarFieldEnum[]
+  }
+
+  /**
+   * Registration without action
+   */
+  export type RegistrationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Registration
+     */
+    select?: RegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Registration
+     */
+    omit?: RegistrationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RegistrationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Payment
+   */
+
+  export type AggregatePayment = {
+    _count: PaymentCountAggregateOutputType | null
+    _avg: PaymentAvgAggregateOutputType | null
+    _sum: PaymentSumAggregateOutputType | null
+    _min: PaymentMinAggregateOutputType | null
+    _max: PaymentMaxAggregateOutputType | null
+  }
+
+  export type PaymentAvgAggregateOutputType = {
+    amount: Decimal | null
+  }
+
+  export type PaymentSumAggregateOutputType = {
+    amount: Decimal | null
+  }
+
+  export type PaymentMinAggregateOutputType = {
+    id: string | null
+    amount: Decimal | null
+    method: $Enums.PaymentMethod | null
+    status: $Enums.PaymentStatus | null
+    reference: string | null
+    notes: string | null
+    proofUrl: string | null
+    paidAt: Date | null
+    dueDate: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    registrationId: string | null
+  }
+
+  export type PaymentMaxAggregateOutputType = {
+    id: string | null
+    amount: Decimal | null
+    method: $Enums.PaymentMethod | null
+    status: $Enums.PaymentStatus | null
+    reference: string | null
+    notes: string | null
+    proofUrl: string | null
+    paidAt: Date | null
+    dueDate: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    registrationId: string | null
+  }
+
+  export type PaymentCountAggregateOutputType = {
+    id: number
+    amount: number
+    method: number
+    status: number
+    reference: number
+    notes: number
+    proofUrl: number
+    paidAt: number
+    dueDate: number
+    createdAt: number
+    updatedAt: number
+    registrationId: number
+    _all: number
+  }
+
+
+  export type PaymentAvgAggregateInputType = {
+    amount?: true
+  }
+
+  export type PaymentSumAggregateInputType = {
+    amount?: true
+  }
+
+  export type PaymentMinAggregateInputType = {
+    id?: true
+    amount?: true
+    method?: true
+    status?: true
+    reference?: true
+    notes?: true
+    proofUrl?: true
+    paidAt?: true
+    dueDate?: true
+    createdAt?: true
+    updatedAt?: true
+    registrationId?: true
+  }
+
+  export type PaymentMaxAggregateInputType = {
+    id?: true
+    amount?: true
+    method?: true
+    status?: true
+    reference?: true
+    notes?: true
+    proofUrl?: true
+    paidAt?: true
+    dueDate?: true
+    createdAt?: true
+    updatedAt?: true
+    registrationId?: true
+  }
+
+  export type PaymentCountAggregateInputType = {
+    id?: true
+    amount?: true
+    method?: true
+    status?: true
+    reference?: true
+    notes?: true
+    proofUrl?: true
+    paidAt?: true
+    dueDate?: true
+    createdAt?: true
+    updatedAt?: true
+    registrationId?: true
+    _all?: true
+  }
+
+  export type PaymentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Payment to aggregate.
+     */
+    where?: PaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Payments to fetch.
+     */
+    orderBy?: PaymentOrderByWithRelationInput | PaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Payments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Payments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Payments
+    **/
+    _count?: true | PaymentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PaymentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PaymentSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PaymentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PaymentMaxAggregateInputType
+  }
+
+  export type GetPaymentAggregateType<T extends PaymentAggregateArgs> = {
+        [P in keyof T & keyof AggregatePayment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePayment[P]>
+      : GetScalarType<T[P], AggregatePayment[P]>
+  }
+
+
+
+
+  export type PaymentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PaymentWhereInput
+    orderBy?: PaymentOrderByWithAggregationInput | PaymentOrderByWithAggregationInput[]
+    by: PaymentScalarFieldEnum[] | PaymentScalarFieldEnum
+    having?: PaymentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PaymentCountAggregateInputType | true
+    _avg?: PaymentAvgAggregateInputType
+    _sum?: PaymentSumAggregateInputType
+    _min?: PaymentMinAggregateInputType
+    _max?: PaymentMaxAggregateInputType
+  }
+
+  export type PaymentGroupByOutputType = {
+    id: string
+    amount: Decimal
+    method: $Enums.PaymentMethod
+    status: $Enums.PaymentStatus
+    reference: string | null
+    notes: string | null
+    proofUrl: string | null
+    paidAt: Date | null
+    dueDate: Date | null
+    createdAt: Date
+    updatedAt: Date
+    registrationId: string
+    _count: PaymentCountAggregateOutputType | null
+    _avg: PaymentAvgAggregateOutputType | null
+    _sum: PaymentSumAggregateOutputType | null
+    _min: PaymentMinAggregateOutputType | null
+    _max: PaymentMaxAggregateOutputType | null
+  }
+
+  type GetPaymentGroupByPayload<T extends PaymentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PaymentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PaymentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PaymentGroupByOutputType[P]>
+            : GetScalarType<T[P], PaymentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PaymentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    amount?: boolean
+    method?: boolean
+    status?: boolean
+    reference?: boolean
+    notes?: boolean
+    proofUrl?: boolean
+    paidAt?: boolean
+    dueDate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    registrationId?: boolean
+    registration?: boolean | RegistrationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["payment"]>
+
+  export type PaymentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    amount?: boolean
+    method?: boolean
+    status?: boolean
+    reference?: boolean
+    notes?: boolean
+    proofUrl?: boolean
+    paidAt?: boolean
+    dueDate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    registrationId?: boolean
+    registration?: boolean | RegistrationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["payment"]>
+
+  export type PaymentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    amount?: boolean
+    method?: boolean
+    status?: boolean
+    reference?: boolean
+    notes?: boolean
+    proofUrl?: boolean
+    paidAt?: boolean
+    dueDate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    registrationId?: boolean
+    registration?: boolean | RegistrationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["payment"]>
+
+  export type PaymentSelectScalar = {
+    id?: boolean
+    amount?: boolean
+    method?: boolean
+    status?: boolean
+    reference?: boolean
+    notes?: boolean
+    proofUrl?: boolean
+    paidAt?: boolean
+    dueDate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    registrationId?: boolean
+  }
+
+  export type PaymentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "amount" | "method" | "status" | "reference" | "notes" | "proofUrl" | "paidAt" | "dueDate" | "createdAt" | "updatedAt" | "registrationId", ExtArgs["result"]["payment"]>
+  export type PaymentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    registration?: boolean | RegistrationDefaultArgs<ExtArgs>
+  }
+  export type PaymentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    registration?: boolean | RegistrationDefaultArgs<ExtArgs>
+  }
+  export type PaymentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    registration?: boolean | RegistrationDefaultArgs<ExtArgs>
+  }
+
+  export type $PaymentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Payment"
+    objects: {
+      registration: Prisma.$RegistrationPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      amount: Prisma.Decimal
+      method: $Enums.PaymentMethod
+      status: $Enums.PaymentStatus
+      reference: string | null
+      notes: string | null
+      proofUrl: string | null
+      paidAt: Date | null
+      dueDate: Date | null
+      createdAt: Date
+      updatedAt: Date
+      registrationId: string
+    }, ExtArgs["result"]["payment"]>
+    composites: {}
+  }
+
+  type PaymentGetPayload<S extends boolean | null | undefined | PaymentDefaultArgs> = $Result.GetResult<Prisma.$PaymentPayload, S>
+
+  type PaymentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PaymentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PaymentCountAggregateInputType | true
+    }
+
+  export interface PaymentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Payment'], meta: { name: 'Payment' } }
+    /**
+     * Find zero or one Payment that matches the filter.
+     * @param {PaymentFindUniqueArgs} args - Arguments to find a Payment
+     * @example
+     * // Get one Payment
+     * const payment = await prisma.payment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PaymentFindUniqueArgs>(args: SelectSubset<T, PaymentFindUniqueArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Payment that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PaymentFindUniqueOrThrowArgs} args - Arguments to find a Payment
+     * @example
+     * // Get one Payment
+     * const payment = await prisma.payment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PaymentFindUniqueOrThrowArgs>(args: SelectSubset<T, PaymentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Payment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PaymentFindFirstArgs} args - Arguments to find a Payment
+     * @example
+     * // Get one Payment
+     * const payment = await prisma.payment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PaymentFindFirstArgs>(args?: SelectSubset<T, PaymentFindFirstArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Payment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PaymentFindFirstOrThrowArgs} args - Arguments to find a Payment
+     * @example
+     * // Get one Payment
+     * const payment = await prisma.payment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PaymentFindFirstOrThrowArgs>(args?: SelectSubset<T, PaymentFindFirstOrThrowArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Payments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PaymentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Payments
+     * const payments = await prisma.payment.findMany()
+     * 
+     * // Get first 10 Payments
+     * const payments = await prisma.payment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const paymentWithIdOnly = await prisma.payment.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PaymentFindManyArgs>(args?: SelectSubset<T, PaymentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Payment.
+     * @param {PaymentCreateArgs} args - Arguments to create a Payment.
+     * @example
+     * // Create one Payment
+     * const Payment = await prisma.payment.create({
+     *   data: {
+     *     // ... data to create a Payment
+     *   }
+     * })
+     * 
+     */
+    create<T extends PaymentCreateArgs>(args: SelectSubset<T, PaymentCreateArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Payments.
+     * @param {PaymentCreateManyArgs} args - Arguments to create many Payments.
+     * @example
+     * // Create many Payments
+     * const payment = await prisma.payment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PaymentCreateManyArgs>(args?: SelectSubset<T, PaymentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Payments and returns the data saved in the database.
+     * @param {PaymentCreateManyAndReturnArgs} args - Arguments to create many Payments.
+     * @example
+     * // Create many Payments
+     * const payment = await prisma.payment.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Payments and only return the `id`
+     * const paymentWithIdOnly = await prisma.payment.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PaymentCreateManyAndReturnArgs>(args?: SelectSubset<T, PaymentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Payment.
+     * @param {PaymentDeleteArgs} args - Arguments to delete one Payment.
+     * @example
+     * // Delete one Payment
+     * const Payment = await prisma.payment.delete({
+     *   where: {
+     *     // ... filter to delete one Payment
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PaymentDeleteArgs>(args: SelectSubset<T, PaymentDeleteArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Payment.
+     * @param {PaymentUpdateArgs} args - Arguments to update one Payment.
+     * @example
+     * // Update one Payment
+     * const payment = await prisma.payment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PaymentUpdateArgs>(args: SelectSubset<T, PaymentUpdateArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Payments.
+     * @param {PaymentDeleteManyArgs} args - Arguments to filter Payments to delete.
+     * @example
+     * // Delete a few Payments
+     * const { count } = await prisma.payment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PaymentDeleteManyArgs>(args?: SelectSubset<T, PaymentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Payments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PaymentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Payments
+     * const payment = await prisma.payment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PaymentUpdateManyArgs>(args: SelectSubset<T, PaymentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Payments and returns the data updated in the database.
+     * @param {PaymentUpdateManyAndReturnArgs} args - Arguments to update many Payments.
+     * @example
+     * // Update many Payments
+     * const payment = await prisma.payment.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Payments and only return the `id`
+     * const paymentWithIdOnly = await prisma.payment.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PaymentUpdateManyAndReturnArgs>(args: SelectSubset<T, PaymentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Payment.
+     * @param {PaymentUpsertArgs} args - Arguments to update or create a Payment.
+     * @example
+     * // Update or create a Payment
+     * const payment = await prisma.payment.upsert({
+     *   create: {
+     *     // ... data to create a Payment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Payment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PaymentUpsertArgs>(args: SelectSubset<T, PaymentUpsertArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Payments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PaymentCountArgs} args - Arguments to filter Payments to count.
+     * @example
+     * // Count the number of Payments
+     * const count = await prisma.payment.count({
+     *   where: {
+     *     // ... the filter for the Payments we want to count
+     *   }
+     * })
+    **/
+    count<T extends PaymentCountArgs>(
+      args?: Subset<T, PaymentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PaymentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Payment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PaymentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PaymentAggregateArgs>(args: Subset<T, PaymentAggregateArgs>): Prisma.PrismaPromise<GetPaymentAggregateType<T>>
+
+    /**
+     * Group by Payment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PaymentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PaymentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PaymentGroupByArgs['orderBy'] }
+        : { orderBy?: PaymentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PaymentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPaymentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Payment model
+   */
+  readonly fields: PaymentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Payment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PaymentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    registration<T extends RegistrationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RegistrationDefaultArgs<ExtArgs>>): Prisma__RegistrationClient<$Result.GetResult<Prisma.$RegistrationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Payment model
+   */
+  interface PaymentFieldRefs {
+    readonly id: FieldRef<"Payment", 'String'>
+    readonly amount: FieldRef<"Payment", 'Decimal'>
+    readonly method: FieldRef<"Payment", 'PaymentMethod'>
+    readonly status: FieldRef<"Payment", 'PaymentStatus'>
+    readonly reference: FieldRef<"Payment", 'String'>
+    readonly notes: FieldRef<"Payment", 'String'>
+    readonly proofUrl: FieldRef<"Payment", 'String'>
+    readonly paidAt: FieldRef<"Payment", 'DateTime'>
+    readonly dueDate: FieldRef<"Payment", 'DateTime'>
+    readonly createdAt: FieldRef<"Payment", 'DateTime'>
+    readonly updatedAt: FieldRef<"Payment", 'DateTime'>
+    readonly registrationId: FieldRef<"Payment", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Payment findUnique
+   */
+  export type PaymentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which Payment to fetch.
+     */
+    where: PaymentWhereUniqueInput
+  }
+
+  /**
+   * Payment findUniqueOrThrow
+   */
+  export type PaymentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which Payment to fetch.
+     */
+    where: PaymentWhereUniqueInput
+  }
+
+  /**
+   * Payment findFirst
+   */
+  export type PaymentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which Payment to fetch.
+     */
+    where?: PaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Payments to fetch.
+     */
+    orderBy?: PaymentOrderByWithRelationInput | PaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Payments.
+     */
+    cursor?: PaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Payments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Payments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Payments.
+     */
+    distinct?: PaymentScalarFieldEnum | PaymentScalarFieldEnum[]
+  }
+
+  /**
+   * Payment findFirstOrThrow
+   */
+  export type PaymentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which Payment to fetch.
+     */
+    where?: PaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Payments to fetch.
+     */
+    orderBy?: PaymentOrderByWithRelationInput | PaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Payments.
+     */
+    cursor?: PaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Payments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Payments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Payments.
+     */
+    distinct?: PaymentScalarFieldEnum | PaymentScalarFieldEnum[]
+  }
+
+  /**
+   * Payment findMany
+   */
+  export type PaymentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which Payments to fetch.
+     */
+    where?: PaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Payments to fetch.
+     */
+    orderBy?: PaymentOrderByWithRelationInput | PaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Payments.
+     */
+    cursor?: PaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Payments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Payments.
+     */
+    skip?: number
+    distinct?: PaymentScalarFieldEnum | PaymentScalarFieldEnum[]
+  }
+
+  /**
+   * Payment create
+   */
+  export type PaymentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Payment.
+     */
+    data: XOR<PaymentCreateInput, PaymentUncheckedCreateInput>
+  }
+
+  /**
+   * Payment createMany
+   */
+  export type PaymentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Payments.
+     */
+    data: PaymentCreateManyInput | PaymentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Payment createManyAndReturn
+   */
+  export type PaymentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * The data used to create many Payments.
+     */
+    data: PaymentCreateManyInput | PaymentCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Payment update
+   */
+  export type PaymentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Payment.
+     */
+    data: XOR<PaymentUpdateInput, PaymentUncheckedUpdateInput>
+    /**
+     * Choose, which Payment to update.
+     */
+    where: PaymentWhereUniqueInput
+  }
+
+  /**
+   * Payment updateMany
+   */
+  export type PaymentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Payments.
+     */
+    data: XOR<PaymentUpdateManyMutationInput, PaymentUncheckedUpdateManyInput>
+    /**
+     * Filter which Payments to update
+     */
+    where?: PaymentWhereInput
+    /**
+     * Limit how many Payments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Payment updateManyAndReturn
+   */
+  export type PaymentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * The data used to update Payments.
+     */
+    data: XOR<PaymentUpdateManyMutationInput, PaymentUncheckedUpdateManyInput>
+    /**
+     * Filter which Payments to update
+     */
+    where?: PaymentWhereInput
+    /**
+     * Limit how many Payments to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Payment upsert
+   */
+  export type PaymentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Payment to update in case it exists.
+     */
+    where: PaymentWhereUniqueInput
+    /**
+     * In case the Payment found by the `where` argument doesn't exist, create a new Payment with this data.
+     */
+    create: XOR<PaymentCreateInput, PaymentUncheckedCreateInput>
+    /**
+     * In case the Payment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PaymentUpdateInput, PaymentUncheckedUpdateInput>
+  }
+
+  /**
+   * Payment delete
+   */
+  export type PaymentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * Filter which Payment to delete.
+     */
+    where: PaymentWhereUniqueInput
+  }
+
+  /**
+   * Payment deleteMany
+   */
+  export type PaymentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Payments to delete
+     */
+    where?: PaymentWhereInput
+    /**
+     * Limit how many Payments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Payment without action
+   */
+  export type PaymentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -10733,6 +17502,100 @@ export namespace Prisma {
   export type ReceiptRecipientScalarFieldEnum = (typeof ReceiptRecipientScalarFieldEnum)[keyof typeof ReceiptRecipientScalarFieldEnum]
 
 
+  export const DrivingSchoolScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug',
+    address: 'address',
+    phone: 'phone',
+    email: 'email',
+    logo: 'logo',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt',
+    userId: 'userId'
+  };
+
+  export type DrivingSchoolScalarFieldEnum = (typeof DrivingSchoolScalarFieldEnum)[keyof typeof DrivingSchoolScalarFieldEnum]
+
+
+  export const PlanScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    code: 'code',
+    price: 'price',
+    duration: 'duration',
+    features: 'features',
+    maxStudents: 'maxStudents',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    schoolId: 'schoolId'
+  };
+
+  export type PlanScalarFieldEnum = (typeof PlanScalarFieldEnum)[keyof typeof PlanScalarFieldEnum]
+
+
+  export const StudentScalarFieldEnum: {
+    id: 'id',
+    fullName: 'fullName',
+    email: 'email',
+    phone: 'phone',
+    birthDate: 'birthDate',
+    idType: 'idType',
+    idNumber: 'idNumber',
+    idExpiryDate: 'idExpiryDate',
+    address: 'address',
+    city: 'city',
+    island: 'island',
+    photo: 'photo',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt',
+    schoolId: 'schoolId'
+  };
+
+  export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum]
+
+
+  export const RegistrationScalarFieldEnum: {
+    id: 'id',
+    status: 'status',
+    expectedEndDate: 'expectedEndDate',
+    theoryExamDate: 'theoryExamDate',
+    practicalExamDate: 'practicalExamDate',
+    totalAmount: 'totalAmount',
+    paymentType: 'paymentType',
+    internalNotes: 'internalNotes',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    completedAt: 'completedAt',
+    cancelledAt: 'cancelledAt',
+    studentId: 'studentId',
+    planId: 'planId'
+  };
+
+  export type RegistrationScalarFieldEnum = (typeof RegistrationScalarFieldEnum)[keyof typeof RegistrationScalarFieldEnum]
+
+
+  export const PaymentScalarFieldEnum: {
+    id: 'id',
+    amount: 'amount',
+    method: 'method',
+    status: 'status',
+    reference: 'reference',
+    notes: 'notes',
+    proofUrl: 'proofUrl',
+    paidAt: 'paidAt',
+    dueDate: 'dueDate',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    registrationId: 'registrationId'
+  };
+
+  export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -10851,6 +17714,76 @@ export namespace Prisma {
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
+
+
+  /**
+   * Reference to a field of type 'IdType'
+   */
+  export type EnumIdTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'IdType'>
+    
+
+
+  /**
+   * Reference to a field of type 'IdType[]'
+   */
+  export type ListEnumIdTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'IdType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'RegistrationStatus'
+   */
+  export type EnumRegistrationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RegistrationStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'RegistrationStatus[]'
+   */
+  export type ListEnumRegistrationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RegistrationStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'PaymentType'
+   */
+  export type EnumPaymentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentType'>
+    
+
+
+  /**
+   * Reference to a field of type 'PaymentType[]'
+   */
+  export type ListEnumPaymentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'PaymentMethod'
+   */
+  export type EnumPaymentMethodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentMethod'>
+    
+
+
+  /**
+   * Reference to a field of type 'PaymentMethod[]'
+   */
+  export type ListEnumPaymentMethodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentMethod[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'PaymentStatus'
+   */
+  export type EnumPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'PaymentStatus[]'
+   */
+  export type ListEnumPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentStatus[]'>
+    
   /**
    * Deep Input Types
    */
@@ -10871,6 +17804,7 @@ export namespace Prisma {
     accounts?: AccountListRelationFilter
     receipts?: ReceiptListRelationFilter
     vehicles?: VehicleListRelationFilter
+    drivingSchools?: DrivingSchoolListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -10885,6 +17819,7 @@ export namespace Prisma {
     accounts?: AccountOrderByRelationAggregateInput
     receipts?: ReceiptOrderByRelationAggregateInput
     vehicles?: VehicleOrderByRelationAggregateInput
+    drivingSchools?: DrivingSchoolOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -10902,6 +17837,7 @@ export namespace Prisma {
     accounts?: AccountListRelationFilter
     receipts?: ReceiptListRelationFilter
     vehicles?: VehicleListRelationFilter
+    drivingSchools?: DrivingSchoolListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -11470,6 +18406,503 @@ export namespace Prisma {
     receiptId?: StringWithAggregatesFilter<"ReceiptRecipient"> | string
   }
 
+  export type DrivingSchoolWhereInput = {
+    AND?: DrivingSchoolWhereInput | DrivingSchoolWhereInput[]
+    OR?: DrivingSchoolWhereInput[]
+    NOT?: DrivingSchoolWhereInput | DrivingSchoolWhereInput[]
+    id?: StringFilter<"DrivingSchool"> | string
+    name?: StringFilter<"DrivingSchool"> | string
+    slug?: StringFilter<"DrivingSchool"> | string
+    address?: StringNullableFilter<"DrivingSchool"> | string | null
+    phone?: StringNullableFilter<"DrivingSchool"> | string | null
+    email?: StringNullableFilter<"DrivingSchool"> | string | null
+    logo?: StringNullableFilter<"DrivingSchool"> | string | null
+    createdAt?: DateTimeFilter<"DrivingSchool"> | Date | string
+    updatedAt?: DateTimeFilter<"DrivingSchool"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"DrivingSchool"> | Date | string | null
+    userId?: StringFilter<"DrivingSchool"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    plans?: PlanListRelationFilter
+    students?: StudentListRelationFilter
+  }
+
+  export type DrivingSchoolOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    address?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
+    logo?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
+    plans?: PlanOrderByRelationAggregateInput
+    students?: StudentOrderByRelationAggregateInput
+  }
+
+  export type DrivingSchoolWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: DrivingSchoolWhereInput | DrivingSchoolWhereInput[]
+    OR?: DrivingSchoolWhereInput[]
+    NOT?: DrivingSchoolWhereInput | DrivingSchoolWhereInput[]
+    name?: StringFilter<"DrivingSchool"> | string
+    address?: StringNullableFilter<"DrivingSchool"> | string | null
+    phone?: StringNullableFilter<"DrivingSchool"> | string | null
+    email?: StringNullableFilter<"DrivingSchool"> | string | null
+    logo?: StringNullableFilter<"DrivingSchool"> | string | null
+    createdAt?: DateTimeFilter<"DrivingSchool"> | Date | string
+    updatedAt?: DateTimeFilter<"DrivingSchool"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"DrivingSchool"> | Date | string | null
+    userId?: StringFilter<"DrivingSchool"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    plans?: PlanListRelationFilter
+    students?: StudentListRelationFilter
+  }, "id" | "slug">
+
+  export type DrivingSchoolOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    address?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
+    logo?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    _count?: DrivingSchoolCountOrderByAggregateInput
+    _max?: DrivingSchoolMaxOrderByAggregateInput
+    _min?: DrivingSchoolMinOrderByAggregateInput
+  }
+
+  export type DrivingSchoolScalarWhereWithAggregatesInput = {
+    AND?: DrivingSchoolScalarWhereWithAggregatesInput | DrivingSchoolScalarWhereWithAggregatesInput[]
+    OR?: DrivingSchoolScalarWhereWithAggregatesInput[]
+    NOT?: DrivingSchoolScalarWhereWithAggregatesInput | DrivingSchoolScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DrivingSchool"> | string
+    name?: StringWithAggregatesFilter<"DrivingSchool"> | string
+    slug?: StringWithAggregatesFilter<"DrivingSchool"> | string
+    address?: StringNullableWithAggregatesFilter<"DrivingSchool"> | string | null
+    phone?: StringNullableWithAggregatesFilter<"DrivingSchool"> | string | null
+    email?: StringNullableWithAggregatesFilter<"DrivingSchool"> | string | null
+    logo?: StringNullableWithAggregatesFilter<"DrivingSchool"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"DrivingSchool"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"DrivingSchool"> | Date | string
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"DrivingSchool"> | Date | string | null
+    userId?: StringWithAggregatesFilter<"DrivingSchool"> | string
+  }
+
+  export type PlanWhereInput = {
+    AND?: PlanWhereInput | PlanWhereInput[]
+    OR?: PlanWhereInput[]
+    NOT?: PlanWhereInput | PlanWhereInput[]
+    id?: StringFilter<"Plan"> | string
+    name?: StringFilter<"Plan"> | string
+    code?: StringFilter<"Plan"> | string
+    price?: DecimalFilter<"Plan"> | Decimal | DecimalJsLike | number | string
+    duration?: IntFilter<"Plan"> | number
+    features?: StringNullableListFilter<"Plan">
+    maxStudents?: IntNullableFilter<"Plan"> | number | null
+    isActive?: BoolFilter<"Plan"> | boolean
+    createdAt?: DateTimeFilter<"Plan"> | Date | string
+    updatedAt?: DateTimeFilter<"Plan"> | Date | string
+    schoolId?: StringFilter<"Plan"> | string
+    school?: XOR<DrivingSchoolScalarRelationFilter, DrivingSchoolWhereInput>
+    registrations?: RegistrationListRelationFilter
+  }
+
+  export type PlanOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
+    price?: SortOrder
+    duration?: SortOrder
+    features?: SortOrder
+    maxStudents?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    schoolId?: SortOrder
+    school?: DrivingSchoolOrderByWithRelationInput
+    registrations?: RegistrationOrderByRelationAggregateInput
+  }
+
+  export type PlanWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    code_schoolId?: PlanCodeSchoolIdCompoundUniqueInput
+    AND?: PlanWhereInput | PlanWhereInput[]
+    OR?: PlanWhereInput[]
+    NOT?: PlanWhereInput | PlanWhereInput[]
+    name?: StringFilter<"Plan"> | string
+    code?: StringFilter<"Plan"> | string
+    price?: DecimalFilter<"Plan"> | Decimal | DecimalJsLike | number | string
+    duration?: IntFilter<"Plan"> | number
+    features?: StringNullableListFilter<"Plan">
+    maxStudents?: IntNullableFilter<"Plan"> | number | null
+    isActive?: BoolFilter<"Plan"> | boolean
+    createdAt?: DateTimeFilter<"Plan"> | Date | string
+    updatedAt?: DateTimeFilter<"Plan"> | Date | string
+    schoolId?: StringFilter<"Plan"> | string
+    school?: XOR<DrivingSchoolScalarRelationFilter, DrivingSchoolWhereInput>
+    registrations?: RegistrationListRelationFilter
+  }, "id" | "code_schoolId">
+
+  export type PlanOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
+    price?: SortOrder
+    duration?: SortOrder
+    features?: SortOrder
+    maxStudents?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    schoolId?: SortOrder
+    _count?: PlanCountOrderByAggregateInput
+    _avg?: PlanAvgOrderByAggregateInput
+    _max?: PlanMaxOrderByAggregateInput
+    _min?: PlanMinOrderByAggregateInput
+    _sum?: PlanSumOrderByAggregateInput
+  }
+
+  export type PlanScalarWhereWithAggregatesInput = {
+    AND?: PlanScalarWhereWithAggregatesInput | PlanScalarWhereWithAggregatesInput[]
+    OR?: PlanScalarWhereWithAggregatesInput[]
+    NOT?: PlanScalarWhereWithAggregatesInput | PlanScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Plan"> | string
+    name?: StringWithAggregatesFilter<"Plan"> | string
+    code?: StringWithAggregatesFilter<"Plan"> | string
+    price?: DecimalWithAggregatesFilter<"Plan"> | Decimal | DecimalJsLike | number | string
+    duration?: IntWithAggregatesFilter<"Plan"> | number
+    features?: StringNullableListFilter<"Plan">
+    maxStudents?: IntNullableWithAggregatesFilter<"Plan"> | number | null
+    isActive?: BoolWithAggregatesFilter<"Plan"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Plan"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Plan"> | Date | string
+    schoolId?: StringWithAggregatesFilter<"Plan"> | string
+  }
+
+  export type StudentWhereInput = {
+    AND?: StudentWhereInput | StudentWhereInput[]
+    OR?: StudentWhereInput[]
+    NOT?: StudentWhereInput | StudentWhereInput[]
+    id?: StringFilter<"Student"> | string
+    fullName?: StringFilter<"Student"> | string
+    email?: StringFilter<"Student"> | string
+    phone?: StringFilter<"Student"> | string
+    birthDate?: DateTimeFilter<"Student"> | Date | string
+    idType?: EnumIdTypeFilter<"Student"> | $Enums.IdType
+    idNumber?: StringFilter<"Student"> | string
+    idExpiryDate?: DateTimeNullableFilter<"Student"> | Date | string | null
+    address?: StringFilter<"Student"> | string
+    city?: StringFilter<"Student"> | string
+    island?: StringFilter<"Student"> | string
+    photo?: StringNullableFilter<"Student"> | string | null
+    createdAt?: DateTimeFilter<"Student"> | Date | string
+    updatedAt?: DateTimeFilter<"Student"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"Student"> | Date | string | null
+    schoolId?: StringFilter<"Student"> | string
+    school?: XOR<DrivingSchoolScalarRelationFilter, DrivingSchoolWhereInput>
+    registrations?: RegistrationListRelationFilter
+  }
+
+  export type StudentOrderByWithRelationInput = {
+    id?: SortOrder
+    fullName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    birthDate?: SortOrder
+    idType?: SortOrder
+    idNumber?: SortOrder
+    idExpiryDate?: SortOrderInput | SortOrder
+    address?: SortOrder
+    city?: SortOrder
+    island?: SortOrder
+    photo?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    schoolId?: SortOrder
+    school?: DrivingSchoolOrderByWithRelationInput
+    registrations?: RegistrationOrderByRelationAggregateInput
+  }
+
+  export type StudentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    email_schoolId?: StudentEmailSchoolIdCompoundUniqueInput
+    idNumber_schoolId?: StudentIdNumberSchoolIdCompoundUniqueInput
+    AND?: StudentWhereInput | StudentWhereInput[]
+    OR?: StudentWhereInput[]
+    NOT?: StudentWhereInput | StudentWhereInput[]
+    fullName?: StringFilter<"Student"> | string
+    email?: StringFilter<"Student"> | string
+    phone?: StringFilter<"Student"> | string
+    birthDate?: DateTimeFilter<"Student"> | Date | string
+    idType?: EnumIdTypeFilter<"Student"> | $Enums.IdType
+    idNumber?: StringFilter<"Student"> | string
+    idExpiryDate?: DateTimeNullableFilter<"Student"> | Date | string | null
+    address?: StringFilter<"Student"> | string
+    city?: StringFilter<"Student"> | string
+    island?: StringFilter<"Student"> | string
+    photo?: StringNullableFilter<"Student"> | string | null
+    createdAt?: DateTimeFilter<"Student"> | Date | string
+    updatedAt?: DateTimeFilter<"Student"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"Student"> | Date | string | null
+    schoolId?: StringFilter<"Student"> | string
+    school?: XOR<DrivingSchoolScalarRelationFilter, DrivingSchoolWhereInput>
+    registrations?: RegistrationListRelationFilter
+  }, "id" | "email_schoolId" | "idNumber_schoolId">
+
+  export type StudentOrderByWithAggregationInput = {
+    id?: SortOrder
+    fullName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    birthDate?: SortOrder
+    idType?: SortOrder
+    idNumber?: SortOrder
+    idExpiryDate?: SortOrderInput | SortOrder
+    address?: SortOrder
+    city?: SortOrder
+    island?: SortOrder
+    photo?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    schoolId?: SortOrder
+    _count?: StudentCountOrderByAggregateInput
+    _max?: StudentMaxOrderByAggregateInput
+    _min?: StudentMinOrderByAggregateInput
+  }
+
+  export type StudentScalarWhereWithAggregatesInput = {
+    AND?: StudentScalarWhereWithAggregatesInput | StudentScalarWhereWithAggregatesInput[]
+    OR?: StudentScalarWhereWithAggregatesInput[]
+    NOT?: StudentScalarWhereWithAggregatesInput | StudentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Student"> | string
+    fullName?: StringWithAggregatesFilter<"Student"> | string
+    email?: StringWithAggregatesFilter<"Student"> | string
+    phone?: StringWithAggregatesFilter<"Student"> | string
+    birthDate?: DateTimeWithAggregatesFilter<"Student"> | Date | string
+    idType?: EnumIdTypeWithAggregatesFilter<"Student"> | $Enums.IdType
+    idNumber?: StringWithAggregatesFilter<"Student"> | string
+    idExpiryDate?: DateTimeNullableWithAggregatesFilter<"Student"> | Date | string | null
+    address?: StringWithAggregatesFilter<"Student"> | string
+    city?: StringWithAggregatesFilter<"Student"> | string
+    island?: StringWithAggregatesFilter<"Student"> | string
+    photo?: StringNullableWithAggregatesFilter<"Student"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Student"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Student"> | Date | string
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Student"> | Date | string | null
+    schoolId?: StringWithAggregatesFilter<"Student"> | string
+  }
+
+  export type RegistrationWhereInput = {
+    AND?: RegistrationWhereInput | RegistrationWhereInput[]
+    OR?: RegistrationWhereInput[]
+    NOT?: RegistrationWhereInput | RegistrationWhereInput[]
+    id?: StringFilter<"Registration"> | string
+    status?: EnumRegistrationStatusFilter<"Registration"> | $Enums.RegistrationStatus
+    expectedEndDate?: DateTimeFilter<"Registration"> | Date | string
+    theoryExamDate?: DateTimeNullableFilter<"Registration"> | Date | string | null
+    practicalExamDate?: DateTimeNullableFilter<"Registration"> | Date | string | null
+    totalAmount?: DecimalFilter<"Registration"> | Decimal | DecimalJsLike | number | string
+    paymentType?: EnumPaymentTypeFilter<"Registration"> | $Enums.PaymentType
+    internalNotes?: StringNullableFilter<"Registration"> | string | null
+    createdAt?: DateTimeFilter<"Registration"> | Date | string
+    updatedAt?: DateTimeFilter<"Registration"> | Date | string
+    completedAt?: DateTimeNullableFilter<"Registration"> | Date | string | null
+    cancelledAt?: DateTimeNullableFilter<"Registration"> | Date | string | null
+    studentId?: StringFilter<"Registration"> | string
+    planId?: StringFilter<"Registration"> | string
+    student?: XOR<StudentScalarRelationFilter, StudentWhereInput>
+    plan?: XOR<PlanScalarRelationFilter, PlanWhereInput>
+    payments?: PaymentListRelationFilter
+  }
+
+  export type RegistrationOrderByWithRelationInput = {
+    id?: SortOrder
+    status?: SortOrder
+    expectedEndDate?: SortOrder
+    theoryExamDate?: SortOrderInput | SortOrder
+    practicalExamDate?: SortOrderInput | SortOrder
+    totalAmount?: SortOrder
+    paymentType?: SortOrder
+    internalNotes?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    completedAt?: SortOrderInput | SortOrder
+    cancelledAt?: SortOrderInput | SortOrder
+    studentId?: SortOrder
+    planId?: SortOrder
+    student?: StudentOrderByWithRelationInput
+    plan?: PlanOrderByWithRelationInput
+    payments?: PaymentOrderByRelationAggregateInput
+  }
+
+  export type RegistrationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: RegistrationWhereInput | RegistrationWhereInput[]
+    OR?: RegistrationWhereInput[]
+    NOT?: RegistrationWhereInput | RegistrationWhereInput[]
+    status?: EnumRegistrationStatusFilter<"Registration"> | $Enums.RegistrationStatus
+    expectedEndDate?: DateTimeFilter<"Registration"> | Date | string
+    theoryExamDate?: DateTimeNullableFilter<"Registration"> | Date | string | null
+    practicalExamDate?: DateTimeNullableFilter<"Registration"> | Date | string | null
+    totalAmount?: DecimalFilter<"Registration"> | Decimal | DecimalJsLike | number | string
+    paymentType?: EnumPaymentTypeFilter<"Registration"> | $Enums.PaymentType
+    internalNotes?: StringNullableFilter<"Registration"> | string | null
+    createdAt?: DateTimeFilter<"Registration"> | Date | string
+    updatedAt?: DateTimeFilter<"Registration"> | Date | string
+    completedAt?: DateTimeNullableFilter<"Registration"> | Date | string | null
+    cancelledAt?: DateTimeNullableFilter<"Registration"> | Date | string | null
+    studentId?: StringFilter<"Registration"> | string
+    planId?: StringFilter<"Registration"> | string
+    student?: XOR<StudentScalarRelationFilter, StudentWhereInput>
+    plan?: XOR<PlanScalarRelationFilter, PlanWhereInput>
+    payments?: PaymentListRelationFilter
+  }, "id">
+
+  export type RegistrationOrderByWithAggregationInput = {
+    id?: SortOrder
+    status?: SortOrder
+    expectedEndDate?: SortOrder
+    theoryExamDate?: SortOrderInput | SortOrder
+    practicalExamDate?: SortOrderInput | SortOrder
+    totalAmount?: SortOrder
+    paymentType?: SortOrder
+    internalNotes?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    completedAt?: SortOrderInput | SortOrder
+    cancelledAt?: SortOrderInput | SortOrder
+    studentId?: SortOrder
+    planId?: SortOrder
+    _count?: RegistrationCountOrderByAggregateInput
+    _avg?: RegistrationAvgOrderByAggregateInput
+    _max?: RegistrationMaxOrderByAggregateInput
+    _min?: RegistrationMinOrderByAggregateInput
+    _sum?: RegistrationSumOrderByAggregateInput
+  }
+
+  export type RegistrationScalarWhereWithAggregatesInput = {
+    AND?: RegistrationScalarWhereWithAggregatesInput | RegistrationScalarWhereWithAggregatesInput[]
+    OR?: RegistrationScalarWhereWithAggregatesInput[]
+    NOT?: RegistrationScalarWhereWithAggregatesInput | RegistrationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Registration"> | string
+    status?: EnumRegistrationStatusWithAggregatesFilter<"Registration"> | $Enums.RegistrationStatus
+    expectedEndDate?: DateTimeWithAggregatesFilter<"Registration"> | Date | string
+    theoryExamDate?: DateTimeNullableWithAggregatesFilter<"Registration"> | Date | string | null
+    practicalExamDate?: DateTimeNullableWithAggregatesFilter<"Registration"> | Date | string | null
+    totalAmount?: DecimalWithAggregatesFilter<"Registration"> | Decimal | DecimalJsLike | number | string
+    paymentType?: EnumPaymentTypeWithAggregatesFilter<"Registration"> | $Enums.PaymentType
+    internalNotes?: StringNullableWithAggregatesFilter<"Registration"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Registration"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Registration"> | Date | string
+    completedAt?: DateTimeNullableWithAggregatesFilter<"Registration"> | Date | string | null
+    cancelledAt?: DateTimeNullableWithAggregatesFilter<"Registration"> | Date | string | null
+    studentId?: StringWithAggregatesFilter<"Registration"> | string
+    planId?: StringWithAggregatesFilter<"Registration"> | string
+  }
+
+  export type PaymentWhereInput = {
+    AND?: PaymentWhereInput | PaymentWhereInput[]
+    OR?: PaymentWhereInput[]
+    NOT?: PaymentWhereInput | PaymentWhereInput[]
+    id?: StringFilter<"Payment"> | string
+    amount?: DecimalFilter<"Payment"> | Decimal | DecimalJsLike | number | string
+    method?: EnumPaymentMethodFilter<"Payment"> | $Enums.PaymentMethod
+    status?: EnumPaymentStatusFilter<"Payment"> | $Enums.PaymentStatus
+    reference?: StringNullableFilter<"Payment"> | string | null
+    notes?: StringNullableFilter<"Payment"> | string | null
+    proofUrl?: StringNullableFilter<"Payment"> | string | null
+    paidAt?: DateTimeNullableFilter<"Payment"> | Date | string | null
+    dueDate?: DateTimeNullableFilter<"Payment"> | Date | string | null
+    createdAt?: DateTimeFilter<"Payment"> | Date | string
+    updatedAt?: DateTimeFilter<"Payment"> | Date | string
+    registrationId?: StringFilter<"Payment"> | string
+    registration?: XOR<RegistrationScalarRelationFilter, RegistrationWhereInput>
+  }
+
+  export type PaymentOrderByWithRelationInput = {
+    id?: SortOrder
+    amount?: SortOrder
+    method?: SortOrder
+    status?: SortOrder
+    reference?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    proofUrl?: SortOrderInput | SortOrder
+    paidAt?: SortOrderInput | SortOrder
+    dueDate?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    registrationId?: SortOrder
+    registration?: RegistrationOrderByWithRelationInput
+  }
+
+  export type PaymentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PaymentWhereInput | PaymentWhereInput[]
+    OR?: PaymentWhereInput[]
+    NOT?: PaymentWhereInput | PaymentWhereInput[]
+    amount?: DecimalFilter<"Payment"> | Decimal | DecimalJsLike | number | string
+    method?: EnumPaymentMethodFilter<"Payment"> | $Enums.PaymentMethod
+    status?: EnumPaymentStatusFilter<"Payment"> | $Enums.PaymentStatus
+    reference?: StringNullableFilter<"Payment"> | string | null
+    notes?: StringNullableFilter<"Payment"> | string | null
+    proofUrl?: StringNullableFilter<"Payment"> | string | null
+    paidAt?: DateTimeNullableFilter<"Payment"> | Date | string | null
+    dueDate?: DateTimeNullableFilter<"Payment"> | Date | string | null
+    createdAt?: DateTimeFilter<"Payment"> | Date | string
+    updatedAt?: DateTimeFilter<"Payment"> | Date | string
+    registrationId?: StringFilter<"Payment"> | string
+    registration?: XOR<RegistrationScalarRelationFilter, RegistrationWhereInput>
+  }, "id">
+
+  export type PaymentOrderByWithAggregationInput = {
+    id?: SortOrder
+    amount?: SortOrder
+    method?: SortOrder
+    status?: SortOrder
+    reference?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    proofUrl?: SortOrderInput | SortOrder
+    paidAt?: SortOrderInput | SortOrder
+    dueDate?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    registrationId?: SortOrder
+    _count?: PaymentCountOrderByAggregateInput
+    _avg?: PaymentAvgOrderByAggregateInput
+    _max?: PaymentMaxOrderByAggregateInput
+    _min?: PaymentMinOrderByAggregateInput
+    _sum?: PaymentSumOrderByAggregateInput
+  }
+
+  export type PaymentScalarWhereWithAggregatesInput = {
+    AND?: PaymentScalarWhereWithAggregatesInput | PaymentScalarWhereWithAggregatesInput[]
+    OR?: PaymentScalarWhereWithAggregatesInput[]
+    NOT?: PaymentScalarWhereWithAggregatesInput | PaymentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Payment"> | string
+    amount?: DecimalWithAggregatesFilter<"Payment"> | Decimal | DecimalJsLike | number | string
+    method?: EnumPaymentMethodWithAggregatesFilter<"Payment"> | $Enums.PaymentMethod
+    status?: EnumPaymentStatusWithAggregatesFilter<"Payment"> | $Enums.PaymentStatus
+    reference?: StringNullableWithAggregatesFilter<"Payment"> | string | null
+    notes?: StringNullableWithAggregatesFilter<"Payment"> | string | null
+    proofUrl?: StringNullableWithAggregatesFilter<"Payment"> | string | null
+    paidAt?: DateTimeNullableWithAggregatesFilter<"Payment"> | Date | string | null
+    dueDate?: DateTimeNullableWithAggregatesFilter<"Payment"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Payment"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Payment"> | Date | string
+    registrationId?: StringWithAggregatesFilter<"Payment"> | string
+  }
+
   export type UserCreateInput = {
     id: string
     name: string
@@ -11482,6 +18915,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     receipts?: ReceiptCreateNestedManyWithoutUserInput
     vehicles?: VehicleCreateNestedManyWithoutUserInput
+    drivingSchools?: DrivingSchoolCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -11496,6 +18930,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     receipts?: ReceiptUncheckedCreateNestedManyWithoutUserInput
     vehicles?: VehicleUncheckedCreateNestedManyWithoutUserInput
+    drivingSchools?: DrivingSchoolUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -11510,6 +18945,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     receipts?: ReceiptUpdateManyWithoutUserNestedInput
     vehicles?: VehicleUpdateManyWithoutUserNestedInput
+    drivingSchools?: DrivingSchoolUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -11524,6 +18960,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     receipts?: ReceiptUncheckedUpdateManyWithoutUserNestedInput
     vehicles?: VehicleUncheckedUpdateManyWithoutUserNestedInput
+    drivingSchools?: DrivingSchoolUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -12160,6 +19597,573 @@ export namespace Prisma {
     receiptId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type DrivingSchoolCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    address?: string | null
+    phone?: string | null
+    email?: string | null
+    logo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    user: UserCreateNestedOneWithoutDrivingSchoolsInput
+    plans?: PlanCreateNestedManyWithoutSchoolInput
+    students?: StudentCreateNestedManyWithoutSchoolInput
+  }
+
+  export type DrivingSchoolUncheckedCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    address?: string | null
+    phone?: string | null
+    email?: string | null
+    logo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    userId: string
+    plans?: PlanUncheckedCreateNestedManyWithoutSchoolInput
+    students?: StudentUncheckedCreateNestedManyWithoutSchoolInput
+  }
+
+  export type DrivingSchoolUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneRequiredWithoutDrivingSchoolsNestedInput
+    plans?: PlanUpdateManyWithoutSchoolNestedInput
+    students?: StudentUpdateManyWithoutSchoolNestedInput
+  }
+
+  export type DrivingSchoolUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    plans?: PlanUncheckedUpdateManyWithoutSchoolNestedInput
+    students?: StudentUncheckedUpdateManyWithoutSchoolNestedInput
+  }
+
+  export type DrivingSchoolCreateManyInput = {
+    id?: string
+    name: string
+    slug: string
+    address?: string | null
+    phone?: string | null
+    email?: string | null
+    logo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    userId: string
+  }
+
+  export type DrivingSchoolUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type DrivingSchoolUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PlanCreateInput = {
+    id?: string
+    name: string
+    code: string
+    price: Decimal | DecimalJsLike | number | string
+    duration: number
+    features?: PlanCreatefeaturesInput | string[]
+    maxStudents?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    school: DrivingSchoolCreateNestedOneWithoutPlansInput
+    registrations?: RegistrationCreateNestedManyWithoutPlanInput
+  }
+
+  export type PlanUncheckedCreateInput = {
+    id?: string
+    name: string
+    code: string
+    price: Decimal | DecimalJsLike | number | string
+    duration: number
+    features?: PlanCreatefeaturesInput | string[]
+    maxStudents?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    schoolId: string
+    registrations?: RegistrationUncheckedCreateNestedManyWithoutPlanInput
+  }
+
+  export type PlanUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    duration?: IntFieldUpdateOperationsInput | number
+    features?: PlanUpdatefeaturesInput | string[]
+    maxStudents?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    school?: DrivingSchoolUpdateOneRequiredWithoutPlansNestedInput
+    registrations?: RegistrationUpdateManyWithoutPlanNestedInput
+  }
+
+  export type PlanUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    duration?: IntFieldUpdateOperationsInput | number
+    features?: PlanUpdatefeaturesInput | string[]
+    maxStudents?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schoolId?: StringFieldUpdateOperationsInput | string
+    registrations?: RegistrationUncheckedUpdateManyWithoutPlanNestedInput
+  }
+
+  export type PlanCreateManyInput = {
+    id?: string
+    name: string
+    code: string
+    price: Decimal | DecimalJsLike | number | string
+    duration: number
+    features?: PlanCreatefeaturesInput | string[]
+    maxStudents?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    schoolId: string
+  }
+
+  export type PlanUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    duration?: IntFieldUpdateOperationsInput | number
+    features?: PlanUpdatefeaturesInput | string[]
+    maxStudents?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PlanUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    duration?: IntFieldUpdateOperationsInput | number
+    features?: PlanUpdatefeaturesInput | string[]
+    maxStudents?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schoolId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StudentCreateInput = {
+    id?: string
+    fullName: string
+    email: string
+    phone: string
+    birthDate: Date | string
+    idType: $Enums.IdType
+    idNumber: string
+    idExpiryDate?: Date | string | null
+    address: string
+    city: string
+    island: string
+    photo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    school: DrivingSchoolCreateNestedOneWithoutStudentsInput
+    registrations?: RegistrationCreateNestedManyWithoutStudentInput
+  }
+
+  export type StudentUncheckedCreateInput = {
+    id?: string
+    fullName: string
+    email: string
+    phone: string
+    birthDate: Date | string
+    idType: $Enums.IdType
+    idNumber: string
+    idExpiryDate?: Date | string | null
+    address: string
+    city: string
+    island: string
+    photo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    schoolId: string
+    registrations?: RegistrationUncheckedCreateNestedManyWithoutStudentInput
+  }
+
+  export type StudentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    idType?: EnumIdTypeFieldUpdateOperationsInput | $Enums.IdType
+    idNumber?: StringFieldUpdateOperationsInput | string
+    idExpiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    island?: StringFieldUpdateOperationsInput | string
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    school?: DrivingSchoolUpdateOneRequiredWithoutStudentsNestedInput
+    registrations?: RegistrationUpdateManyWithoutStudentNestedInput
+  }
+
+  export type StudentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    idType?: EnumIdTypeFieldUpdateOperationsInput | $Enums.IdType
+    idNumber?: StringFieldUpdateOperationsInput | string
+    idExpiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    island?: StringFieldUpdateOperationsInput | string
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolId?: StringFieldUpdateOperationsInput | string
+    registrations?: RegistrationUncheckedUpdateManyWithoutStudentNestedInput
+  }
+
+  export type StudentCreateManyInput = {
+    id?: string
+    fullName: string
+    email: string
+    phone: string
+    birthDate: Date | string
+    idType: $Enums.IdType
+    idNumber: string
+    idExpiryDate?: Date | string | null
+    address: string
+    city: string
+    island: string
+    photo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    schoolId: string
+  }
+
+  export type StudentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    idType?: EnumIdTypeFieldUpdateOperationsInput | $Enums.IdType
+    idNumber?: StringFieldUpdateOperationsInput | string
+    idExpiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    island?: StringFieldUpdateOperationsInput | string
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StudentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    idType?: EnumIdTypeFieldUpdateOperationsInput | $Enums.IdType
+    idNumber?: StringFieldUpdateOperationsInput | string
+    idExpiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    island?: StringFieldUpdateOperationsInput | string
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type RegistrationCreateInput = {
+    id?: string
+    status?: $Enums.RegistrationStatus
+    expectedEndDate: Date | string
+    theoryExamDate?: Date | string | null
+    practicalExamDate?: Date | string | null
+    totalAmount: Decimal | DecimalJsLike | number | string
+    paymentType?: $Enums.PaymentType
+    internalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    student: StudentCreateNestedOneWithoutRegistrationsInput
+    plan: PlanCreateNestedOneWithoutRegistrationsInput
+    payments?: PaymentCreateNestedManyWithoutRegistrationInput
+  }
+
+  export type RegistrationUncheckedCreateInput = {
+    id?: string
+    status?: $Enums.RegistrationStatus
+    expectedEndDate: Date | string
+    theoryExamDate?: Date | string | null
+    practicalExamDate?: Date | string | null
+    totalAmount: Decimal | DecimalJsLike | number | string
+    paymentType?: $Enums.PaymentType
+    internalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    studentId: string
+    planId: string
+    payments?: PaymentUncheckedCreateNestedManyWithoutRegistrationInput
+  }
+
+  export type RegistrationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    expectedEndDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    theoryExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    practicalExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentType?: EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    student?: StudentUpdateOneRequiredWithoutRegistrationsNestedInput
+    plan?: PlanUpdateOneRequiredWithoutRegistrationsNestedInput
+    payments?: PaymentUpdateManyWithoutRegistrationNestedInput
+  }
+
+  export type RegistrationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    expectedEndDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    theoryExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    practicalExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentType?: EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    studentId?: StringFieldUpdateOperationsInput | string
+    planId?: StringFieldUpdateOperationsInput | string
+    payments?: PaymentUncheckedUpdateManyWithoutRegistrationNestedInput
+  }
+
+  export type RegistrationCreateManyInput = {
+    id?: string
+    status?: $Enums.RegistrationStatus
+    expectedEndDate: Date | string
+    theoryExamDate?: Date | string | null
+    practicalExamDate?: Date | string | null
+    totalAmount: Decimal | DecimalJsLike | number | string
+    paymentType?: $Enums.PaymentType
+    internalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    studentId: string
+    planId: string
+  }
+
+  export type RegistrationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    expectedEndDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    theoryExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    practicalExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentType?: EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type RegistrationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    expectedEndDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    theoryExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    practicalExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentType?: EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    studentId?: StringFieldUpdateOperationsInput | string
+    planId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PaymentCreateInput = {
+    id?: string
+    amount: Decimal | DecimalJsLike | number | string
+    method: $Enums.PaymentMethod
+    status?: $Enums.PaymentStatus
+    reference?: string | null
+    notes?: string | null
+    proofUrl?: string | null
+    paidAt?: Date | string | null
+    dueDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    registration: RegistrationCreateNestedOneWithoutPaymentsInput
+  }
+
+  export type PaymentUncheckedCreateInput = {
+    id?: string
+    amount: Decimal | DecimalJsLike | number | string
+    method: $Enums.PaymentMethod
+    status?: $Enums.PaymentStatus
+    reference?: string | null
+    notes?: string | null
+    proofUrl?: string | null
+    paidAt?: Date | string | null
+    dueDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    registrationId: string
+  }
+
+  export type PaymentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    method?: EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+    status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    proofUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    registration?: RegistrationUpdateOneRequiredWithoutPaymentsNestedInput
+  }
+
+  export type PaymentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    method?: EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+    status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    proofUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    registrationId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PaymentCreateManyInput = {
+    id?: string
+    amount: Decimal | DecimalJsLike | number | string
+    method: $Enums.PaymentMethod
+    status?: $Enums.PaymentStatus
+    reference?: string | null
+    notes?: string | null
+    proofUrl?: string | null
+    paidAt?: Date | string | null
+    dueDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    registrationId: string
+  }
+
+  export type PaymentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    method?: EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+    status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    proofUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PaymentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    method?: EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+    status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    proofUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    registrationId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -12230,6 +20234,12 @@ export namespace Prisma {
     none?: VehicleWhereInput
   }
 
+  export type DrivingSchoolListRelationFilter = {
+    every?: DrivingSchoolWhereInput
+    some?: DrivingSchoolWhereInput
+    none?: DrivingSchoolWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -12248,6 +20258,10 @@ export namespace Prisma {
   }
 
   export type VehicleOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DrivingSchoolOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -12728,6 +20742,491 @@ export namespace Prisma {
     receiptId?: SortOrder
   }
 
+  export type PlanListRelationFilter = {
+    every?: PlanWhereInput
+    some?: PlanWhereInput
+    none?: PlanWhereInput
+  }
+
+  export type StudentListRelationFilter = {
+    every?: StudentWhereInput
+    some?: StudentWhereInput
+    none?: StudentWhereInput
+  }
+
+  export type PlanOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type StudentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DrivingSchoolCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    address?: SortOrder
+    phone?: SortOrder
+    email?: SortOrder
+    logo?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type DrivingSchoolMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    address?: SortOrder
+    phone?: SortOrder
+    email?: SortOrder
+    logo?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type DrivingSchoolMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    address?: SortOrder
+    phone?: SortOrder
+    email?: SortOrder
+    logo?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type DrivingSchoolScalarRelationFilter = {
+    is?: DrivingSchoolWhereInput
+    isNot?: DrivingSchoolWhereInput
+  }
+
+  export type RegistrationListRelationFilter = {
+    every?: RegistrationWhereInput
+    some?: RegistrationWhereInput
+    none?: RegistrationWhereInput
+  }
+
+  export type RegistrationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PlanCodeSchoolIdCompoundUniqueInput = {
+    code: string
+    schoolId: string
+  }
+
+  export type PlanCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
+    price?: SortOrder
+    duration?: SortOrder
+    features?: SortOrder
+    maxStudents?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    schoolId?: SortOrder
+  }
+
+  export type PlanAvgOrderByAggregateInput = {
+    price?: SortOrder
+    duration?: SortOrder
+    maxStudents?: SortOrder
+  }
+
+  export type PlanMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
+    price?: SortOrder
+    duration?: SortOrder
+    maxStudents?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    schoolId?: SortOrder
+  }
+
+  export type PlanMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
+    price?: SortOrder
+    duration?: SortOrder
+    maxStudents?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    schoolId?: SortOrder
+  }
+
+  export type PlanSumOrderByAggregateInput = {
+    price?: SortOrder
+    duration?: SortOrder
+    maxStudents?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type EnumIdTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.IdType | EnumIdTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.IdType[] | ListEnumIdTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.IdType[] | ListEnumIdTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumIdTypeFilter<$PrismaModel> | $Enums.IdType
+  }
+
+  export type StudentEmailSchoolIdCompoundUniqueInput = {
+    email: string
+    schoolId: string
+  }
+
+  export type StudentIdNumberSchoolIdCompoundUniqueInput = {
+    idNumber: string
+    schoolId: string
+  }
+
+  export type StudentCountOrderByAggregateInput = {
+    id?: SortOrder
+    fullName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    birthDate?: SortOrder
+    idType?: SortOrder
+    idNumber?: SortOrder
+    idExpiryDate?: SortOrder
+    address?: SortOrder
+    city?: SortOrder
+    island?: SortOrder
+    photo?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+    schoolId?: SortOrder
+  }
+
+  export type StudentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    fullName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    birthDate?: SortOrder
+    idType?: SortOrder
+    idNumber?: SortOrder
+    idExpiryDate?: SortOrder
+    address?: SortOrder
+    city?: SortOrder
+    island?: SortOrder
+    photo?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+    schoolId?: SortOrder
+  }
+
+  export type StudentMinOrderByAggregateInput = {
+    id?: SortOrder
+    fullName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    birthDate?: SortOrder
+    idType?: SortOrder
+    idNumber?: SortOrder
+    idExpiryDate?: SortOrder
+    address?: SortOrder
+    city?: SortOrder
+    island?: SortOrder
+    photo?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+    schoolId?: SortOrder
+  }
+
+  export type EnumIdTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.IdType | EnumIdTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.IdType[] | ListEnumIdTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.IdType[] | ListEnumIdTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumIdTypeWithAggregatesFilter<$PrismaModel> | $Enums.IdType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumIdTypeFilter<$PrismaModel>
+    _max?: NestedEnumIdTypeFilter<$PrismaModel>
+  }
+
+  export type EnumRegistrationStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.RegistrationStatus | EnumRegistrationStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.RegistrationStatus[] | ListEnumRegistrationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RegistrationStatus[] | ListEnumRegistrationStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumRegistrationStatusFilter<$PrismaModel> | $Enums.RegistrationStatus
+  }
+
+  export type EnumPaymentTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentType | EnumPaymentTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.PaymentType[] | ListEnumPaymentTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PaymentType[] | ListEnumPaymentTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumPaymentTypeFilter<$PrismaModel> | $Enums.PaymentType
+  }
+
+  export type StudentScalarRelationFilter = {
+    is?: StudentWhereInput
+    isNot?: StudentWhereInput
+  }
+
+  export type PlanScalarRelationFilter = {
+    is?: PlanWhereInput
+    isNot?: PlanWhereInput
+  }
+
+  export type PaymentListRelationFilter = {
+    every?: PaymentWhereInput
+    some?: PaymentWhereInput
+    none?: PaymentWhereInput
+  }
+
+  export type PaymentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RegistrationCountOrderByAggregateInput = {
+    id?: SortOrder
+    status?: SortOrder
+    expectedEndDate?: SortOrder
+    theoryExamDate?: SortOrder
+    practicalExamDate?: SortOrder
+    totalAmount?: SortOrder
+    paymentType?: SortOrder
+    internalNotes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    completedAt?: SortOrder
+    cancelledAt?: SortOrder
+    studentId?: SortOrder
+    planId?: SortOrder
+  }
+
+  export type RegistrationAvgOrderByAggregateInput = {
+    totalAmount?: SortOrder
+  }
+
+  export type RegistrationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    status?: SortOrder
+    expectedEndDate?: SortOrder
+    theoryExamDate?: SortOrder
+    practicalExamDate?: SortOrder
+    totalAmount?: SortOrder
+    paymentType?: SortOrder
+    internalNotes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    completedAt?: SortOrder
+    cancelledAt?: SortOrder
+    studentId?: SortOrder
+    planId?: SortOrder
+  }
+
+  export type RegistrationMinOrderByAggregateInput = {
+    id?: SortOrder
+    status?: SortOrder
+    expectedEndDate?: SortOrder
+    theoryExamDate?: SortOrder
+    practicalExamDate?: SortOrder
+    totalAmount?: SortOrder
+    paymentType?: SortOrder
+    internalNotes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    completedAt?: SortOrder
+    cancelledAt?: SortOrder
+    studentId?: SortOrder
+    planId?: SortOrder
+  }
+
+  export type RegistrationSumOrderByAggregateInput = {
+    totalAmount?: SortOrder
+  }
+
+  export type EnumRegistrationStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.RegistrationStatus | EnumRegistrationStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.RegistrationStatus[] | ListEnumRegistrationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RegistrationStatus[] | ListEnumRegistrationStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumRegistrationStatusWithAggregatesFilter<$PrismaModel> | $Enums.RegistrationStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRegistrationStatusFilter<$PrismaModel>
+    _max?: NestedEnumRegistrationStatusFilter<$PrismaModel>
+  }
+
+  export type EnumPaymentTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentType | EnumPaymentTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.PaymentType[] | ListEnumPaymentTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PaymentType[] | ListEnumPaymentTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumPaymentTypeWithAggregatesFilter<$PrismaModel> | $Enums.PaymentType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPaymentTypeFilter<$PrismaModel>
+    _max?: NestedEnumPaymentTypeFilter<$PrismaModel>
+  }
+
+  export type EnumPaymentMethodFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentMethod | EnumPaymentMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.PaymentMethod[] | ListEnumPaymentMethodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PaymentMethod[] | ListEnumPaymentMethodFieldRefInput<$PrismaModel>
+    not?: NestedEnumPaymentMethodFilter<$PrismaModel> | $Enums.PaymentMethod
+  }
+
+  export type EnumPaymentStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentStatus | EnumPaymentStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PaymentStatus[] | ListEnumPaymentStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PaymentStatus[] | ListEnumPaymentStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumPaymentStatusFilter<$PrismaModel> | $Enums.PaymentStatus
+  }
+
+  export type RegistrationScalarRelationFilter = {
+    is?: RegistrationWhereInput
+    isNot?: RegistrationWhereInput
+  }
+
+  export type PaymentCountOrderByAggregateInput = {
+    id?: SortOrder
+    amount?: SortOrder
+    method?: SortOrder
+    status?: SortOrder
+    reference?: SortOrder
+    notes?: SortOrder
+    proofUrl?: SortOrder
+    paidAt?: SortOrder
+    dueDate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    registrationId?: SortOrder
+  }
+
+  export type PaymentAvgOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type PaymentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    amount?: SortOrder
+    method?: SortOrder
+    status?: SortOrder
+    reference?: SortOrder
+    notes?: SortOrder
+    proofUrl?: SortOrder
+    paidAt?: SortOrder
+    dueDate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    registrationId?: SortOrder
+  }
+
+  export type PaymentMinOrderByAggregateInput = {
+    id?: SortOrder
+    amount?: SortOrder
+    method?: SortOrder
+    status?: SortOrder
+    reference?: SortOrder
+    notes?: SortOrder
+    proofUrl?: SortOrder
+    paidAt?: SortOrder
+    dueDate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    registrationId?: SortOrder
+  }
+
+  export type PaymentSumOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type EnumPaymentMethodWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentMethod | EnumPaymentMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.PaymentMethod[] | ListEnumPaymentMethodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PaymentMethod[] | ListEnumPaymentMethodFieldRefInput<$PrismaModel>
+    not?: NestedEnumPaymentMethodWithAggregatesFilter<$PrismaModel> | $Enums.PaymentMethod
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPaymentMethodFilter<$PrismaModel>
+    _max?: NestedEnumPaymentMethodFilter<$PrismaModel>
+  }
+
+  export type EnumPaymentStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentStatus | EnumPaymentStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PaymentStatus[] | ListEnumPaymentStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PaymentStatus[] | ListEnumPaymentStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumPaymentStatusWithAggregatesFilter<$PrismaModel> | $Enums.PaymentStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPaymentStatusFilter<$PrismaModel>
+    _max?: NestedEnumPaymentStatusFilter<$PrismaModel>
+  }
+
   export type SessionCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -12756,6 +21255,13 @@ export namespace Prisma {
     connect?: VehicleWhereUniqueInput | VehicleWhereUniqueInput[]
   }
 
+  export type DrivingSchoolCreateNestedManyWithoutUserInput = {
+    create?: XOR<DrivingSchoolCreateWithoutUserInput, DrivingSchoolUncheckedCreateWithoutUserInput> | DrivingSchoolCreateWithoutUserInput[] | DrivingSchoolUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DrivingSchoolCreateOrConnectWithoutUserInput | DrivingSchoolCreateOrConnectWithoutUserInput[]
+    createMany?: DrivingSchoolCreateManyUserInputEnvelope
+    connect?: DrivingSchoolWhereUniqueInput | DrivingSchoolWhereUniqueInput[]
+  }
+
   export type SessionUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -12782,6 +21288,13 @@ export namespace Prisma {
     connectOrCreate?: VehicleCreateOrConnectWithoutUserInput | VehicleCreateOrConnectWithoutUserInput[]
     createMany?: VehicleCreateManyUserInputEnvelope
     connect?: VehicleWhereUniqueInput | VehicleWhereUniqueInput[]
+  }
+
+  export type DrivingSchoolUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<DrivingSchoolCreateWithoutUserInput, DrivingSchoolUncheckedCreateWithoutUserInput> | DrivingSchoolCreateWithoutUserInput[] | DrivingSchoolUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DrivingSchoolCreateOrConnectWithoutUserInput | DrivingSchoolCreateOrConnectWithoutUserInput[]
+    createMany?: DrivingSchoolCreateManyUserInputEnvelope
+    connect?: DrivingSchoolWhereUniqueInput | DrivingSchoolWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -12856,6 +21369,20 @@ export namespace Prisma {
     deleteMany?: VehicleScalarWhereInput | VehicleScalarWhereInput[]
   }
 
+  export type DrivingSchoolUpdateManyWithoutUserNestedInput = {
+    create?: XOR<DrivingSchoolCreateWithoutUserInput, DrivingSchoolUncheckedCreateWithoutUserInput> | DrivingSchoolCreateWithoutUserInput[] | DrivingSchoolUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DrivingSchoolCreateOrConnectWithoutUserInput | DrivingSchoolCreateOrConnectWithoutUserInput[]
+    upsert?: DrivingSchoolUpsertWithWhereUniqueWithoutUserInput | DrivingSchoolUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: DrivingSchoolCreateManyUserInputEnvelope
+    set?: DrivingSchoolWhereUniqueInput | DrivingSchoolWhereUniqueInput[]
+    disconnect?: DrivingSchoolWhereUniqueInput | DrivingSchoolWhereUniqueInput[]
+    delete?: DrivingSchoolWhereUniqueInput | DrivingSchoolWhereUniqueInput[]
+    connect?: DrivingSchoolWhereUniqueInput | DrivingSchoolWhereUniqueInput[]
+    update?: DrivingSchoolUpdateWithWhereUniqueWithoutUserInput | DrivingSchoolUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: DrivingSchoolUpdateManyWithWhereWithoutUserInput | DrivingSchoolUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: DrivingSchoolScalarWhereInput | DrivingSchoolScalarWhereInput[]
+  }
+
   export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -12910,6 +21437,20 @@ export namespace Prisma {
     update?: VehicleUpdateWithWhereUniqueWithoutUserInput | VehicleUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: VehicleUpdateManyWithWhereWithoutUserInput | VehicleUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: VehicleScalarWhereInput | VehicleScalarWhereInput[]
+  }
+
+  export type DrivingSchoolUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<DrivingSchoolCreateWithoutUserInput, DrivingSchoolUncheckedCreateWithoutUserInput> | DrivingSchoolCreateWithoutUserInput[] | DrivingSchoolUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DrivingSchoolCreateOrConnectWithoutUserInput | DrivingSchoolCreateOrConnectWithoutUserInput[]
+    upsert?: DrivingSchoolUpsertWithWhereUniqueWithoutUserInput | DrivingSchoolUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: DrivingSchoolCreateManyUserInputEnvelope
+    set?: DrivingSchoolWhereUniqueInput | DrivingSchoolWhereUniqueInput[]
+    disconnect?: DrivingSchoolWhereUniqueInput | DrivingSchoolWhereUniqueInput[]
+    delete?: DrivingSchoolWhereUniqueInput | DrivingSchoolWhereUniqueInput[]
+    connect?: DrivingSchoolWhereUniqueInput | DrivingSchoolWhereUniqueInput[]
+    update?: DrivingSchoolUpdateWithWhereUniqueWithoutUserInput | DrivingSchoolUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: DrivingSchoolUpdateManyWithWhereWithoutUserInput | DrivingSchoolUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: DrivingSchoolScalarWhereInput | DrivingSchoolScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSessionsInput = {
@@ -13102,6 +21643,345 @@ export namespace Prisma {
     upsert?: ReceiptUpsertWithoutRecipientsInput
     connect?: ReceiptWhereUniqueInput
     update?: XOR<XOR<ReceiptUpdateToOneWithWhereWithoutRecipientsInput, ReceiptUpdateWithoutRecipientsInput>, ReceiptUncheckedUpdateWithoutRecipientsInput>
+  }
+
+  export type UserCreateNestedOneWithoutDrivingSchoolsInput = {
+    create?: XOR<UserCreateWithoutDrivingSchoolsInput, UserUncheckedCreateWithoutDrivingSchoolsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDrivingSchoolsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type PlanCreateNestedManyWithoutSchoolInput = {
+    create?: XOR<PlanCreateWithoutSchoolInput, PlanUncheckedCreateWithoutSchoolInput> | PlanCreateWithoutSchoolInput[] | PlanUncheckedCreateWithoutSchoolInput[]
+    connectOrCreate?: PlanCreateOrConnectWithoutSchoolInput | PlanCreateOrConnectWithoutSchoolInput[]
+    createMany?: PlanCreateManySchoolInputEnvelope
+    connect?: PlanWhereUniqueInput | PlanWhereUniqueInput[]
+  }
+
+  export type StudentCreateNestedManyWithoutSchoolInput = {
+    create?: XOR<StudentCreateWithoutSchoolInput, StudentUncheckedCreateWithoutSchoolInput> | StudentCreateWithoutSchoolInput[] | StudentUncheckedCreateWithoutSchoolInput[]
+    connectOrCreate?: StudentCreateOrConnectWithoutSchoolInput | StudentCreateOrConnectWithoutSchoolInput[]
+    createMany?: StudentCreateManySchoolInputEnvelope
+    connect?: StudentWhereUniqueInput | StudentWhereUniqueInput[]
+  }
+
+  export type PlanUncheckedCreateNestedManyWithoutSchoolInput = {
+    create?: XOR<PlanCreateWithoutSchoolInput, PlanUncheckedCreateWithoutSchoolInput> | PlanCreateWithoutSchoolInput[] | PlanUncheckedCreateWithoutSchoolInput[]
+    connectOrCreate?: PlanCreateOrConnectWithoutSchoolInput | PlanCreateOrConnectWithoutSchoolInput[]
+    createMany?: PlanCreateManySchoolInputEnvelope
+    connect?: PlanWhereUniqueInput | PlanWhereUniqueInput[]
+  }
+
+  export type StudentUncheckedCreateNestedManyWithoutSchoolInput = {
+    create?: XOR<StudentCreateWithoutSchoolInput, StudentUncheckedCreateWithoutSchoolInput> | StudentCreateWithoutSchoolInput[] | StudentUncheckedCreateWithoutSchoolInput[]
+    connectOrCreate?: StudentCreateOrConnectWithoutSchoolInput | StudentCreateOrConnectWithoutSchoolInput[]
+    createMany?: StudentCreateManySchoolInputEnvelope
+    connect?: StudentWhereUniqueInput | StudentWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutDrivingSchoolsNestedInput = {
+    create?: XOR<UserCreateWithoutDrivingSchoolsInput, UserUncheckedCreateWithoutDrivingSchoolsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDrivingSchoolsInput
+    upsert?: UserUpsertWithoutDrivingSchoolsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDrivingSchoolsInput, UserUpdateWithoutDrivingSchoolsInput>, UserUncheckedUpdateWithoutDrivingSchoolsInput>
+  }
+
+  export type PlanUpdateManyWithoutSchoolNestedInput = {
+    create?: XOR<PlanCreateWithoutSchoolInput, PlanUncheckedCreateWithoutSchoolInput> | PlanCreateWithoutSchoolInput[] | PlanUncheckedCreateWithoutSchoolInput[]
+    connectOrCreate?: PlanCreateOrConnectWithoutSchoolInput | PlanCreateOrConnectWithoutSchoolInput[]
+    upsert?: PlanUpsertWithWhereUniqueWithoutSchoolInput | PlanUpsertWithWhereUniqueWithoutSchoolInput[]
+    createMany?: PlanCreateManySchoolInputEnvelope
+    set?: PlanWhereUniqueInput | PlanWhereUniqueInput[]
+    disconnect?: PlanWhereUniqueInput | PlanWhereUniqueInput[]
+    delete?: PlanWhereUniqueInput | PlanWhereUniqueInput[]
+    connect?: PlanWhereUniqueInput | PlanWhereUniqueInput[]
+    update?: PlanUpdateWithWhereUniqueWithoutSchoolInput | PlanUpdateWithWhereUniqueWithoutSchoolInput[]
+    updateMany?: PlanUpdateManyWithWhereWithoutSchoolInput | PlanUpdateManyWithWhereWithoutSchoolInput[]
+    deleteMany?: PlanScalarWhereInput | PlanScalarWhereInput[]
+  }
+
+  export type StudentUpdateManyWithoutSchoolNestedInput = {
+    create?: XOR<StudentCreateWithoutSchoolInput, StudentUncheckedCreateWithoutSchoolInput> | StudentCreateWithoutSchoolInput[] | StudentUncheckedCreateWithoutSchoolInput[]
+    connectOrCreate?: StudentCreateOrConnectWithoutSchoolInput | StudentCreateOrConnectWithoutSchoolInput[]
+    upsert?: StudentUpsertWithWhereUniqueWithoutSchoolInput | StudentUpsertWithWhereUniqueWithoutSchoolInput[]
+    createMany?: StudentCreateManySchoolInputEnvelope
+    set?: StudentWhereUniqueInput | StudentWhereUniqueInput[]
+    disconnect?: StudentWhereUniqueInput | StudentWhereUniqueInput[]
+    delete?: StudentWhereUniqueInput | StudentWhereUniqueInput[]
+    connect?: StudentWhereUniqueInput | StudentWhereUniqueInput[]
+    update?: StudentUpdateWithWhereUniqueWithoutSchoolInput | StudentUpdateWithWhereUniqueWithoutSchoolInput[]
+    updateMany?: StudentUpdateManyWithWhereWithoutSchoolInput | StudentUpdateManyWithWhereWithoutSchoolInput[]
+    deleteMany?: StudentScalarWhereInput | StudentScalarWhereInput[]
+  }
+
+  export type PlanUncheckedUpdateManyWithoutSchoolNestedInput = {
+    create?: XOR<PlanCreateWithoutSchoolInput, PlanUncheckedCreateWithoutSchoolInput> | PlanCreateWithoutSchoolInput[] | PlanUncheckedCreateWithoutSchoolInput[]
+    connectOrCreate?: PlanCreateOrConnectWithoutSchoolInput | PlanCreateOrConnectWithoutSchoolInput[]
+    upsert?: PlanUpsertWithWhereUniqueWithoutSchoolInput | PlanUpsertWithWhereUniqueWithoutSchoolInput[]
+    createMany?: PlanCreateManySchoolInputEnvelope
+    set?: PlanWhereUniqueInput | PlanWhereUniqueInput[]
+    disconnect?: PlanWhereUniqueInput | PlanWhereUniqueInput[]
+    delete?: PlanWhereUniqueInput | PlanWhereUniqueInput[]
+    connect?: PlanWhereUniqueInput | PlanWhereUniqueInput[]
+    update?: PlanUpdateWithWhereUniqueWithoutSchoolInput | PlanUpdateWithWhereUniqueWithoutSchoolInput[]
+    updateMany?: PlanUpdateManyWithWhereWithoutSchoolInput | PlanUpdateManyWithWhereWithoutSchoolInput[]
+    deleteMany?: PlanScalarWhereInput | PlanScalarWhereInput[]
+  }
+
+  export type StudentUncheckedUpdateManyWithoutSchoolNestedInput = {
+    create?: XOR<StudentCreateWithoutSchoolInput, StudentUncheckedCreateWithoutSchoolInput> | StudentCreateWithoutSchoolInput[] | StudentUncheckedCreateWithoutSchoolInput[]
+    connectOrCreate?: StudentCreateOrConnectWithoutSchoolInput | StudentCreateOrConnectWithoutSchoolInput[]
+    upsert?: StudentUpsertWithWhereUniqueWithoutSchoolInput | StudentUpsertWithWhereUniqueWithoutSchoolInput[]
+    createMany?: StudentCreateManySchoolInputEnvelope
+    set?: StudentWhereUniqueInput | StudentWhereUniqueInput[]
+    disconnect?: StudentWhereUniqueInput | StudentWhereUniqueInput[]
+    delete?: StudentWhereUniqueInput | StudentWhereUniqueInput[]
+    connect?: StudentWhereUniqueInput | StudentWhereUniqueInput[]
+    update?: StudentUpdateWithWhereUniqueWithoutSchoolInput | StudentUpdateWithWhereUniqueWithoutSchoolInput[]
+    updateMany?: StudentUpdateManyWithWhereWithoutSchoolInput | StudentUpdateManyWithWhereWithoutSchoolInput[]
+    deleteMany?: StudentScalarWhereInput | StudentScalarWhereInput[]
+  }
+
+  export type PlanCreatefeaturesInput = {
+    set: string[]
+  }
+
+  export type DrivingSchoolCreateNestedOneWithoutPlansInput = {
+    create?: XOR<DrivingSchoolCreateWithoutPlansInput, DrivingSchoolUncheckedCreateWithoutPlansInput>
+    connectOrCreate?: DrivingSchoolCreateOrConnectWithoutPlansInput
+    connect?: DrivingSchoolWhereUniqueInput
+  }
+
+  export type RegistrationCreateNestedManyWithoutPlanInput = {
+    create?: XOR<RegistrationCreateWithoutPlanInput, RegistrationUncheckedCreateWithoutPlanInput> | RegistrationCreateWithoutPlanInput[] | RegistrationUncheckedCreateWithoutPlanInput[]
+    connectOrCreate?: RegistrationCreateOrConnectWithoutPlanInput | RegistrationCreateOrConnectWithoutPlanInput[]
+    createMany?: RegistrationCreateManyPlanInputEnvelope
+    connect?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+  }
+
+  export type RegistrationUncheckedCreateNestedManyWithoutPlanInput = {
+    create?: XOR<RegistrationCreateWithoutPlanInput, RegistrationUncheckedCreateWithoutPlanInput> | RegistrationCreateWithoutPlanInput[] | RegistrationUncheckedCreateWithoutPlanInput[]
+    connectOrCreate?: RegistrationCreateOrConnectWithoutPlanInput | RegistrationCreateOrConnectWithoutPlanInput[]
+    createMany?: RegistrationCreateManyPlanInputEnvelope
+    connect?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type PlanUpdatefeaturesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type DrivingSchoolUpdateOneRequiredWithoutPlansNestedInput = {
+    create?: XOR<DrivingSchoolCreateWithoutPlansInput, DrivingSchoolUncheckedCreateWithoutPlansInput>
+    connectOrCreate?: DrivingSchoolCreateOrConnectWithoutPlansInput
+    upsert?: DrivingSchoolUpsertWithoutPlansInput
+    connect?: DrivingSchoolWhereUniqueInput
+    update?: XOR<XOR<DrivingSchoolUpdateToOneWithWhereWithoutPlansInput, DrivingSchoolUpdateWithoutPlansInput>, DrivingSchoolUncheckedUpdateWithoutPlansInput>
+  }
+
+  export type RegistrationUpdateManyWithoutPlanNestedInput = {
+    create?: XOR<RegistrationCreateWithoutPlanInput, RegistrationUncheckedCreateWithoutPlanInput> | RegistrationCreateWithoutPlanInput[] | RegistrationUncheckedCreateWithoutPlanInput[]
+    connectOrCreate?: RegistrationCreateOrConnectWithoutPlanInput | RegistrationCreateOrConnectWithoutPlanInput[]
+    upsert?: RegistrationUpsertWithWhereUniqueWithoutPlanInput | RegistrationUpsertWithWhereUniqueWithoutPlanInput[]
+    createMany?: RegistrationCreateManyPlanInputEnvelope
+    set?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+    disconnect?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+    delete?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+    connect?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+    update?: RegistrationUpdateWithWhereUniqueWithoutPlanInput | RegistrationUpdateWithWhereUniqueWithoutPlanInput[]
+    updateMany?: RegistrationUpdateManyWithWhereWithoutPlanInput | RegistrationUpdateManyWithWhereWithoutPlanInput[]
+    deleteMany?: RegistrationScalarWhereInput | RegistrationScalarWhereInput[]
+  }
+
+  export type RegistrationUncheckedUpdateManyWithoutPlanNestedInput = {
+    create?: XOR<RegistrationCreateWithoutPlanInput, RegistrationUncheckedCreateWithoutPlanInput> | RegistrationCreateWithoutPlanInput[] | RegistrationUncheckedCreateWithoutPlanInput[]
+    connectOrCreate?: RegistrationCreateOrConnectWithoutPlanInput | RegistrationCreateOrConnectWithoutPlanInput[]
+    upsert?: RegistrationUpsertWithWhereUniqueWithoutPlanInput | RegistrationUpsertWithWhereUniqueWithoutPlanInput[]
+    createMany?: RegistrationCreateManyPlanInputEnvelope
+    set?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+    disconnect?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+    delete?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+    connect?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+    update?: RegistrationUpdateWithWhereUniqueWithoutPlanInput | RegistrationUpdateWithWhereUniqueWithoutPlanInput[]
+    updateMany?: RegistrationUpdateManyWithWhereWithoutPlanInput | RegistrationUpdateManyWithWhereWithoutPlanInput[]
+    deleteMany?: RegistrationScalarWhereInput | RegistrationScalarWhereInput[]
+  }
+
+  export type DrivingSchoolCreateNestedOneWithoutStudentsInput = {
+    create?: XOR<DrivingSchoolCreateWithoutStudentsInput, DrivingSchoolUncheckedCreateWithoutStudentsInput>
+    connectOrCreate?: DrivingSchoolCreateOrConnectWithoutStudentsInput
+    connect?: DrivingSchoolWhereUniqueInput
+  }
+
+  export type RegistrationCreateNestedManyWithoutStudentInput = {
+    create?: XOR<RegistrationCreateWithoutStudentInput, RegistrationUncheckedCreateWithoutStudentInput> | RegistrationCreateWithoutStudentInput[] | RegistrationUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: RegistrationCreateOrConnectWithoutStudentInput | RegistrationCreateOrConnectWithoutStudentInput[]
+    createMany?: RegistrationCreateManyStudentInputEnvelope
+    connect?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+  }
+
+  export type RegistrationUncheckedCreateNestedManyWithoutStudentInput = {
+    create?: XOR<RegistrationCreateWithoutStudentInput, RegistrationUncheckedCreateWithoutStudentInput> | RegistrationCreateWithoutStudentInput[] | RegistrationUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: RegistrationCreateOrConnectWithoutStudentInput | RegistrationCreateOrConnectWithoutStudentInput[]
+    createMany?: RegistrationCreateManyStudentInputEnvelope
+    connect?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+  }
+
+  export type EnumIdTypeFieldUpdateOperationsInput = {
+    set?: $Enums.IdType
+  }
+
+  export type DrivingSchoolUpdateOneRequiredWithoutStudentsNestedInput = {
+    create?: XOR<DrivingSchoolCreateWithoutStudentsInput, DrivingSchoolUncheckedCreateWithoutStudentsInput>
+    connectOrCreate?: DrivingSchoolCreateOrConnectWithoutStudentsInput
+    upsert?: DrivingSchoolUpsertWithoutStudentsInput
+    connect?: DrivingSchoolWhereUniqueInput
+    update?: XOR<XOR<DrivingSchoolUpdateToOneWithWhereWithoutStudentsInput, DrivingSchoolUpdateWithoutStudentsInput>, DrivingSchoolUncheckedUpdateWithoutStudentsInput>
+  }
+
+  export type RegistrationUpdateManyWithoutStudentNestedInput = {
+    create?: XOR<RegistrationCreateWithoutStudentInput, RegistrationUncheckedCreateWithoutStudentInput> | RegistrationCreateWithoutStudentInput[] | RegistrationUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: RegistrationCreateOrConnectWithoutStudentInput | RegistrationCreateOrConnectWithoutStudentInput[]
+    upsert?: RegistrationUpsertWithWhereUniqueWithoutStudentInput | RegistrationUpsertWithWhereUniqueWithoutStudentInput[]
+    createMany?: RegistrationCreateManyStudentInputEnvelope
+    set?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+    disconnect?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+    delete?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+    connect?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+    update?: RegistrationUpdateWithWhereUniqueWithoutStudentInput | RegistrationUpdateWithWhereUniqueWithoutStudentInput[]
+    updateMany?: RegistrationUpdateManyWithWhereWithoutStudentInput | RegistrationUpdateManyWithWhereWithoutStudentInput[]
+    deleteMany?: RegistrationScalarWhereInput | RegistrationScalarWhereInput[]
+  }
+
+  export type RegistrationUncheckedUpdateManyWithoutStudentNestedInput = {
+    create?: XOR<RegistrationCreateWithoutStudentInput, RegistrationUncheckedCreateWithoutStudentInput> | RegistrationCreateWithoutStudentInput[] | RegistrationUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: RegistrationCreateOrConnectWithoutStudentInput | RegistrationCreateOrConnectWithoutStudentInput[]
+    upsert?: RegistrationUpsertWithWhereUniqueWithoutStudentInput | RegistrationUpsertWithWhereUniqueWithoutStudentInput[]
+    createMany?: RegistrationCreateManyStudentInputEnvelope
+    set?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+    disconnect?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+    delete?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+    connect?: RegistrationWhereUniqueInput | RegistrationWhereUniqueInput[]
+    update?: RegistrationUpdateWithWhereUniqueWithoutStudentInput | RegistrationUpdateWithWhereUniqueWithoutStudentInput[]
+    updateMany?: RegistrationUpdateManyWithWhereWithoutStudentInput | RegistrationUpdateManyWithWhereWithoutStudentInput[]
+    deleteMany?: RegistrationScalarWhereInput | RegistrationScalarWhereInput[]
+  }
+
+  export type StudentCreateNestedOneWithoutRegistrationsInput = {
+    create?: XOR<StudentCreateWithoutRegistrationsInput, StudentUncheckedCreateWithoutRegistrationsInput>
+    connectOrCreate?: StudentCreateOrConnectWithoutRegistrationsInput
+    connect?: StudentWhereUniqueInput
+  }
+
+  export type PlanCreateNestedOneWithoutRegistrationsInput = {
+    create?: XOR<PlanCreateWithoutRegistrationsInput, PlanUncheckedCreateWithoutRegistrationsInput>
+    connectOrCreate?: PlanCreateOrConnectWithoutRegistrationsInput
+    connect?: PlanWhereUniqueInput
+  }
+
+  export type PaymentCreateNestedManyWithoutRegistrationInput = {
+    create?: XOR<PaymentCreateWithoutRegistrationInput, PaymentUncheckedCreateWithoutRegistrationInput> | PaymentCreateWithoutRegistrationInput[] | PaymentUncheckedCreateWithoutRegistrationInput[]
+    connectOrCreate?: PaymentCreateOrConnectWithoutRegistrationInput | PaymentCreateOrConnectWithoutRegistrationInput[]
+    createMany?: PaymentCreateManyRegistrationInputEnvelope
+    connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+  }
+
+  export type PaymentUncheckedCreateNestedManyWithoutRegistrationInput = {
+    create?: XOR<PaymentCreateWithoutRegistrationInput, PaymentUncheckedCreateWithoutRegistrationInput> | PaymentCreateWithoutRegistrationInput[] | PaymentUncheckedCreateWithoutRegistrationInput[]
+    connectOrCreate?: PaymentCreateOrConnectWithoutRegistrationInput | PaymentCreateOrConnectWithoutRegistrationInput[]
+    createMany?: PaymentCreateManyRegistrationInputEnvelope
+    connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+  }
+
+  export type EnumRegistrationStatusFieldUpdateOperationsInput = {
+    set?: $Enums.RegistrationStatus
+  }
+
+  export type EnumPaymentTypeFieldUpdateOperationsInput = {
+    set?: $Enums.PaymentType
+  }
+
+  export type StudentUpdateOneRequiredWithoutRegistrationsNestedInput = {
+    create?: XOR<StudentCreateWithoutRegistrationsInput, StudentUncheckedCreateWithoutRegistrationsInput>
+    connectOrCreate?: StudentCreateOrConnectWithoutRegistrationsInput
+    upsert?: StudentUpsertWithoutRegistrationsInput
+    connect?: StudentWhereUniqueInput
+    update?: XOR<XOR<StudentUpdateToOneWithWhereWithoutRegistrationsInput, StudentUpdateWithoutRegistrationsInput>, StudentUncheckedUpdateWithoutRegistrationsInput>
+  }
+
+  export type PlanUpdateOneRequiredWithoutRegistrationsNestedInput = {
+    create?: XOR<PlanCreateWithoutRegistrationsInput, PlanUncheckedCreateWithoutRegistrationsInput>
+    connectOrCreate?: PlanCreateOrConnectWithoutRegistrationsInput
+    upsert?: PlanUpsertWithoutRegistrationsInput
+    connect?: PlanWhereUniqueInput
+    update?: XOR<XOR<PlanUpdateToOneWithWhereWithoutRegistrationsInput, PlanUpdateWithoutRegistrationsInput>, PlanUncheckedUpdateWithoutRegistrationsInput>
+  }
+
+  export type PaymentUpdateManyWithoutRegistrationNestedInput = {
+    create?: XOR<PaymentCreateWithoutRegistrationInput, PaymentUncheckedCreateWithoutRegistrationInput> | PaymentCreateWithoutRegistrationInput[] | PaymentUncheckedCreateWithoutRegistrationInput[]
+    connectOrCreate?: PaymentCreateOrConnectWithoutRegistrationInput | PaymentCreateOrConnectWithoutRegistrationInput[]
+    upsert?: PaymentUpsertWithWhereUniqueWithoutRegistrationInput | PaymentUpsertWithWhereUniqueWithoutRegistrationInput[]
+    createMany?: PaymentCreateManyRegistrationInputEnvelope
+    set?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    disconnect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    delete?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    update?: PaymentUpdateWithWhereUniqueWithoutRegistrationInput | PaymentUpdateWithWhereUniqueWithoutRegistrationInput[]
+    updateMany?: PaymentUpdateManyWithWhereWithoutRegistrationInput | PaymentUpdateManyWithWhereWithoutRegistrationInput[]
+    deleteMany?: PaymentScalarWhereInput | PaymentScalarWhereInput[]
+  }
+
+  export type PaymentUncheckedUpdateManyWithoutRegistrationNestedInput = {
+    create?: XOR<PaymentCreateWithoutRegistrationInput, PaymentUncheckedCreateWithoutRegistrationInput> | PaymentCreateWithoutRegistrationInput[] | PaymentUncheckedCreateWithoutRegistrationInput[]
+    connectOrCreate?: PaymentCreateOrConnectWithoutRegistrationInput | PaymentCreateOrConnectWithoutRegistrationInput[]
+    upsert?: PaymentUpsertWithWhereUniqueWithoutRegistrationInput | PaymentUpsertWithWhereUniqueWithoutRegistrationInput[]
+    createMany?: PaymentCreateManyRegistrationInputEnvelope
+    set?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    disconnect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    delete?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    update?: PaymentUpdateWithWhereUniqueWithoutRegistrationInput | PaymentUpdateWithWhereUniqueWithoutRegistrationInput[]
+    updateMany?: PaymentUpdateManyWithWhereWithoutRegistrationInput | PaymentUpdateManyWithWhereWithoutRegistrationInput[]
+    deleteMany?: PaymentScalarWhereInput | PaymentScalarWhereInput[]
+  }
+
+  export type RegistrationCreateNestedOneWithoutPaymentsInput = {
+    create?: XOR<RegistrationCreateWithoutPaymentsInput, RegistrationUncheckedCreateWithoutPaymentsInput>
+    connectOrCreate?: RegistrationCreateOrConnectWithoutPaymentsInput
+    connect?: RegistrationWhereUniqueInput
+  }
+
+  export type EnumPaymentMethodFieldUpdateOperationsInput = {
+    set?: $Enums.PaymentMethod
+  }
+
+  export type EnumPaymentStatusFieldUpdateOperationsInput = {
+    set?: $Enums.PaymentStatus
+  }
+
+  export type RegistrationUpdateOneRequiredWithoutPaymentsNestedInput = {
+    create?: XOR<RegistrationCreateWithoutPaymentsInput, RegistrationUncheckedCreateWithoutPaymentsInput>
+    connectOrCreate?: RegistrationCreateOrConnectWithoutPaymentsInput
+    upsert?: RegistrationUpsertWithoutPaymentsInput
+    connect?: RegistrationWhereUniqueInput
+    update?: XOR<XOR<RegistrationUpdateToOneWithWhereWithoutPaymentsInput, RegistrationUpdateWithoutPaymentsInput>, RegistrationUncheckedUpdateWithoutPaymentsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -13322,6 +22202,134 @@ export namespace Prisma {
     _max?: NestedEnumReceiptStatusFilter<$PrismaModel>
   }
 
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumIdTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.IdType | EnumIdTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.IdType[] | ListEnumIdTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.IdType[] | ListEnumIdTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumIdTypeFilter<$PrismaModel> | $Enums.IdType
+  }
+
+  export type NestedEnumIdTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.IdType | EnumIdTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.IdType[] | ListEnumIdTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.IdType[] | ListEnumIdTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumIdTypeWithAggregatesFilter<$PrismaModel> | $Enums.IdType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumIdTypeFilter<$PrismaModel>
+    _max?: NestedEnumIdTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumRegistrationStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.RegistrationStatus | EnumRegistrationStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.RegistrationStatus[] | ListEnumRegistrationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RegistrationStatus[] | ListEnumRegistrationStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumRegistrationStatusFilter<$PrismaModel> | $Enums.RegistrationStatus
+  }
+
+  export type NestedEnumPaymentTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentType | EnumPaymentTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.PaymentType[] | ListEnumPaymentTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PaymentType[] | ListEnumPaymentTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumPaymentTypeFilter<$PrismaModel> | $Enums.PaymentType
+  }
+
+  export type NestedEnumRegistrationStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.RegistrationStatus | EnumRegistrationStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.RegistrationStatus[] | ListEnumRegistrationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RegistrationStatus[] | ListEnumRegistrationStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumRegistrationStatusWithAggregatesFilter<$PrismaModel> | $Enums.RegistrationStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRegistrationStatusFilter<$PrismaModel>
+    _max?: NestedEnumRegistrationStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumPaymentTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentType | EnumPaymentTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.PaymentType[] | ListEnumPaymentTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PaymentType[] | ListEnumPaymentTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumPaymentTypeWithAggregatesFilter<$PrismaModel> | $Enums.PaymentType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPaymentTypeFilter<$PrismaModel>
+    _max?: NestedEnumPaymentTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumPaymentMethodFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentMethod | EnumPaymentMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.PaymentMethod[] | ListEnumPaymentMethodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PaymentMethod[] | ListEnumPaymentMethodFieldRefInput<$PrismaModel>
+    not?: NestedEnumPaymentMethodFilter<$PrismaModel> | $Enums.PaymentMethod
+  }
+
+  export type NestedEnumPaymentStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentStatus | EnumPaymentStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PaymentStatus[] | ListEnumPaymentStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PaymentStatus[] | ListEnumPaymentStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumPaymentStatusFilter<$PrismaModel> | $Enums.PaymentStatus
+  }
+
+  export type NestedEnumPaymentMethodWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentMethod | EnumPaymentMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.PaymentMethod[] | ListEnumPaymentMethodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PaymentMethod[] | ListEnumPaymentMethodFieldRefInput<$PrismaModel>
+    not?: NestedEnumPaymentMethodWithAggregatesFilter<$PrismaModel> | $Enums.PaymentMethod
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPaymentMethodFilter<$PrismaModel>
+    _max?: NestedEnumPaymentMethodFilter<$PrismaModel>
+  }
+
+  export type NestedEnumPaymentStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentStatus | EnumPaymentStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PaymentStatus[] | ListEnumPaymentStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PaymentStatus[] | ListEnumPaymentStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumPaymentStatusWithAggregatesFilter<$PrismaModel> | $Enums.PaymentStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPaymentStatusFilter<$PrismaModel>
+    _max?: NestedEnumPaymentStatusFilter<$PrismaModel>
+  }
+
   export type SessionCreateWithoutUserInput = {
     id: string
     expiresAt: Date | string
@@ -13474,6 +22482,46 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type DrivingSchoolCreateWithoutUserInput = {
+    id?: string
+    name: string
+    slug: string
+    address?: string | null
+    phone?: string | null
+    email?: string | null
+    logo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    plans?: PlanCreateNestedManyWithoutSchoolInput
+    students?: StudentCreateNestedManyWithoutSchoolInput
+  }
+
+  export type DrivingSchoolUncheckedCreateWithoutUserInput = {
+    id?: string
+    name: string
+    slug: string
+    address?: string | null
+    phone?: string | null
+    email?: string | null
+    logo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    plans?: PlanUncheckedCreateNestedManyWithoutSchoolInput
+    students?: StudentUncheckedCreateNestedManyWithoutSchoolInput
+  }
+
+  export type DrivingSchoolCreateOrConnectWithoutUserInput = {
+    where: DrivingSchoolWhereUniqueInput
+    create: XOR<DrivingSchoolCreateWithoutUserInput, DrivingSchoolUncheckedCreateWithoutUserInput>
+  }
+
+  export type DrivingSchoolCreateManyUserInputEnvelope = {
+    data: DrivingSchoolCreateManyUserInput | DrivingSchoolCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type SessionUpsertWithWhereUniqueWithoutUserInput = {
     where: SessionWhereUniqueInput
     update: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
@@ -13608,6 +22656,39 @@ export namespace Prisma {
     userId?: StringFilter<"Vehicle"> | string
   }
 
+  export type DrivingSchoolUpsertWithWhereUniqueWithoutUserInput = {
+    where: DrivingSchoolWhereUniqueInput
+    update: XOR<DrivingSchoolUpdateWithoutUserInput, DrivingSchoolUncheckedUpdateWithoutUserInput>
+    create: XOR<DrivingSchoolCreateWithoutUserInput, DrivingSchoolUncheckedCreateWithoutUserInput>
+  }
+
+  export type DrivingSchoolUpdateWithWhereUniqueWithoutUserInput = {
+    where: DrivingSchoolWhereUniqueInput
+    data: XOR<DrivingSchoolUpdateWithoutUserInput, DrivingSchoolUncheckedUpdateWithoutUserInput>
+  }
+
+  export type DrivingSchoolUpdateManyWithWhereWithoutUserInput = {
+    where: DrivingSchoolScalarWhereInput
+    data: XOR<DrivingSchoolUpdateManyMutationInput, DrivingSchoolUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type DrivingSchoolScalarWhereInput = {
+    AND?: DrivingSchoolScalarWhereInput | DrivingSchoolScalarWhereInput[]
+    OR?: DrivingSchoolScalarWhereInput[]
+    NOT?: DrivingSchoolScalarWhereInput | DrivingSchoolScalarWhereInput[]
+    id?: StringFilter<"DrivingSchool"> | string
+    name?: StringFilter<"DrivingSchool"> | string
+    slug?: StringFilter<"DrivingSchool"> | string
+    address?: StringNullableFilter<"DrivingSchool"> | string | null
+    phone?: StringNullableFilter<"DrivingSchool"> | string | null
+    email?: StringNullableFilter<"DrivingSchool"> | string | null
+    logo?: StringNullableFilter<"DrivingSchool"> | string | null
+    createdAt?: DateTimeFilter<"DrivingSchool"> | Date | string
+    updatedAt?: DateTimeFilter<"DrivingSchool"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"DrivingSchool"> | Date | string | null
+    userId?: StringFilter<"DrivingSchool"> | string
+  }
+
   export type UserCreateWithoutSessionsInput = {
     id: string
     name: string
@@ -13619,6 +22700,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     receipts?: ReceiptCreateNestedManyWithoutUserInput
     vehicles?: VehicleCreateNestedManyWithoutUserInput
+    drivingSchools?: DrivingSchoolCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -13632,6 +22714,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     receipts?: ReceiptUncheckedCreateNestedManyWithoutUserInput
     vehicles?: VehicleUncheckedCreateNestedManyWithoutUserInput
+    drivingSchools?: DrivingSchoolUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -13661,6 +22744,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     receipts?: ReceiptUpdateManyWithoutUserNestedInput
     vehicles?: VehicleUpdateManyWithoutUserNestedInput
+    drivingSchools?: DrivingSchoolUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -13674,6 +22758,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     receipts?: ReceiptUncheckedUpdateManyWithoutUserNestedInput
     vehicles?: VehicleUncheckedUpdateManyWithoutUserNestedInput
+    drivingSchools?: DrivingSchoolUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutAccountsInput = {
@@ -13687,6 +22772,7 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     receipts?: ReceiptCreateNestedManyWithoutUserInput
     vehicles?: VehicleCreateNestedManyWithoutUserInput
+    drivingSchools?: DrivingSchoolCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -13700,6 +22786,7 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     receipts?: ReceiptUncheckedCreateNestedManyWithoutUserInput
     vehicles?: VehicleUncheckedCreateNestedManyWithoutUserInput
+    drivingSchools?: DrivingSchoolUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -13729,6 +22816,7 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     receipts?: ReceiptUpdateManyWithoutUserNestedInput
     vehicles?: VehicleUpdateManyWithoutUserNestedInput
+    drivingSchools?: DrivingSchoolUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -13742,6 +22830,7 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     receipts?: ReceiptUncheckedUpdateManyWithoutUserNestedInput
     vehicles?: VehicleUncheckedUpdateManyWithoutUserNestedInput
+    drivingSchools?: DrivingSchoolUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutVehiclesInput = {
@@ -13755,6 +22844,7 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     receipts?: ReceiptCreateNestedManyWithoutUserInput
+    drivingSchools?: DrivingSchoolCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutVehiclesInput = {
@@ -13768,6 +22858,7 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     receipts?: ReceiptUncheckedCreateNestedManyWithoutUserInput
+    drivingSchools?: DrivingSchoolUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutVehiclesInput = {
@@ -13843,6 +22934,7 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     receipts?: ReceiptUpdateManyWithoutUserNestedInput
+    drivingSchools?: DrivingSchoolUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutVehiclesInput = {
@@ -13856,6 +22948,7 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     receipts?: ReceiptUncheckedUpdateManyWithoutUserNestedInput
+    drivingSchools?: DrivingSchoolUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ReceiptUpsertWithWhereUniqueWithoutVehicleInput = {
@@ -13885,6 +22978,7 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     vehicles?: VehicleCreateNestedManyWithoutUserInput
+    drivingSchools?: DrivingSchoolCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutReceiptsInput = {
@@ -13898,6 +22992,7 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     vehicles?: VehicleUncheckedCreateNestedManyWithoutUserInput
+    drivingSchools?: DrivingSchoolUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutReceiptsInput = {
@@ -13990,6 +23085,7 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     vehicles?: VehicleUpdateManyWithoutUserNestedInput
+    drivingSchools?: DrivingSchoolUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReceiptsInput = {
@@ -14003,6 +23099,7 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     vehicles?: VehicleUncheckedUpdateManyWithoutUserNestedInput
+    drivingSchools?: DrivingSchoolUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type VehicleUpsertWithoutReceiptsInput = {
@@ -14161,6 +23258,847 @@ export namespace Prisma {
     vehicleId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type UserCreateWithoutDrivingSchoolsInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified: boolean
+    image?: string | null
+    createdAt: Date | string
+    updatedAt: Date | string
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    receipts?: ReceiptCreateNestedManyWithoutUserInput
+    vehicles?: VehicleCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutDrivingSchoolsInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified: boolean
+    image?: string | null
+    createdAt: Date | string
+    updatedAt: Date | string
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    receipts?: ReceiptUncheckedCreateNestedManyWithoutUserInput
+    vehicles?: VehicleUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutDrivingSchoolsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutDrivingSchoolsInput, UserUncheckedCreateWithoutDrivingSchoolsInput>
+  }
+
+  export type PlanCreateWithoutSchoolInput = {
+    id?: string
+    name: string
+    code: string
+    price: Decimal | DecimalJsLike | number | string
+    duration: number
+    features?: PlanCreatefeaturesInput | string[]
+    maxStudents?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    registrations?: RegistrationCreateNestedManyWithoutPlanInput
+  }
+
+  export type PlanUncheckedCreateWithoutSchoolInput = {
+    id?: string
+    name: string
+    code: string
+    price: Decimal | DecimalJsLike | number | string
+    duration: number
+    features?: PlanCreatefeaturesInput | string[]
+    maxStudents?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    registrations?: RegistrationUncheckedCreateNestedManyWithoutPlanInput
+  }
+
+  export type PlanCreateOrConnectWithoutSchoolInput = {
+    where: PlanWhereUniqueInput
+    create: XOR<PlanCreateWithoutSchoolInput, PlanUncheckedCreateWithoutSchoolInput>
+  }
+
+  export type PlanCreateManySchoolInputEnvelope = {
+    data: PlanCreateManySchoolInput | PlanCreateManySchoolInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StudentCreateWithoutSchoolInput = {
+    id?: string
+    fullName: string
+    email: string
+    phone: string
+    birthDate: Date | string
+    idType: $Enums.IdType
+    idNumber: string
+    idExpiryDate?: Date | string | null
+    address: string
+    city: string
+    island: string
+    photo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    registrations?: RegistrationCreateNestedManyWithoutStudentInput
+  }
+
+  export type StudentUncheckedCreateWithoutSchoolInput = {
+    id?: string
+    fullName: string
+    email: string
+    phone: string
+    birthDate: Date | string
+    idType: $Enums.IdType
+    idNumber: string
+    idExpiryDate?: Date | string | null
+    address: string
+    city: string
+    island: string
+    photo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    registrations?: RegistrationUncheckedCreateNestedManyWithoutStudentInput
+  }
+
+  export type StudentCreateOrConnectWithoutSchoolInput = {
+    where: StudentWhereUniqueInput
+    create: XOR<StudentCreateWithoutSchoolInput, StudentUncheckedCreateWithoutSchoolInput>
+  }
+
+  export type StudentCreateManySchoolInputEnvelope = {
+    data: StudentCreateManySchoolInput | StudentCreateManySchoolInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutDrivingSchoolsInput = {
+    update: XOR<UserUpdateWithoutDrivingSchoolsInput, UserUncheckedUpdateWithoutDrivingSchoolsInput>
+    create: XOR<UserCreateWithoutDrivingSchoolsInput, UserUncheckedCreateWithoutDrivingSchoolsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutDrivingSchoolsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutDrivingSchoolsInput, UserUncheckedUpdateWithoutDrivingSchoolsInput>
+  }
+
+  export type UserUpdateWithoutDrivingSchoolsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    receipts?: ReceiptUpdateManyWithoutUserNestedInput
+    vehicles?: VehicleUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutDrivingSchoolsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    receipts?: ReceiptUncheckedUpdateManyWithoutUserNestedInput
+    vehicles?: VehicleUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type PlanUpsertWithWhereUniqueWithoutSchoolInput = {
+    where: PlanWhereUniqueInput
+    update: XOR<PlanUpdateWithoutSchoolInput, PlanUncheckedUpdateWithoutSchoolInput>
+    create: XOR<PlanCreateWithoutSchoolInput, PlanUncheckedCreateWithoutSchoolInput>
+  }
+
+  export type PlanUpdateWithWhereUniqueWithoutSchoolInput = {
+    where: PlanWhereUniqueInput
+    data: XOR<PlanUpdateWithoutSchoolInput, PlanUncheckedUpdateWithoutSchoolInput>
+  }
+
+  export type PlanUpdateManyWithWhereWithoutSchoolInput = {
+    where: PlanScalarWhereInput
+    data: XOR<PlanUpdateManyMutationInput, PlanUncheckedUpdateManyWithoutSchoolInput>
+  }
+
+  export type PlanScalarWhereInput = {
+    AND?: PlanScalarWhereInput | PlanScalarWhereInput[]
+    OR?: PlanScalarWhereInput[]
+    NOT?: PlanScalarWhereInput | PlanScalarWhereInput[]
+    id?: StringFilter<"Plan"> | string
+    name?: StringFilter<"Plan"> | string
+    code?: StringFilter<"Plan"> | string
+    price?: DecimalFilter<"Plan"> | Decimal | DecimalJsLike | number | string
+    duration?: IntFilter<"Plan"> | number
+    features?: StringNullableListFilter<"Plan">
+    maxStudents?: IntNullableFilter<"Plan"> | number | null
+    isActive?: BoolFilter<"Plan"> | boolean
+    createdAt?: DateTimeFilter<"Plan"> | Date | string
+    updatedAt?: DateTimeFilter<"Plan"> | Date | string
+    schoolId?: StringFilter<"Plan"> | string
+  }
+
+  export type StudentUpsertWithWhereUniqueWithoutSchoolInput = {
+    where: StudentWhereUniqueInput
+    update: XOR<StudentUpdateWithoutSchoolInput, StudentUncheckedUpdateWithoutSchoolInput>
+    create: XOR<StudentCreateWithoutSchoolInput, StudentUncheckedCreateWithoutSchoolInput>
+  }
+
+  export type StudentUpdateWithWhereUniqueWithoutSchoolInput = {
+    where: StudentWhereUniqueInput
+    data: XOR<StudentUpdateWithoutSchoolInput, StudentUncheckedUpdateWithoutSchoolInput>
+  }
+
+  export type StudentUpdateManyWithWhereWithoutSchoolInput = {
+    where: StudentScalarWhereInput
+    data: XOR<StudentUpdateManyMutationInput, StudentUncheckedUpdateManyWithoutSchoolInput>
+  }
+
+  export type StudentScalarWhereInput = {
+    AND?: StudentScalarWhereInput | StudentScalarWhereInput[]
+    OR?: StudentScalarWhereInput[]
+    NOT?: StudentScalarWhereInput | StudentScalarWhereInput[]
+    id?: StringFilter<"Student"> | string
+    fullName?: StringFilter<"Student"> | string
+    email?: StringFilter<"Student"> | string
+    phone?: StringFilter<"Student"> | string
+    birthDate?: DateTimeFilter<"Student"> | Date | string
+    idType?: EnumIdTypeFilter<"Student"> | $Enums.IdType
+    idNumber?: StringFilter<"Student"> | string
+    idExpiryDate?: DateTimeNullableFilter<"Student"> | Date | string | null
+    address?: StringFilter<"Student"> | string
+    city?: StringFilter<"Student"> | string
+    island?: StringFilter<"Student"> | string
+    photo?: StringNullableFilter<"Student"> | string | null
+    createdAt?: DateTimeFilter<"Student"> | Date | string
+    updatedAt?: DateTimeFilter<"Student"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"Student"> | Date | string | null
+    schoolId?: StringFilter<"Student"> | string
+  }
+
+  export type DrivingSchoolCreateWithoutPlansInput = {
+    id?: string
+    name: string
+    slug: string
+    address?: string | null
+    phone?: string | null
+    email?: string | null
+    logo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    user: UserCreateNestedOneWithoutDrivingSchoolsInput
+    students?: StudentCreateNestedManyWithoutSchoolInput
+  }
+
+  export type DrivingSchoolUncheckedCreateWithoutPlansInput = {
+    id?: string
+    name: string
+    slug: string
+    address?: string | null
+    phone?: string | null
+    email?: string | null
+    logo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    userId: string
+    students?: StudentUncheckedCreateNestedManyWithoutSchoolInput
+  }
+
+  export type DrivingSchoolCreateOrConnectWithoutPlansInput = {
+    where: DrivingSchoolWhereUniqueInput
+    create: XOR<DrivingSchoolCreateWithoutPlansInput, DrivingSchoolUncheckedCreateWithoutPlansInput>
+  }
+
+  export type RegistrationCreateWithoutPlanInput = {
+    id?: string
+    status?: $Enums.RegistrationStatus
+    expectedEndDate: Date | string
+    theoryExamDate?: Date | string | null
+    practicalExamDate?: Date | string | null
+    totalAmount: Decimal | DecimalJsLike | number | string
+    paymentType?: $Enums.PaymentType
+    internalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    student: StudentCreateNestedOneWithoutRegistrationsInput
+    payments?: PaymentCreateNestedManyWithoutRegistrationInput
+  }
+
+  export type RegistrationUncheckedCreateWithoutPlanInput = {
+    id?: string
+    status?: $Enums.RegistrationStatus
+    expectedEndDate: Date | string
+    theoryExamDate?: Date | string | null
+    practicalExamDate?: Date | string | null
+    totalAmount: Decimal | DecimalJsLike | number | string
+    paymentType?: $Enums.PaymentType
+    internalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    studentId: string
+    payments?: PaymentUncheckedCreateNestedManyWithoutRegistrationInput
+  }
+
+  export type RegistrationCreateOrConnectWithoutPlanInput = {
+    where: RegistrationWhereUniqueInput
+    create: XOR<RegistrationCreateWithoutPlanInput, RegistrationUncheckedCreateWithoutPlanInput>
+  }
+
+  export type RegistrationCreateManyPlanInputEnvelope = {
+    data: RegistrationCreateManyPlanInput | RegistrationCreateManyPlanInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DrivingSchoolUpsertWithoutPlansInput = {
+    update: XOR<DrivingSchoolUpdateWithoutPlansInput, DrivingSchoolUncheckedUpdateWithoutPlansInput>
+    create: XOR<DrivingSchoolCreateWithoutPlansInput, DrivingSchoolUncheckedCreateWithoutPlansInput>
+    where?: DrivingSchoolWhereInput
+  }
+
+  export type DrivingSchoolUpdateToOneWithWhereWithoutPlansInput = {
+    where?: DrivingSchoolWhereInput
+    data: XOR<DrivingSchoolUpdateWithoutPlansInput, DrivingSchoolUncheckedUpdateWithoutPlansInput>
+  }
+
+  export type DrivingSchoolUpdateWithoutPlansInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneRequiredWithoutDrivingSchoolsNestedInput
+    students?: StudentUpdateManyWithoutSchoolNestedInput
+  }
+
+  export type DrivingSchoolUncheckedUpdateWithoutPlansInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    students?: StudentUncheckedUpdateManyWithoutSchoolNestedInput
+  }
+
+  export type RegistrationUpsertWithWhereUniqueWithoutPlanInput = {
+    where: RegistrationWhereUniqueInput
+    update: XOR<RegistrationUpdateWithoutPlanInput, RegistrationUncheckedUpdateWithoutPlanInput>
+    create: XOR<RegistrationCreateWithoutPlanInput, RegistrationUncheckedCreateWithoutPlanInput>
+  }
+
+  export type RegistrationUpdateWithWhereUniqueWithoutPlanInput = {
+    where: RegistrationWhereUniqueInput
+    data: XOR<RegistrationUpdateWithoutPlanInput, RegistrationUncheckedUpdateWithoutPlanInput>
+  }
+
+  export type RegistrationUpdateManyWithWhereWithoutPlanInput = {
+    where: RegistrationScalarWhereInput
+    data: XOR<RegistrationUpdateManyMutationInput, RegistrationUncheckedUpdateManyWithoutPlanInput>
+  }
+
+  export type RegistrationScalarWhereInput = {
+    AND?: RegistrationScalarWhereInput | RegistrationScalarWhereInput[]
+    OR?: RegistrationScalarWhereInput[]
+    NOT?: RegistrationScalarWhereInput | RegistrationScalarWhereInput[]
+    id?: StringFilter<"Registration"> | string
+    status?: EnumRegistrationStatusFilter<"Registration"> | $Enums.RegistrationStatus
+    expectedEndDate?: DateTimeFilter<"Registration"> | Date | string
+    theoryExamDate?: DateTimeNullableFilter<"Registration"> | Date | string | null
+    practicalExamDate?: DateTimeNullableFilter<"Registration"> | Date | string | null
+    totalAmount?: DecimalFilter<"Registration"> | Decimal | DecimalJsLike | number | string
+    paymentType?: EnumPaymentTypeFilter<"Registration"> | $Enums.PaymentType
+    internalNotes?: StringNullableFilter<"Registration"> | string | null
+    createdAt?: DateTimeFilter<"Registration"> | Date | string
+    updatedAt?: DateTimeFilter<"Registration"> | Date | string
+    completedAt?: DateTimeNullableFilter<"Registration"> | Date | string | null
+    cancelledAt?: DateTimeNullableFilter<"Registration"> | Date | string | null
+    studentId?: StringFilter<"Registration"> | string
+    planId?: StringFilter<"Registration"> | string
+  }
+
+  export type DrivingSchoolCreateWithoutStudentsInput = {
+    id?: string
+    name: string
+    slug: string
+    address?: string | null
+    phone?: string | null
+    email?: string | null
+    logo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    user: UserCreateNestedOneWithoutDrivingSchoolsInput
+    plans?: PlanCreateNestedManyWithoutSchoolInput
+  }
+
+  export type DrivingSchoolUncheckedCreateWithoutStudentsInput = {
+    id?: string
+    name: string
+    slug: string
+    address?: string | null
+    phone?: string | null
+    email?: string | null
+    logo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    userId: string
+    plans?: PlanUncheckedCreateNestedManyWithoutSchoolInput
+  }
+
+  export type DrivingSchoolCreateOrConnectWithoutStudentsInput = {
+    where: DrivingSchoolWhereUniqueInput
+    create: XOR<DrivingSchoolCreateWithoutStudentsInput, DrivingSchoolUncheckedCreateWithoutStudentsInput>
+  }
+
+  export type RegistrationCreateWithoutStudentInput = {
+    id?: string
+    status?: $Enums.RegistrationStatus
+    expectedEndDate: Date | string
+    theoryExamDate?: Date | string | null
+    practicalExamDate?: Date | string | null
+    totalAmount: Decimal | DecimalJsLike | number | string
+    paymentType?: $Enums.PaymentType
+    internalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    plan: PlanCreateNestedOneWithoutRegistrationsInput
+    payments?: PaymentCreateNestedManyWithoutRegistrationInput
+  }
+
+  export type RegistrationUncheckedCreateWithoutStudentInput = {
+    id?: string
+    status?: $Enums.RegistrationStatus
+    expectedEndDate: Date | string
+    theoryExamDate?: Date | string | null
+    practicalExamDate?: Date | string | null
+    totalAmount: Decimal | DecimalJsLike | number | string
+    paymentType?: $Enums.PaymentType
+    internalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    planId: string
+    payments?: PaymentUncheckedCreateNestedManyWithoutRegistrationInput
+  }
+
+  export type RegistrationCreateOrConnectWithoutStudentInput = {
+    where: RegistrationWhereUniqueInput
+    create: XOR<RegistrationCreateWithoutStudentInput, RegistrationUncheckedCreateWithoutStudentInput>
+  }
+
+  export type RegistrationCreateManyStudentInputEnvelope = {
+    data: RegistrationCreateManyStudentInput | RegistrationCreateManyStudentInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DrivingSchoolUpsertWithoutStudentsInput = {
+    update: XOR<DrivingSchoolUpdateWithoutStudentsInput, DrivingSchoolUncheckedUpdateWithoutStudentsInput>
+    create: XOR<DrivingSchoolCreateWithoutStudentsInput, DrivingSchoolUncheckedCreateWithoutStudentsInput>
+    where?: DrivingSchoolWhereInput
+  }
+
+  export type DrivingSchoolUpdateToOneWithWhereWithoutStudentsInput = {
+    where?: DrivingSchoolWhereInput
+    data: XOR<DrivingSchoolUpdateWithoutStudentsInput, DrivingSchoolUncheckedUpdateWithoutStudentsInput>
+  }
+
+  export type DrivingSchoolUpdateWithoutStudentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneRequiredWithoutDrivingSchoolsNestedInput
+    plans?: PlanUpdateManyWithoutSchoolNestedInput
+  }
+
+  export type DrivingSchoolUncheckedUpdateWithoutStudentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    plans?: PlanUncheckedUpdateManyWithoutSchoolNestedInput
+  }
+
+  export type RegistrationUpsertWithWhereUniqueWithoutStudentInput = {
+    where: RegistrationWhereUniqueInput
+    update: XOR<RegistrationUpdateWithoutStudentInput, RegistrationUncheckedUpdateWithoutStudentInput>
+    create: XOR<RegistrationCreateWithoutStudentInput, RegistrationUncheckedCreateWithoutStudentInput>
+  }
+
+  export type RegistrationUpdateWithWhereUniqueWithoutStudentInput = {
+    where: RegistrationWhereUniqueInput
+    data: XOR<RegistrationUpdateWithoutStudentInput, RegistrationUncheckedUpdateWithoutStudentInput>
+  }
+
+  export type RegistrationUpdateManyWithWhereWithoutStudentInput = {
+    where: RegistrationScalarWhereInput
+    data: XOR<RegistrationUpdateManyMutationInput, RegistrationUncheckedUpdateManyWithoutStudentInput>
+  }
+
+  export type StudentCreateWithoutRegistrationsInput = {
+    id?: string
+    fullName: string
+    email: string
+    phone: string
+    birthDate: Date | string
+    idType: $Enums.IdType
+    idNumber: string
+    idExpiryDate?: Date | string | null
+    address: string
+    city: string
+    island: string
+    photo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    school: DrivingSchoolCreateNestedOneWithoutStudentsInput
+  }
+
+  export type StudentUncheckedCreateWithoutRegistrationsInput = {
+    id?: string
+    fullName: string
+    email: string
+    phone: string
+    birthDate: Date | string
+    idType: $Enums.IdType
+    idNumber: string
+    idExpiryDate?: Date | string | null
+    address: string
+    city: string
+    island: string
+    photo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    schoolId: string
+  }
+
+  export type StudentCreateOrConnectWithoutRegistrationsInput = {
+    where: StudentWhereUniqueInput
+    create: XOR<StudentCreateWithoutRegistrationsInput, StudentUncheckedCreateWithoutRegistrationsInput>
+  }
+
+  export type PlanCreateWithoutRegistrationsInput = {
+    id?: string
+    name: string
+    code: string
+    price: Decimal | DecimalJsLike | number | string
+    duration: number
+    features?: PlanCreatefeaturesInput | string[]
+    maxStudents?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    school: DrivingSchoolCreateNestedOneWithoutPlansInput
+  }
+
+  export type PlanUncheckedCreateWithoutRegistrationsInput = {
+    id?: string
+    name: string
+    code: string
+    price: Decimal | DecimalJsLike | number | string
+    duration: number
+    features?: PlanCreatefeaturesInput | string[]
+    maxStudents?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    schoolId: string
+  }
+
+  export type PlanCreateOrConnectWithoutRegistrationsInput = {
+    where: PlanWhereUniqueInput
+    create: XOR<PlanCreateWithoutRegistrationsInput, PlanUncheckedCreateWithoutRegistrationsInput>
+  }
+
+  export type PaymentCreateWithoutRegistrationInput = {
+    id?: string
+    amount: Decimal | DecimalJsLike | number | string
+    method: $Enums.PaymentMethod
+    status?: $Enums.PaymentStatus
+    reference?: string | null
+    notes?: string | null
+    proofUrl?: string | null
+    paidAt?: Date | string | null
+    dueDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PaymentUncheckedCreateWithoutRegistrationInput = {
+    id?: string
+    amount: Decimal | DecimalJsLike | number | string
+    method: $Enums.PaymentMethod
+    status?: $Enums.PaymentStatus
+    reference?: string | null
+    notes?: string | null
+    proofUrl?: string | null
+    paidAt?: Date | string | null
+    dueDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PaymentCreateOrConnectWithoutRegistrationInput = {
+    where: PaymentWhereUniqueInput
+    create: XOR<PaymentCreateWithoutRegistrationInput, PaymentUncheckedCreateWithoutRegistrationInput>
+  }
+
+  export type PaymentCreateManyRegistrationInputEnvelope = {
+    data: PaymentCreateManyRegistrationInput | PaymentCreateManyRegistrationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StudentUpsertWithoutRegistrationsInput = {
+    update: XOR<StudentUpdateWithoutRegistrationsInput, StudentUncheckedUpdateWithoutRegistrationsInput>
+    create: XOR<StudentCreateWithoutRegistrationsInput, StudentUncheckedCreateWithoutRegistrationsInput>
+    where?: StudentWhereInput
+  }
+
+  export type StudentUpdateToOneWithWhereWithoutRegistrationsInput = {
+    where?: StudentWhereInput
+    data: XOR<StudentUpdateWithoutRegistrationsInput, StudentUncheckedUpdateWithoutRegistrationsInput>
+  }
+
+  export type StudentUpdateWithoutRegistrationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    idType?: EnumIdTypeFieldUpdateOperationsInput | $Enums.IdType
+    idNumber?: StringFieldUpdateOperationsInput | string
+    idExpiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    island?: StringFieldUpdateOperationsInput | string
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    school?: DrivingSchoolUpdateOneRequiredWithoutStudentsNestedInput
+  }
+
+  export type StudentUncheckedUpdateWithoutRegistrationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    idType?: EnumIdTypeFieldUpdateOperationsInput | $Enums.IdType
+    idNumber?: StringFieldUpdateOperationsInput | string
+    idExpiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    island?: StringFieldUpdateOperationsInput | string
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PlanUpsertWithoutRegistrationsInput = {
+    update: XOR<PlanUpdateWithoutRegistrationsInput, PlanUncheckedUpdateWithoutRegistrationsInput>
+    create: XOR<PlanCreateWithoutRegistrationsInput, PlanUncheckedCreateWithoutRegistrationsInput>
+    where?: PlanWhereInput
+  }
+
+  export type PlanUpdateToOneWithWhereWithoutRegistrationsInput = {
+    where?: PlanWhereInput
+    data: XOR<PlanUpdateWithoutRegistrationsInput, PlanUncheckedUpdateWithoutRegistrationsInput>
+  }
+
+  export type PlanUpdateWithoutRegistrationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    duration?: IntFieldUpdateOperationsInput | number
+    features?: PlanUpdatefeaturesInput | string[]
+    maxStudents?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    school?: DrivingSchoolUpdateOneRequiredWithoutPlansNestedInput
+  }
+
+  export type PlanUncheckedUpdateWithoutRegistrationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    duration?: IntFieldUpdateOperationsInput | number
+    features?: PlanUpdatefeaturesInput | string[]
+    maxStudents?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schoolId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PaymentUpsertWithWhereUniqueWithoutRegistrationInput = {
+    where: PaymentWhereUniqueInput
+    update: XOR<PaymentUpdateWithoutRegistrationInput, PaymentUncheckedUpdateWithoutRegistrationInput>
+    create: XOR<PaymentCreateWithoutRegistrationInput, PaymentUncheckedCreateWithoutRegistrationInput>
+  }
+
+  export type PaymentUpdateWithWhereUniqueWithoutRegistrationInput = {
+    where: PaymentWhereUniqueInput
+    data: XOR<PaymentUpdateWithoutRegistrationInput, PaymentUncheckedUpdateWithoutRegistrationInput>
+  }
+
+  export type PaymentUpdateManyWithWhereWithoutRegistrationInput = {
+    where: PaymentScalarWhereInput
+    data: XOR<PaymentUpdateManyMutationInput, PaymentUncheckedUpdateManyWithoutRegistrationInput>
+  }
+
+  export type PaymentScalarWhereInput = {
+    AND?: PaymentScalarWhereInput | PaymentScalarWhereInput[]
+    OR?: PaymentScalarWhereInput[]
+    NOT?: PaymentScalarWhereInput | PaymentScalarWhereInput[]
+    id?: StringFilter<"Payment"> | string
+    amount?: DecimalFilter<"Payment"> | Decimal | DecimalJsLike | number | string
+    method?: EnumPaymentMethodFilter<"Payment"> | $Enums.PaymentMethod
+    status?: EnumPaymentStatusFilter<"Payment"> | $Enums.PaymentStatus
+    reference?: StringNullableFilter<"Payment"> | string | null
+    notes?: StringNullableFilter<"Payment"> | string | null
+    proofUrl?: StringNullableFilter<"Payment"> | string | null
+    paidAt?: DateTimeNullableFilter<"Payment"> | Date | string | null
+    dueDate?: DateTimeNullableFilter<"Payment"> | Date | string | null
+    createdAt?: DateTimeFilter<"Payment"> | Date | string
+    updatedAt?: DateTimeFilter<"Payment"> | Date | string
+    registrationId?: StringFilter<"Payment"> | string
+  }
+
+  export type RegistrationCreateWithoutPaymentsInput = {
+    id?: string
+    status?: $Enums.RegistrationStatus
+    expectedEndDate: Date | string
+    theoryExamDate?: Date | string | null
+    practicalExamDate?: Date | string | null
+    totalAmount: Decimal | DecimalJsLike | number | string
+    paymentType?: $Enums.PaymentType
+    internalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    student: StudentCreateNestedOneWithoutRegistrationsInput
+    plan: PlanCreateNestedOneWithoutRegistrationsInput
+  }
+
+  export type RegistrationUncheckedCreateWithoutPaymentsInput = {
+    id?: string
+    status?: $Enums.RegistrationStatus
+    expectedEndDate: Date | string
+    theoryExamDate?: Date | string | null
+    practicalExamDate?: Date | string | null
+    totalAmount: Decimal | DecimalJsLike | number | string
+    paymentType?: $Enums.PaymentType
+    internalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    studentId: string
+    planId: string
+  }
+
+  export type RegistrationCreateOrConnectWithoutPaymentsInput = {
+    where: RegistrationWhereUniqueInput
+    create: XOR<RegistrationCreateWithoutPaymentsInput, RegistrationUncheckedCreateWithoutPaymentsInput>
+  }
+
+  export type RegistrationUpsertWithoutPaymentsInput = {
+    update: XOR<RegistrationUpdateWithoutPaymentsInput, RegistrationUncheckedUpdateWithoutPaymentsInput>
+    create: XOR<RegistrationCreateWithoutPaymentsInput, RegistrationUncheckedCreateWithoutPaymentsInput>
+    where?: RegistrationWhereInput
+  }
+
+  export type RegistrationUpdateToOneWithWhereWithoutPaymentsInput = {
+    where?: RegistrationWhereInput
+    data: XOR<RegistrationUpdateWithoutPaymentsInput, RegistrationUncheckedUpdateWithoutPaymentsInput>
+  }
+
+  export type RegistrationUpdateWithoutPaymentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    expectedEndDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    theoryExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    practicalExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentType?: EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    student?: StudentUpdateOneRequiredWithoutRegistrationsNestedInput
+    plan?: PlanUpdateOneRequiredWithoutRegistrationsNestedInput
+  }
+
+  export type RegistrationUncheckedUpdateWithoutPaymentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    expectedEndDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    theoryExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    practicalExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentType?: EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    studentId?: StringFieldUpdateOperationsInput | string
+    planId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type SessionCreateManyUserInput = {
     id: string
     expiresAt: Date | string
@@ -14210,6 +24148,19 @@ export namespace Prisma {
     model: string
     color?: string | null
     slug: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type DrivingSchoolCreateManyUserInput = {
+    id?: string
+    name: string
+    slug: string
+    address?: string | null
+    phone?: string | null
+    email?: string | null
+    logo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -14381,6 +24332,49 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type DrivingSchoolUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    plans?: PlanUpdateManyWithoutSchoolNestedInput
+    students?: StudentUpdateManyWithoutSchoolNestedInput
+  }
+
+  export type DrivingSchoolUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    plans?: PlanUncheckedUpdateManyWithoutSchoolNestedInput
+    students?: StudentUncheckedUpdateManyWithoutSchoolNestedInput
+  }
+
+  export type DrivingSchoolUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
   export type ReceiptCreateManyVehicleInput = {
     id?: string
     clientName: string
@@ -14491,6 +24485,322 @@ export namespace Prisma {
     emailSentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     emailDelivered?: BoolFieldUpdateOperationsInput | boolean
     emailError?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PlanCreateManySchoolInput = {
+    id?: string
+    name: string
+    code: string
+    price: Decimal | DecimalJsLike | number | string
+    duration: number
+    features?: PlanCreatefeaturesInput | string[]
+    maxStudents?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StudentCreateManySchoolInput = {
+    id?: string
+    fullName: string
+    email: string
+    phone: string
+    birthDate: Date | string
+    idType: $Enums.IdType
+    idNumber: string
+    idExpiryDate?: Date | string | null
+    address: string
+    city: string
+    island: string
+    photo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type PlanUpdateWithoutSchoolInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    duration?: IntFieldUpdateOperationsInput | number
+    features?: PlanUpdatefeaturesInput | string[]
+    maxStudents?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    registrations?: RegistrationUpdateManyWithoutPlanNestedInput
+  }
+
+  export type PlanUncheckedUpdateWithoutSchoolInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    duration?: IntFieldUpdateOperationsInput | number
+    features?: PlanUpdatefeaturesInput | string[]
+    maxStudents?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    registrations?: RegistrationUncheckedUpdateManyWithoutPlanNestedInput
+  }
+
+  export type PlanUncheckedUpdateManyWithoutSchoolInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    duration?: IntFieldUpdateOperationsInput | number
+    features?: PlanUpdatefeaturesInput | string[]
+    maxStudents?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StudentUpdateWithoutSchoolInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    idType?: EnumIdTypeFieldUpdateOperationsInput | $Enums.IdType
+    idNumber?: StringFieldUpdateOperationsInput | string
+    idExpiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    island?: StringFieldUpdateOperationsInput | string
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrations?: RegistrationUpdateManyWithoutStudentNestedInput
+  }
+
+  export type StudentUncheckedUpdateWithoutSchoolInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    idType?: EnumIdTypeFieldUpdateOperationsInput | $Enums.IdType
+    idNumber?: StringFieldUpdateOperationsInput | string
+    idExpiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    island?: StringFieldUpdateOperationsInput | string
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrations?: RegistrationUncheckedUpdateManyWithoutStudentNestedInput
+  }
+
+  export type StudentUncheckedUpdateManyWithoutSchoolInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    idType?: EnumIdTypeFieldUpdateOperationsInput | $Enums.IdType
+    idNumber?: StringFieldUpdateOperationsInput | string
+    idExpiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    island?: StringFieldUpdateOperationsInput | string
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type RegistrationCreateManyPlanInput = {
+    id?: string
+    status?: $Enums.RegistrationStatus
+    expectedEndDate: Date | string
+    theoryExamDate?: Date | string | null
+    practicalExamDate?: Date | string | null
+    totalAmount: Decimal | DecimalJsLike | number | string
+    paymentType?: $Enums.PaymentType
+    internalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    studentId: string
+  }
+
+  export type RegistrationUpdateWithoutPlanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    expectedEndDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    theoryExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    practicalExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentType?: EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    student?: StudentUpdateOneRequiredWithoutRegistrationsNestedInput
+    payments?: PaymentUpdateManyWithoutRegistrationNestedInput
+  }
+
+  export type RegistrationUncheckedUpdateWithoutPlanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    expectedEndDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    theoryExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    practicalExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentType?: EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    studentId?: StringFieldUpdateOperationsInput | string
+    payments?: PaymentUncheckedUpdateManyWithoutRegistrationNestedInput
+  }
+
+  export type RegistrationUncheckedUpdateManyWithoutPlanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    expectedEndDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    theoryExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    practicalExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentType?: EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    studentId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type RegistrationCreateManyStudentInput = {
+    id?: string
+    status?: $Enums.RegistrationStatus
+    expectedEndDate: Date | string
+    theoryExamDate?: Date | string | null
+    practicalExamDate?: Date | string | null
+    totalAmount: Decimal | DecimalJsLike | number | string
+    paymentType?: $Enums.PaymentType
+    internalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    planId: string
+  }
+
+  export type RegistrationUpdateWithoutStudentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    expectedEndDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    theoryExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    practicalExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentType?: EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    plan?: PlanUpdateOneRequiredWithoutRegistrationsNestedInput
+    payments?: PaymentUpdateManyWithoutRegistrationNestedInput
+  }
+
+  export type RegistrationUncheckedUpdateWithoutStudentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    expectedEndDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    theoryExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    practicalExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentType?: EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    planId?: StringFieldUpdateOperationsInput | string
+    payments?: PaymentUncheckedUpdateManyWithoutRegistrationNestedInput
+  }
+
+  export type RegistrationUncheckedUpdateManyWithoutStudentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    expectedEndDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    theoryExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    practicalExamDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentType?: EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    planId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PaymentCreateManyRegistrationInput = {
+    id?: string
+    amount: Decimal | DecimalJsLike | number | string
+    method: $Enums.PaymentMethod
+    status?: $Enums.PaymentStatus
+    reference?: string | null
+    notes?: string | null
+    proofUrl?: string | null
+    paidAt?: Date | string | null
+    dueDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PaymentUpdateWithoutRegistrationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    method?: EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+    status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    proofUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PaymentUncheckedUpdateWithoutRegistrationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    method?: EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+    status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    proofUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PaymentUncheckedUpdateManyWithoutRegistrationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    method?: EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+    status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    proofUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

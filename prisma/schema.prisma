@@ -16,17 +16,18 @@ datasource db {
 }
 
 model User {
-  id            String    @id
-  name          String
-  email         String
-  emailVerified Boolean
-  image         String?
-  createdAt     DateTime
-  updatedAt     DateTime
-  sessions      Session[]
-  accounts      Account[]
-  receipts      Receipt[]
-  vehicles      Vehicle[]
+  id             String          @id
+  name           String
+  email          String
+  emailVerified  Boolean
+  image          String?
+  createdAt      DateTime
+  updatedAt      DateTime
+  sessions       Session[]
+  accounts       Account[]
+  receipts       Receipt[]
+  vehicles       Vehicle[]
+  drivingSchools DrivingSchool[]
 
   @@unique([email])
   @@map("user")
@@ -184,4 +185,242 @@ enum ReceiptStatus {
   CANCELLED
 
   @@map("receipt_status")
+}
+
+// =============================================
+// DRIVING SCHOOL MODELS
+// =============================================
+
+model DrivingSchool {
+  id String @id @default(cuid())
+
+  // School information
+  name          String
+  slug          String  @unique // URL-friendly identifier for QR codes
+  address       String?
+  phone         String?
+  email         String?
+  logo          String? // URL to logo
+
+  // Audit fields
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  // Relations
+  userId        String
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  plans         Plan[]
+  students      Student[]
+
+  // Indexes
+  @@index([userId])
+  @@index([slug])
+  @@index([deletedAt])
+  @@map("driving_school")
+}
+
+model Plan {
+  id String @id @default(cuid())
+
+  // Plan information
+  name        String // e.g., "Carta Ligeira", "Carta Pesada"
+  code        String // e.g., "CL", "CP"
+  price       Decimal @db.Decimal(10, 2)
+  duration    Int // Duration in days
+  features    String[] // Array of features
+  maxStudents Int? // Optional enrollment limit
+
+  // Control fields
+  isActive Boolean @default(true)
+
+  // Audit fields
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  schoolId      String
+  school        DrivingSchool  @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  registrations Registration[]
+
+  // Indexes
+  @@unique([code, schoolId])
+  @@index([schoolId])
+  @@index([isActive])
+  @@map("plan")
+}
+
+model Student {
+  id String @id @default(cuid())
+
+  // Personal information
+  fullName       String
+  email          String
+  phone          String
+  birthDate      DateTime
+
+  // Identification
+  idType       IdType
+  idNumber     String
+  idExpiryDate DateTime?
+
+  // Address
+  address String
+  city    String
+  island  String // Santiago, São Vicente, etc.
+
+  // Additional info
+  photo String? // URL to photo
+
+  // Audit fields
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  // Relations
+  schoolId      String
+  school        DrivingSchool  @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  registrations Registration[]
+
+  // Constraints
+  @@unique([email, schoolId])
+  @@unique([idNumber, schoolId])
+  @@index([schoolId])
+  @@index([email])
+  @@index([deletedAt])
+  @@map("student")
+}
+
+model Registration {
+  id                 String @id @default(cuid())
+
+  // Registration details
+  status          RegistrationStatus @default(PENDING)
+  expectedEndDate DateTime
+
+  // Academic progress
+  theoryExamDate    DateTime?
+  practicalExamDate DateTime?
+
+  // Financial
+  totalAmount   Decimal   @db.Decimal(10, 2)
+  paymentType   PaymentType @default(FULL)
+
+  // Notes
+  internalNotes String? // For school use only
+
+  // Source tracking
+  // source        RegistrationSource @default(QR_CODE)
+  // sourceDetails String? // Which QR code, campaign, etc.
+
+  // Audit fields
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  completedAt DateTime?
+  cancelledAt DateTime?
+
+  // Relations
+  studentId String
+  student   Student       @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  planId    String
+  plan      Plan          @relation(fields: [planId], references: [id], onDelete: Restrict)
+  payments  Payment[]
+
+  // Indexes
+  @@index([studentId])
+  @@index([planId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("registration")
+}
+
+model Payment {
+  id String @id @default(cuid())
+
+  // Payment details
+  amount        Decimal       @db.Decimal(10, 2)
+  method        PaymentMethod
+  status        PaymentStatus @default(PENDING)
+  
+  // Payment reference/notes
+  reference     String?  // Bank transfer ref, receipt number, etc.
+  notes         String?
+  
+  // Payment proof (receipt photo, transfer screenshot)
+  proofUrl      String?
+  
+  // Dates
+  paidAt        DateTime?
+  dueDate       DateTime?  // For installments
+  
+  // Audit fields
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  // Relations
+  registrationId String
+  registration   Registration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+  
+  // Indexes
+  @@index([registrationId])
+  @@index([status])
+  @@index([paidAt])
+  @@map("payment")
+}
+
+// Driving School Enums
+
+enum IdType {
+  BILHETE_IDENTIDADE
+  PASSAPORTE
+  CARTAO_RESIDENCIA
+  DIRE // For foreign residents
+
+  @@map("id_type")
+}
+
+enum RegistrationStatus {
+  PENDING // Initial registration, awaiting documents/payment
+  ACTIVE // Currently enrolled
+  THEORY_COMPLETE // Passed theory, doing practical
+  SUSPENDED // Temporarily inactive
+  COMPLETED // Successfully completed
+  CANCELLED // Cancelled by student or school
+  FAILED // Failed exams beyond retry limit
+
+  @@map("registration_status")
+}
+
+enum PaymentMethod {
+  CASH
+  BANK_TRANSFER
+  VINTI4 // Local payment app
+
+  @@map("payment_method")
+}
+
+enum PaymentType {
+  FULL         // Pagamento completo
+  INSTALLMENTS // Pagamento parcelado
+
+  @@map("payment_type")
+}
+
+enum PaymentStatus {
+  PENDING   // Aguardando pagamento
+  PAID      // Pago
+  CANCELLED // Cancelado
+  REFUNDED  // Reembolsado
+
+  @@map("payment_status")
+}
+
+enum RegistrationSource {
+  QR_CODE
+  WALK_IN
+  WEBSITE
+  REFERRAL
+  SOCIAL_MEDIA
+
+  @@map("registration_source")
 }

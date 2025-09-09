@@ -216,6 +216,85 @@ exports.Prisma.ReceiptRecipientScalarFieldEnum = {
   receiptId: 'receiptId'
 };
 
+exports.Prisma.DrivingSchoolScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  address: 'address',
+  phone: 'phone',
+  email: 'email',
+  logo: 'logo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt',
+  userId: 'userId'
+};
+
+exports.Prisma.PlanScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  code: 'code',
+  price: 'price',
+  duration: 'duration',
+  features: 'features',
+  maxStudents: 'maxStudents',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  schoolId: 'schoolId'
+};
+
+exports.Prisma.StudentScalarFieldEnum = {
+  id: 'id',
+  fullName: 'fullName',
+  email: 'email',
+  phone: 'phone',
+  birthDate: 'birthDate',
+  idType: 'idType',
+  idNumber: 'idNumber',
+  idExpiryDate: 'idExpiryDate',
+  address: 'address',
+  city: 'city',
+  island: 'island',
+  photo: 'photo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt',
+  schoolId: 'schoolId'
+};
+
+exports.Prisma.RegistrationScalarFieldEnum = {
+  id: 'id',
+  status: 'status',
+  expectedEndDate: 'expectedEndDate',
+  theoryExamDate: 'theoryExamDate',
+  practicalExamDate: 'practicalExamDate',
+  totalAmount: 'totalAmount',
+  paymentType: 'paymentType',
+  internalNotes: 'internalNotes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  completedAt: 'completedAt',
+  cancelledAt: 'cancelledAt',
+  studentId: 'studentId',
+  planId: 'planId'
+};
+
+exports.Prisma.PaymentScalarFieldEnum = {
+  id: 'id',
+  amount: 'amount',
+  method: 'method',
+  status: 'status',
+  reference: 'reference',
+  notes: 'notes',
+  proofUrl: 'proofUrl',
+  paidAt: 'paidAt',
+  dueDate: 'dueDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  registrationId: 'registrationId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -236,6 +315,41 @@ exports.ReceiptStatus = exports.$Enums.ReceiptStatus = {
   CANCELLED: 'CANCELLED'
 };
 
+exports.IdType = exports.$Enums.IdType = {
+  BILHETE_IDENTIDADE: 'BILHETE_IDENTIDADE',
+  PASSAPORTE: 'PASSAPORTE',
+  CARTAO_RESIDENCIA: 'CARTAO_RESIDENCIA',
+  DIRE: 'DIRE'
+};
+
+exports.RegistrationStatus = exports.$Enums.RegistrationStatus = {
+  PENDING: 'PENDING',
+  ACTIVE: 'ACTIVE',
+  THEORY_COMPLETE: 'THEORY_COMPLETE',
+  SUSPENDED: 'SUSPENDED',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED',
+  FAILED: 'FAILED'
+};
+
+exports.PaymentType = exports.$Enums.PaymentType = {
+  FULL: 'FULL',
+  INSTALLMENTS: 'INSTALLMENTS'
+};
+
+exports.PaymentMethod = exports.$Enums.PaymentMethod = {
+  CASH: 'CASH',
+  BANK_TRANSFER: 'BANK_TRANSFER',
+  VINTI4: 'VINTI4'
+};
+
+exports.PaymentStatus = exports.$Enums.PaymentStatus = {
+  PENDING: 'PENDING',
+  PAID: 'PAID',
+  CANCELLED: 'CANCELLED',
+  REFUNDED: 'REFUNDED'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Session: 'Session',
@@ -244,7 +358,12 @@ exports.Prisma.ModelName = {
   WaitingList: 'WaitingList',
   Vehicle: 'Vehicle',
   Receipt: 'Receipt',
-  ReceiptRecipient: 'ReceiptRecipient'
+  ReceiptRecipient: 'ReceiptRecipient',
+  DrivingSchool: 'DrivingSchool',
+  Plan: 'Plan',
+  Student: 'Student',
+  Registration: 'Registration',
+  Payment: 'Payment'
 };
 
 /**
