@@ -37,3 +37,23 @@ export type SerializedVehicle = {
     deletedAt: Date | null;
     userId: string;
 };
+
+export type SerializedDrivingSchool = {
+    id: string;
+    name: string;
+    location: string;
+    phoneNumber: string;
+    email: string;
+    address: string;
+    description: string | null;
+    instructorCapacity: number;
+    studentCapacity: number;
+    totalStudents: number;
+    activeStudents: number;
+    totalInstructors: number;
+    vehiclesCount: number;
+    status: "active" | "inactive";
+    createdAt: Date;
+    updatedAt: Date;
+    userId: string;
+};
